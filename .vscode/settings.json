@@ -1,0 +1,26 @@
+{
+  "workbench.colorCustomizations": {
+    "titleBar.activeForeground": "#ffffff",
+    "titleBar.inactiveForeground": "#e7e7e799",
+    "titleBar.activeBackground": "#1c68ac",
+    "titleBar.inactiveBackground": "#1c68ac",
+    "activityBar.activeBackground": "#132f46",
+    "activityBar.activeBorder": "#4c80fa",
+    "activityBar.background": "#1c68ac",
+    "activityBar.foreground": "#fff",
+    "activityBar.inactiveForeground": "#fff",
+    "activityBarBadge.background": "#000000",
+    "activityBarBadge.foreground": "#fff",
+    "statusBar.background": "#1c68ac",
+    "statusBar.foreground": "#fff",
+    "statusBarItem.hoverBackground": "#3333ff"
+  },
+  "peacock.color": "#0000FF",
+  "cSpell.words": [
+    "Contenido",
+    "fpixel",
+    "Páginas",
+    "quienes",
+    "Somos"
+  ]
+}
