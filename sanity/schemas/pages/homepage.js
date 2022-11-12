@@ -40,12 +40,5 @@ export default {
       type: 'string',
       group: "contenido"
     },
-
-
-    {
-      name: "pagetitle",
-      title: "pagetitle",
-      type: "string",
-    },
   ],
 };
