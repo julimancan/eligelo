@@ -1,5 +1,6 @@
 // import image from "../objects/image";
 import { AiFillCar } from "react-icons/ai";
+import imageArrayNoAlt from "../objects/imageArrayNoAlt";
 
 export default {
   name: "car",
@@ -7,37 +8,6 @@ export default {
   type: "document",
   icon: AiFillCar,
   fields: [
-    {
-      name: "images",
-      title: "Imágenes",
-      type: "array",
-      of: [
-        {
-          name: "imageObject",
-          title: "imagen",
-          type: "object",
-          fields: [
-            {
-              name: 'image',
-              title: 'imagen',
-              type: 'image',
-            },
-          ],
-          preview: {
-            select: {
-              media: "image",
-            },
-            prepare(selection) {
-              const { title = "Foto", media } = selection
-              return {
-                title,
-                media,
-              };
-            },
-          },
-        },
-      ],
-    },
     {
       name: "brand",
       title: "Marca",
@@ -49,11 +19,8 @@ export default {
       title: "Modelo",
       type: "reference",
       to: [{ type: "model" }],
-      // options: {
-      //   filter: "brand == $brand",
-      //   filterParams: { brand: "brand" },
-      // },
     },
+    imageArrayNoAlt,
     {
       name: "price",
       title: "Precio",
@@ -138,8 +105,8 @@ export default {
       return {
         title,
         media,
-        subtitle
+        subtitle,
       };
-  },
+    },
   },
 };

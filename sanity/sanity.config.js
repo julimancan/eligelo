@@ -7,6 +7,9 @@ import quienesSomos from "./schemas/pages/quienesSomos";
 import model from "./schemas/documents/model";
 import brand from "./schemas/documents/brand";
 import car from "./schemas/documents/car";
+import moto from "./schemas/documents/moto";
+import bici from "./schemas/documents/bici";
+import scooter from "./schemas/documents/scooter";
 
 export const sanityConfig = {
   projectId: "yqg1fsel",
@@ -26,7 +29,10 @@ export const sanityConfig = {
       quienesSomos, 
       model, 
       brand, 
-      car
+      car,
+      moto,
+      bici,
+      scooter
     ],
   },
 };
