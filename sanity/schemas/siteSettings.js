@@ -28,7 +28,7 @@ export default {
     {
       name: "celular",
       title: "Número de Celular",
-      type: "text",
+      type: "string",
       group: "compInfo",
     },
     {
