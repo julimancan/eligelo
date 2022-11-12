@@ -5,6 +5,7 @@ import homepage from "../schemas/pages/homepage";
 import quienesSomos from "../schemas/pages/quienesSomos";
 import brand from "../schemas/documents/brand";
 import model from "../schemas/documents/model";
+import featuredAds from "../schemas/pages/featuredAds";
 
 export default (S, context) => {
   const siteSettingsListItem = S.listItem()
@@ -27,10 +28,15 @@ export default (S, context) => {
     .icon(quienesSomos.icon)
     .child(S.editor().schemaType(quienesSomos.name).id(quienesSomos.name));
 
+  const featuredAdsItem = S.listItem()
+    .title(featuredAds.title)
+    .icon(featuredAds.icon)
+    .child(S.editor().schemaType(featuredAds.name).id(featuredAds.name));
+
   const pages = S.listItem()
     .title("Páginas")
     .icon(MdWeb)
-    .child(S.list().title("Páginas").items([homepageItem, quienesSomosItem]));
+    .child(S.list().title("Páginas").items([homepageItem, quienesSomosItem, featuredAdsItem]));
 
   const hiddenDocTypes = (listItem) => {
     return ![
@@ -39,6 +45,7 @@ export default (S, context) => {
       quienesSomos.name,
       brand.name,
       model.name,
+      featuredAds.name
     ].includes(listItem.getId());
   };
 

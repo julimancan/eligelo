@@ -10,6 +10,7 @@ import car from "./schemas/documents/car";
 import moto from "./schemas/documents/moto";
 import bici from "./schemas/documents/bici";
 import scooter from "./schemas/documents/scooter";
+import featuredAds from "./schemas/pages/featuredAds";
 
 export const sanityConfig = {
   projectId: "yqg1fsel",
@@ -24,15 +25,21 @@ export const sanityConfig = {
   ],
   schema: {
     types: [
-      siteSettings, 
+      // settings
+      siteSettings,
+      
+      // pages
       homepage, 
       quienesSomos, 
-      model, 
-      brand, 
+      featuredAds,
+
+      // documents
       car,
       moto,
       bici,
-      scooter
+      scooter,
+      model, 
+      brand, 
     ],
   },
 };
