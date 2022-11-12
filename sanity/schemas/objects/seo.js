@@ -5,13 +5,13 @@ export default  {
     group: "SEO",
     fields: [
       {
-        name: 'titulo',
+        name: 'title',
         title: 'Título',
         description: "El nombre de la página que se quiere mostrar en buscadores",
         type: 'string',
       },
       {
-        name: 'descripcion',
+        name: 'description',
         title: 'Descripción',
         description: "La descripción de la página que aparecerá en buscadores.",
         type: 'text',
