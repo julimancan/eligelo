@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Burger from "./Burger";
 import MobileNavModal from "./MobileNavModal";
+import ModalContent from "./ModalContent";
 
 const Nav = () => {
   const [navOpen, setNavOpen] = useState(false);
@@ -8,7 +9,9 @@ const Nav = () => {
   return (
     <nav>
       <Burger open={navOpen} setOpen={setNavOpen} />
-      <MobileNavModal open={navOpen}/>
+      <MobileNavModal open={navOpen}>
+        <ModalContent/>
+      </MobileNavModal>
     </nav>
   );
 };

@@ -6,16 +6,16 @@ const StyledModal = styled.div`
   height: 100vh;
   background-color: white;
   transition: ${({ transitionDuration }) => `width ${transitionDuration}`};
-  div {
+  .content {
     display: ${({ open }) => (open ? "block" : "none")};
     color: black;
   }
 `;
 
-const MobileNavModal = ({ open }) => {
+const MobileNavModal = ({ open, children }) => {
   return (
     <StyledModal open={open} transitionDuration={".1s"}>
-      <div className="content">Modal</div>
+      <div className="content">{children}</div>
     </StyledModal>
   );
 };

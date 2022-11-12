@@ -1,6 +1,12 @@
 import Head from "next/head";
 
-const Seo = ({ title, description, favicon = "/logo.svg", pageBgColor, siteUrl = "www.eligelo.com" }) => {
+const Seo = ({
+  title,
+  description,
+  favicon = "/logo.svg",
+  pageBgColor,
+  siteUrl = "www.eligelo.com",
+}) => {
   return (
     <Head>
       <meta charSet="utf-8" />
@@ -8,13 +14,8 @@ const Seo = ({ title, description, favicon = "/logo.svg", pageBgColor, siteUrl =
       <meta key="og_type" property="og:type" content={"website"} />
       <link rel="canonical" href={siteUrl} />
       <meta name="robots" content="index,follow" />
-
-      {favicon && (
-        <>
-          <link rel="shortcut icon" href={favicon} />
-          <meta property="og:image" content={favicon} />
-        </>
-      )}
+      <link rel="shortcut icon" href={favicon} />
+      <meta property="og:image" content={favicon} />
       {title && (
         <>
           <title>{title}</title>
@@ -28,7 +29,7 @@ const Seo = ({ title, description, favicon = "/logo.svg", pageBgColor, siteUrl =
           <meta property="og:description" content={description} key="og_desc" />
         </>
       )}
-      {siteUrl && <meta property="og:url" content={siteUrl}  key="og_url"/>}
+      {siteUrl && <meta property="og:url" content={siteUrl} key="og_url" />}
       {pageBgColor && (
         <meta
           name="apple-mobile-web-app-status-bar"
