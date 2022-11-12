@@ -11,6 +11,7 @@ import moto from "./schemas/documents/moto";
 import bici from "./schemas/documents/bici";
 import scooter from "./schemas/documents/scooter";
 import featuredAds from "./schemas/pages/featuredAds";
+import vendeTuVehiculo from "./schemas/pages/vendeTuVehiculo";
 
 export const sanityConfig = {
   projectId: "yqg1fsel",
@@ -32,6 +33,7 @@ export const sanityConfig = {
       homepage, 
       quienesSomos, 
       featuredAds,
+      vendeTuVehiculo,
 
       // documents
       car,

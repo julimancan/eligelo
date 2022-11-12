@@ -62,6 +62,11 @@ export default {
       type: "string",
       group: "compInfo",
     },
+    {
+      name: 'horario',
+      title: 'horario',
+      type: 'string',
+    },
   ],
   preview: {
     prepare() {

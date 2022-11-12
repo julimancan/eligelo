@@ -6,6 +6,7 @@ import quienesSomos from "../schemas/pages/quienesSomos";
 import brand from "../schemas/documents/brand";
 import model from "../schemas/documents/model";
 import featuredAds from "../schemas/pages/featuredAds";
+import vendeTuVehiculo from "../schemas/pages/vendeTuVehiculo";
 
 export default (S, context) => {
   const siteSettingsListItem = S.listItem()
@@ -33,10 +34,15 @@ export default (S, context) => {
     .icon(featuredAds.icon)
     .child(S.editor().schemaType(featuredAds.name).id(featuredAds.name));
 
+  const vendeTuVehiculoItem = S.listItem()
+    .title(vendeTuVehiculo.title)
+    .icon(vendeTuVehiculo.icon)
+    .child(S.editor().schemaType(vendeTuVehiculo.name).id(vendeTuVehiculo.name));
+
   const pages = S.listItem()
     .title("Páginas")
     .icon(MdWeb)
-    .child(S.list().title("Páginas").items([homepageItem, quienesSomosItem, featuredAdsItem]));
+    .child(S.list().title("Páginas").items([homepageItem, quienesSomosItem, featuredAdsItem, vendeTuVehiculoItem]));
 
   const hiddenDocTypes = (listItem) => {
     return ![
@@ -45,7 +51,8 @@ export default (S, context) => {
       quienesSomos.name,
       brand.name,
       model.name,
-      featuredAds.name
+      featuredAds.name,
+      vendeTuVehiculo.name
     ].includes(listItem.getId());
   };
 
@@ -55,6 +62,7 @@ export default (S, context) => {
       siteSettingsListItem,
       S.divider(),
       pages,
+      S.divider(),
       ...S.documentTypeListItems().filter(hiddenDocTypes),
     ]);
 };
