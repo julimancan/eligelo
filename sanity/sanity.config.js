@@ -8,7 +8,7 @@ import model from "./schemas/documents/model";
 import brand from "./schemas/documents/brand";
 import car from "./schemas/documents/car";
 
-const config = {
+export const sanityConfig = {
   projectId: "yqg1fsel",
   dataset: "production",
   apiVersion: "2021-10-21",
@@ -31,4 +31,4 @@ const config = {
   },
 };
 
-export const studioConfig = defineConfig(config);
+export const studioConfig = defineConfig(sanityConfig);
