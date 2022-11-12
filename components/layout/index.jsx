@@ -1,11 +1,19 @@
+import styled from "@emotion/styled";
+import Header from "./header";
 
-
-const Layout = ({children}) => {
+const StyledLayout = styled.div`
+  /* background-color: red; */
+  min-height: 100vh;
+`;
+const Layout = ({ children }) => {
   return (
-    <div>
-      {children}
-    </div>
+    <StyledLayout>
+      <div className="">
+        <Header />
+        {children}
+      </div>
+    </StyledLayout>
   );
-}
+};
 
 export default Layout;
