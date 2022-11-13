@@ -92,5 +92,5 @@ body {
   --button-bg-color: var(--primary-blue);
   --button-border: none;
   --button-text-color: white;
-  
+  --space-slides: 1rem;
 }
