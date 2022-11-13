@@ -67,6 +67,7 @@ h6 {
 
 ul {
   list-style: none;
+  /* padding: 0; */
 }
   
 /* Variables */
@@ -78,24 +79,11 @@ body {
   --gray: #4d4d4d;
   --gray-2: #424242;
   --dark-gray: #1f1f1f;
+  --iceblue: #b2c1cb;
   --light-gray: #efefef;
 
   /* nav-bar-colors */
   --nav-bar-color: var(--dark-blue);
   --nav-text-color: var(--gray-2);
   --nav-bg-color: white;
-}
-
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-  body {
-    color: white;
-    background: black;
-    /* --nav-bar-color: var(); */
-    --nav-text-color: white;
-    --nav-bg-color: var(--gray-2);
-  }
 }

@@ -14,14 +14,14 @@ export const getStaticProps = async () => {
 };
 
 const Homepage = () => {
-  // const { data: siteSettings } = useQuery(["siteSettings"], getSiteSettings);
-  // console.log({ siteSettings });
+  const { data: siteSettings } = useQuery(["siteSettings"], getSiteSettings);
+  console.log({ siteSettings });
   return (
     <div>
       {/* <Seo title={siteSettings.SEO.title} /> */}
       {/* {siteSettings.SEO.title} */}
       {/* {siteSettings.SEO.description} */}
-      Eligelo
+      {/* Eligelo */}
     </div>
   );
 };
