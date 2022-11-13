@@ -84,6 +84,8 @@ body {
   --nav-bar-color: var(--dark-blue);
   --nav-text-color: var(--gray-2);
   --nav-bg-color: white;
+
+  --space-slides: 1rem;
 }
 
 
