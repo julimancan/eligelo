@@ -67,6 +67,7 @@ h6 {
 
 ul {
   list-style: none;
+  /* padding: 0; */
 }
   
 /* Variables */
@@ -78,6 +79,7 @@ body {
   --gray: #4d4d4d;
   --gray-2: #424242;
   --dark-gray: #1f1f1f;
+  --iceblue: #b2c1cb;
   --light-gray: #efefef;
 
   /* nav-bar-colors */
