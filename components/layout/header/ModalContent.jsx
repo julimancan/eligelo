@@ -41,16 +41,12 @@ const navModalItems = [
 ];
 
 const StyledModalContent = styled.aside`
-  /* background-color: violet; */
   height: 100vh;
   padding-top: 1rem;
-
   ul {
-    /* background-color: white; */
     display: grid;
     gap: 1rem;
     padding: 0;
-    /* padding-right: 1rem; */
     li {
       padding-left: 1rem;
       a {

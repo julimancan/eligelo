@@ -87,17 +87,3 @@ body {
   --nav-text-color: var(--gray-2);
   --nav-bg-color: white;
 }
-
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-  body {
-    color: white;
-    background: black;
-    /* --nav-bar-color: var(); */
-    --nav-text-color: white;
-    --nav-bg-color: var(--gray-2);
-  }
-}
