@@ -6,6 +6,8 @@ import styled from "styled-components";
 import Logo from "../public/logo.svg";
 import KisspngCar from "../public/cars/kisspngCar.svg";
 import Ellipse from "../public/shapes/ellipse.svg";
+
+import Street from "../public/backgrounds/street.svg";
 import F15 from "../public/cars/f15.svg";
 import Toyota from "../public/cars/toyota.svg";
 
@@ -50,40 +52,52 @@ const QuienesSomos = () => {
         </section>
 
         <section className="reasons-to-sell">
-          <F15 />
-          <h2 className="title">{reasonsToSell.title}</h2>
-          <ul className="reasons">
-            {reasonsToSell.reasons.map((reason) => (
-              <li key={reason._key} className="reason text">
-                {reason.text}
-              </li>
-            ))}
-          </ul>
+          <Street className="background" />
+
+          <section className="content">
+            <F15 />
+            <h2 className="title">{reasonsToSell.title}</h2>
+            <ul className="reasons">
+              {reasonsToSell.reasons.map((reason) => (
+                <li key={reason._key} className="reason text">
+                  {reason.text}
+                </li>
+              ))}
+            </ul>
+          </section>
         </section>
 
         <section className="reasons-to-buy">
-          <Toyota/>
-          <h2 className="title">{reasonsToBuy.title}</h2>
-          <h3 className="text">{reasonsToBuy.subtitle}</h3>
-          <ul className="reasons">
-            {reasonsToBuy.reasons.map((reason) => (
-              <li key={reason._key} className="reason text">
-                {reason.text}
-              </li>
-            ))}
-          </ul>
+          <Street className="background" />
+          
+          <section className="content">
+            <Toyota />
+            <h2 className="title">{reasonsToBuy.title}</h2>
+            <h3 className="text">{reasonsToBuy.subtitle}</h3>
+            <ul className="reasons">
+              {reasonsToBuy.reasons.map((reason) => (
+                <li key={reason._key} className="reason text">
+                  {reason.text}
+                </li>
+              ))}
+            </ul>
+          </section>
         </section>
 
         <section className="our-services">
-          <h2 className="title">{ourServices.title}</h2>
-          <ul>
-            {ourServices.name.map((service) => (
-              <li className="service text" key={service._key}>
-                {/* TODO: img */}
-                <h3>{service.text}</h3>
-              </li>
-            ))}
-          </ul>
+          <Street className="background" />
+
+          <section className="content">
+            <h2 className="title">{ourServices.title}</h2>
+            <ul>
+              {ourServices.name.map((service) => (
+                <li className="service text" key={service._key}>
+                  {/* TODO: img */}
+                  <h3>{service.text}</h3>
+                </li>
+              ))}
+            </ul>
+          </section>
         </section>
       </StyledQuienesSomos>
     </>
@@ -94,7 +108,6 @@ const StyledQuienesSomos = styled.main`
   padding-top: 3rem;
   background-color: white;
   color: black;
-
 
   .logo {
     margin: 1rem auto;
@@ -108,7 +121,7 @@ const StyledQuienesSomos = styled.main`
     line-height: 29px;
   }
 
-  .text{
+  .text {
     font-weight: 400;
     font-size: 16px;
     line-height: 24px;
@@ -137,32 +150,55 @@ const StyledQuienesSomos = styled.main`
       }
     }
 
-    .title, .text {
+    .title,
+    .text {
       color: var(--gray);
     }
   }
 
-  .reasons-to-sell{
+  .background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0.08;
+  }
+
+  .content {
+    position: sticky;
+  }
+
+  .reasons-to-sell {
     padding: 4.5rem var(--space-slides);
     background-color: var(--dark-gray);
+    position: relative;
+    overflow: hidden;
 
-    .title, .text {
+    
+
+    .title,
+    .text {
       color: var(--light-gray);
     }
   }
 
-  .reasons-to-buy{
+  .reasons-to-buy {
     padding: 4.5rem var(--space-slides);
     background-color: var(--dark-blue);
-    .title, .text {
+    position: relative;
+    overflow: hidden;
+    .title,
+    .text {
       color: var(--light-gray);
     }
   }
 
-  .our-services{
+  .our-services {
     padding: 2rem var(--space-slides) 4rem;
     background-color: var(--dark-blue);
-    .title, .text {
+    position: relative;
+    overflow: hidden;
+    .title,
+    .text {
       color: var(--light-gray);
     }
   }
