@@ -12,6 +12,7 @@ import bici from "./schemas/documents/bici";
 import scooter from "./schemas/documents/scooter";
 import featuredAds from "./schemas/pages/featuredAds";
 import vendeTuVehiculo from "./schemas/pages/vendeTuVehiculo";
+import {visionTool} from '@sanity/vision'
 
 export const sanityConfig = {
   projectId: "yqg1fsel",
@@ -23,6 +24,11 @@ export const sanityConfig = {
     deskTool({
       structure,
     }),
+    visionTool({
+      defaultApiVersion: '2022-08-15', // optional
+      defaultDataset: 'production'    // optional
+    }),
+
   ],
   schema: {
     types: [

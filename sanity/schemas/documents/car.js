@@ -94,7 +94,15 @@ export default {
       title: "Motor",
       type: "string",
     },
+    {
+      name: 'tags',
+      title: 'Tags',
+      type: 'array',
+      initialValue: ["carro", "automovil"],
+      of: [{ type: 'string' }],
+    },
   ],
+
   preview: {
     select: {
       title: "brand.name",

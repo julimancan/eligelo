@@ -47,6 +47,13 @@ export default {
         ],
       },
     },
+    {
+      name: 'tags',
+      title: 'Tags',
+      type: 'array',
+      initialValue: ["motocicleta"],
+      of: [{ type: 'string' }],
+    },
   ],
   preview: {
     select: {
