@@ -228,7 +228,7 @@ const StyledQuienesSomos = styled.main`
       display: grid;
       gap: 1rem;
       grid-auto-rows: 10.25rem;
-      grid-template-columns: repeat(auto-fit, minmax(min(100%, 10.25rem), 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(min(100%, 10rem), 1fr));
 
       .service {
         position: relative;
@@ -264,7 +264,9 @@ const StyledQuienesSomos = styled.main`
           );
         }
         &:nth-child(odd).service:last-child{
-          grid-column: span 2;
+          @media (min-width: 370px) {
+            grid-column: span 2;
+          }
         }
       }
     }
