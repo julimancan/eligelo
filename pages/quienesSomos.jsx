@@ -56,7 +56,7 @@ const QuienesSomos = () => {
           <Street className="background" />
 
           <section className="content">
-            <F15 />
+            <F15 className="car-svg" />
             <h2 className="title">{reasonsToSell.title}</h2>
             <ul className="list">
               {reasonsToSell.reasons.map((reason) => (
@@ -72,7 +72,7 @@ const QuienesSomos = () => {
           <Street className="background" />
 
           <section className="content">
-            <Toyota />
+            <Toyota className="car-svg" />
             <h2 className="title">{reasonsToBuy.title}</h2>
             <h3 className="text">{reasonsToBuy.subtitle}</h3>
             <ul className="list">
@@ -93,7 +93,6 @@ const QuienesSomos = () => {
             <ul className="list services">
               {ourServices.name.map((service) => (
                 <li className="service" key={service._key}>
-
                   {/* TODO: img */}
                   <h3 className="title-card">{service.text}</h3>
                 </li>
@@ -107,6 +106,7 @@ const QuienesSomos = () => {
 };
 
 const StyledQuienesSomos = styled.main`
+  padding: 0 !important;
   padding-top: 3rem;
   background-color: white;
   color: black;
@@ -121,6 +121,11 @@ const StyledQuienesSomos = styled.main`
     font-weight: 700;
     font-size: 1.5rem;
     line-height: 1.813rem;
+  }
+
+  .car-svg {
+    width: 90%;
+    margin: 0 auto;
   }
 
   .background {
@@ -177,7 +182,7 @@ const StyledQuienesSomos = styled.main`
     overflow: hidden;
 
     .title {
-      padding-bottom: 40px;
+      padding: 2.5rem 0;
       text-align: left;
     }
 
@@ -189,16 +194,16 @@ const StyledQuienesSomos = styled.main`
 
   .reasons-to-buy {
     padding: 4rem var(--space-slides) 0;
-    background-color: var(--dark-blue);
+    background-color: var(--primary-blue);
     position: relative;
     overflow: hidden;
 
     .title {
-      padding-bottom: 2.5rem;
+      padding: 2.5rem 0;
       text-align: left;
     }
 
-    .text {
+    h3.text {
       padding-bottom: 1.5rem;
     }
 
@@ -210,7 +215,7 @@ const StyledQuienesSomos = styled.main`
 
   .our-services {
     padding: 2rem var(--space-slides) 4rem;
-    background-color: var(--dark-blue);
+    background-color: var(--primary-blue);
     position: relative;
     overflow: hidden;
 
@@ -236,7 +241,7 @@ const StyledQuienesSomos = styled.main`
         overflow: hidden;
         box-shadow: var(--shadow);
 
-        .image{
+        .image {
           width: 100%;
           height: 100%;
           object-fit: cover;
@@ -263,7 +268,7 @@ const StyledQuienesSomos = styled.main`
             rgba(31, 31, 31, 0) 93.18%
           );
         }
-        &:nth-child(odd).service:last-child{
+        &:nth-child(odd).service:last-child {
           @media (min-width: 370px) {
             grid-column: span 2;
           }
