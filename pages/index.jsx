@@ -1,12 +1,17 @@
 import { dehydrate, QueryClient, useQuery } from "@tanstack/react-query";
 import { getSiteSettings } from "../sanity/queries/siteSettings";
-import Seo from "../components/layout/header/Seo";
 import SearchBar from "../components/SearchBar";
+import Logo from "/public/logo.svg"
+import BlueCity from "/public/homepageElements/blue-city.svg"
+import BlueSedan from "/public/homepageElements/blue-sedan.svg"
+import { getHomepageContent } from "../sanity/queries/pages/homepage";
 
 export const getStaticProps = async () => {
   const queryClient = new QueryClient();
 
   await queryClient.prefetchQuery(["siteSettings"], getSiteSettings);
+  await queryClient.prefetchQuery(["homepage"], getHomepageContent)
+
   return {
     props: {
       dehydratedState: dehydrate(queryClient),
@@ -17,12 +22,14 @@ export const getStaticProps = async () => {
 const Homepage = () => {
   // const { data: siteSettings } = useQuery(["siteSettings"], getSiteSettings);
   // console.log({ siteSettings });
+  const {data: pageContent} = useQuery(["homepapge"], getHomepageContent);
+
+  console.log({pageContent})
   return (
     <main>
-      {/* <Seo title={siteSettings.SEO.title} /> */}
-      {/* {siteSettings.SEO.title} */}
-      {/* {siteSettings.SEO.description} */}
-      {/* Eligelo */}
+      <Logo/>
+      <BlueCity/>
+      <BlueSedan/>
       <SearchBar/>
     </main>
   );
