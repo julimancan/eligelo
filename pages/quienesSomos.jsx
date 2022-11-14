@@ -10,6 +10,7 @@ import Ellipse from "../public/shapes/ellipse.svg";
 import Street from "../public/backgrounds/street.svg";
 import F15 from "../public/cars/f15.svg";
 import Toyota from "../public/cars/toyota.svg";
+import Image from "next/image";
 
 export const getStaticProps = async (ctx) => {
   const queryClient = new QueryClient();
@@ -69,7 +70,7 @@ const QuienesSomos = () => {
 
         <section className="reasons-to-buy">
           <Street className="background" />
-          
+
           <section className="content">
             <Toyota />
             <h2 className="title">{reasonsToBuy.title}</h2>
@@ -89,11 +90,12 @@ const QuienesSomos = () => {
 
           <section className="content">
             <h2 className="title">{ourServices.title}</h2>
-            <ul className="list">
+            <ul className="list services">
               {ourServices.name.map((service) => (
-                <li className="service text" key={service._key}>
+                <li className="service" key={service._key}>
+
                   {/* TODO: img */}
-                  <h3>{service.text}</h3>
+                  <h3 className="title-card">{service.text}</h3>
                 </li>
               ))}
             </ul>
@@ -138,11 +140,11 @@ const StyledQuienesSomos = styled.main`
     position: sticky;
   }
 
-  .list{
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
+  ul {
     padding-inline-start: 0;
+    li {
+      margin-bottom: 1.5rem;
+    }
   }
 
   .hero {
@@ -174,41 +176,40 @@ const StyledQuienesSomos = styled.main`
     }
   }
 
-
   .reasons-to-sell {
     padding: 4.5rem var(--space-slides);
     background-color: var(--dark-gray);
     position: relative;
     overflow: hidden;
 
-    .title{
+    .title {
       padding-bottom: 40px;
+      text-align: left;
     }
 
     .title,
     .text {
-      text-align: left;
       color: var(--light-gray);
     }
   }
 
   .reasons-to-buy {
-    padding: 4.5rem var(--space-slides);
+    padding: 4rem var(--space-slides) 0;
     background-color: var(--dark-blue);
     position: relative;
     overflow: hidden;
 
-    .title{
+    .title {
       padding-bottom: 2.5rem;
+      text-align: left;
     }
 
-    .text{
+    .text {
       padding-bottom: 1.5rem;
     }
 
     .title,
     .text {
-      text-align: left;
       color: var(--light-gray);
     }
   }
@@ -218,9 +219,62 @@ const StyledQuienesSomos = styled.main`
     background-color: var(--dark-blue);
     position: relative;
     overflow: hidden;
+
+    .title {
+      padding-bottom: 2rem;
+      text-align: left;
+    }
+
     .title,
-    .text {
+    .service {
       color: var(--light-gray);
+    }
+
+    .services {
+      display: grid;
+      gap: 1rem;
+      grid-auto-rows: 10.25rem;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 10.25rem), 1fr));
+
+      .service {
+        position: relative;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0px 16px 32px rgba(38, 50, 56, 0.08),
+          0px 8px 16px rgba(38, 50, 56, 0.09), 0px 4px 8px rgba(38, 50, 56, 0.1),
+          0px 2px 4px rgba(38, 50, 56, 0.11), 0px 0px 2px rgba(38, 50, 56, 0.12);
+
+        .image{
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: center;
+        }
+
+        .title-card {
+          position: absolute;
+          font-size: 12px;
+          line-height: 15px;
+          bottom: 0;
+          width: 100%;
+          padding: 0.6rem 0.5rem;
+        }
+        &::before {
+          content: "";
+          position: absolute;
+          height: 60%;
+          width: 100%;
+          bottom: 0;
+          background: linear-gradient(
+            360deg,
+            rgba(31, 31, 31, 0.9) 35.23%,
+            rgba(31, 31, 31, 0) 93.18%
+          );
+        }
+        &:nth-child(odd).service:last-child{
+          grid-column: span 2;
+        }
+      }
     }
   }
 `;
