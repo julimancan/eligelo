@@ -18,7 +18,6 @@ const StyledLayout = styled.div`
 `;
 const Layout = ({ children }) => {
   const {pathname} = useRouter()
-  console.log(pathname.includes("admin"));
   return (
     <StyledLayout>
       {!pathname.includes("admin") && <Header />}
