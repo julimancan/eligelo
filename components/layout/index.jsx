@@ -10,7 +10,8 @@ const StyledLayout = styled.div`
     }
   }
   main {
-    padding-top: 2.5rem;
+    margin-top: 1rem;
+    /* padding-top: 2.5rem; */
     padding-left: 1rem;
   }
 `;

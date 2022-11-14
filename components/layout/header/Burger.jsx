@@ -7,7 +7,7 @@ const StyledBurgerContainer = styled.div`
   height: 20px;
   display: flex;
   align-items: center;
-  top: 1rem;
+  top: 1.5rem;
   right: ${({open}) => open ? "1rem" : "auto"};
   left: ${({open}) => open ? "auto" : "1rem"};
   transition: ${({ transitionDuration }) => `left ${transitionDuration}, right ${transitionDuration}`};
