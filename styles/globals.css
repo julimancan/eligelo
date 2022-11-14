@@ -73,7 +73,7 @@ ul {
 /* Variables */
 
 body {
-  --dark-blue: #0068ad;
+  --primary-blue: #0068ad;
   --blue: #339ce0;
   --blue-2: #0484d9;
   --gray: #4d4d4d;
@@ -83,7 +83,14 @@ body {
   --light-gray: #efefef;
 
   /* nav-bar-colors */
-  --nav-bar-color: var(--dark-blue);
+  --nav-bar-color: var(--primary-blue);
   --nav-text-color: var(--gray-2);
   --nav-bg-color: white;
+
+
+  --button-border-radius: 8px;
+  --button-bg-color: var(--primary-blue);
+  --button-border: none;
+  --button-text-color: white;
+  
 }
