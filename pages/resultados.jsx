@@ -25,7 +25,7 @@ const Resultados = ({}) => {
 
   return (
     <main>
-      <SearchBar />
+      <SearchBar resultsPage={true}/>
       {searchResults?.map((item, index) => (
         <div key={index}>
           <h1>{item.brand?.name}</h1>

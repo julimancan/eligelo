@@ -6,7 +6,7 @@ import Seo from "./Seo";
 const Header = () => {
   const { data: siteSettings } = useQuery(["siteSettings"], getSiteSettings);
   if (!siteSettings) return;
-  console.log({ siteSettings });
+  // console.log({ siteSettings });
   return (
     <>
       <Seo
