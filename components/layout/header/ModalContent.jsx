@@ -55,7 +55,7 @@ const StyledModalContent = styled.aside`
         gap: 1rem;
       }
     }
-    li:first-child a, li:nth-child(3) a {
+    li:first-of-type a, li:nth-of-type(3) a {
       border-bottom: 2px solid var(--iceblue);
       padding-bottom: 1rem;
       width: 99%;
@@ -63,13 +63,13 @@ const StyledModalContent = styled.aside`
   }
 `;
 
-const ModalContent = () => {
+const ModalContent = ({setOpen}) => {
   return (
     <StyledModalContent>
       <ul>
         {navModalItems.map((item, index) => (
           <li className="" key={index}>
-            <Link href={item.linkTo}>
+            <Link href={item.linkTo} onClick={() => setOpen(false)}>
               <item.icon />
               <span>{item.name}</span>
             </Link>

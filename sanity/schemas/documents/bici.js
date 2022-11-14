@@ -42,6 +42,13 @@ export default {
         ],
       },
     },
+    {
+      name: 'tags',
+      title: 'Tags',
+      type: 'array',
+      initialValue: ["bicicleta", "bicis", "bici"],
+      of: [{ type: 'string' }],
+    },
   ],
   preview: {
     select: {

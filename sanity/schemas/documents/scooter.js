@@ -42,6 +42,13 @@ export default {
         ],
       },
     },
+    {
+      name: 'tags',
+      title: 'Tags',
+      type: 'array',
+      initialValue: ["patineta", "e-scooter", "escooter"],
+      of: [{ type: 'string' }],
+    },
   ],
   preview: {
     select: {

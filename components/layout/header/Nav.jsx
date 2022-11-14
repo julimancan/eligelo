@@ -10,7 +10,7 @@ const Nav = () => {
     <nav>
       <Burger open={navOpen} setOpen={setNavOpen} />
       <MobileNavModal open={navOpen}>
-        <ModalContent/>
+        <ModalContent setOpen={setNavOpen}/>
       </MobileNavModal>
     </nav>
   );
