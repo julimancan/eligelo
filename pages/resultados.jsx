@@ -1,4 +1,5 @@
 import { dehydrate, QueryClient, useQuery } from "@tanstack/react-query";
+import { useRouter } from "next/router";
 import SearchBar from "../components/SearchBar";
 import { getAnyResultsFromText } from "../sanity/queries/pages/resultados";
 
@@ -18,11 +19,12 @@ export const getServerSideProps = async ({ query }) => {
   };
 };
 
-const Resultados = ({}) => {
+const Resultados = () => {
+  const {query} = useRouter();
+  const {search} = query;
   const { data: searchResults } = useQuery(["searchResults"], () =>
     getAnyResultsFromText(search)
   );
-
   return (
     <main>
       <SearchBar resultsPage={true}/>
