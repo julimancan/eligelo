@@ -8,14 +8,14 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--gray);
+  background: var(--scroll-bar-thumb-color);
   border-radius: 100vw;
-  border: 2px solid var(--gray);
+  border: 2px solid var(--scroll-bar-thumb-color);
 }
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   ::-webkit-scrollbar-thumb {
     background: white;
     border-radius: 100vw;
     border: 2px solid white;
   }
-}
+} */

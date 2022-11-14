@@ -1,13 +1,33 @@
 import { sanityClient } from "../../sanity.server";
+import { imageObject } from "../objects";
 
 
 
 const quienesSomosItems = `
 SEO,  
 hero,
-reasonsToSell,
-"reasonsToBuy": reasonsTobuy,
-"ourServices": OurServices
+"reasonsToSell": reasonsToSell {
+  title,
+  "reasons": reasons [] {
+    "icon": icon.asset->url,
+    text
+  }
+},
+"reasonsToBuy": reasonsTobuy {
+  title,
+  subtitle,
+  "reasons": reasons [] {
+    "icon": icon.asset->url,
+    text,
+  }
+},
+"ourServices": OurServices {
+  title,
+  "services": name[] {
+    "image": ${imageObject},
+    text
+  }
+},
 `;
 
 export const getQuienesSomosContent = async () => {
