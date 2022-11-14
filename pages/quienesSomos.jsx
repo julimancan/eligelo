@@ -34,9 +34,8 @@ const QuienesSomos = () => {
     getQuienesSomosContent
   );
 
-  const { SEO, hero, reasonsToSell, reasonsToBuy, ourServices } =
-    quienesSomosContent;
-  console.log({ quienesSomosContent });
+  const { SEO, hero, reasonsToSell, reasonsToBuy, ourServices } = quienesSomosContent;
+
   return (
     <>
       <Seo description={SEO.description} title={SEO.title} />
