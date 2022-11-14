@@ -3,6 +3,10 @@ import styled from "@emotion/styled";
 const StyledModal = styled.div`
   position: absolute;
   width: ${({ open }) => (open ? "100vw" : "0")};
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
   height: 100vh;
   background-color: white;
   transition: ${({ transitionDuration }) => `width ${transitionDuration}`};
