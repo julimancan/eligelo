@@ -57,7 +57,7 @@ const QuienesSomos = () => {
           <section className="content">
             <F15 />
             <h2 className="title">{reasonsToSell.title}</h2>
-            <ul className="reasons">
+            <ul className="list">
               {reasonsToSell.reasons.map((reason) => (
                 <li key={reason._key} className="reason text">
                   {reason.text}
@@ -74,7 +74,7 @@ const QuienesSomos = () => {
             <Toyota />
             <h2 className="title">{reasonsToBuy.title}</h2>
             <h3 className="text">{reasonsToBuy.subtitle}</h3>
-            <ul className="reasons">
+            <ul className="list">
               {reasonsToBuy.reasons.map((reason) => (
                 <li key={reason._key} className="reason text">
                   {reason.text}
@@ -89,7 +89,7 @@ const QuienesSomos = () => {
 
           <section className="content">
             <h2 className="title">{ourServices.title}</h2>
-            <ul>
+            <ul className="list">
               {ourServices.name.map((service) => (
                 <li className="service text" key={service._key}>
                   {/* TODO: img */}
@@ -117,14 +117,32 @@ const StyledQuienesSomos = styled.main`
     // TODO: add variable
     text-align: center;
     font-weight: 700;
-    font-size: 24px;
-    line-height: 29px;
+    font-size: 1.5rem;
+    line-height: 1.813rem;
   }
 
   .text {
     font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+
+  .background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0.08;
+  }
+
+  .content {
+    position: sticky;
+  }
+
+  .list{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding-inline-start: 0;
   }
 
   .hero {
@@ -156,16 +174,6 @@ const StyledQuienesSomos = styled.main`
     }
   }
 
-  .background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    opacity: 0.08;
-  }
-
-  .content {
-    position: sticky;
-  }
 
   .reasons-to-sell {
     padding: 4.5rem var(--space-slides);
@@ -173,10 +181,13 @@ const StyledQuienesSomos = styled.main`
     position: relative;
     overflow: hidden;
 
-    
+    .title{
+      padding-bottom: 40px;
+    }
 
     .title,
     .text {
+      text-align: left;
       color: var(--light-gray);
     }
   }
@@ -186,8 +197,18 @@ const StyledQuienesSomos = styled.main`
     background-color: var(--dark-blue);
     position: relative;
     overflow: hidden;
+
+    .title{
+      padding-bottom: 2.5rem;
+    }
+
+    .text{
+      padding-bottom: 1.5rem;
+    }
+
     .title,
     .text {
+      text-align: left;
       color: var(--light-gray);
     }
   }
