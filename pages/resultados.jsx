@@ -27,7 +27,7 @@ const Resultados = ({}) => {
     <main>
       <SearchBar />
       {searchResults?.map((item, index) => (
-        <div>
+        <div key={index}>
           <h1>{item.brand?.name}</h1>
           <h2>{item.model?.name}</h2>
           <p>{item._type}</p>
