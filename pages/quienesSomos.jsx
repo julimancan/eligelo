@@ -61,7 +61,7 @@ const QuienesSomos = () => {
             <ul className="list">
               {reasonsToSell.reasons.map((reason) => (
                 <li key={reason._key} className="reason text">
-                  {reason.text}
+                  <p>{reason.text}</p>
                 </li>
               ))}
             </ul>
@@ -78,7 +78,7 @@ const QuienesSomos = () => {
             <ul className="list">
               {reasonsToBuy.reasons.map((reason) => (
                 <li key={reason._key} className="reason text">
-                  {reason.text}
+                  <p>{reason.text}</p>
                 </li>
               ))}
             </ul>
@@ -121,12 +121,6 @@ const StyledQuienesSomos = styled.main`
     font-weight: 700;
     font-size: 1.5rem;
     line-height: 1.813rem;
-  }
-
-  .text {
-    font-weight: 400;
-    font-size: 1rem;
-    line-height: 1.5rem;
   }
 
   .background {
@@ -240,9 +234,7 @@ const StyledQuienesSomos = styled.main`
         position: relative;
         border-radius: 8px;
         overflow: hidden;
-        box-shadow: 0px 16px 32px rgba(38, 50, 56, 0.08),
-          0px 8px 16px rgba(38, 50, 56, 0.09), 0px 4px 8px rgba(38, 50, 56, 0.1),
-          0px 2px 4px rgba(38, 50, 56, 0.11), 0px 0px 2px rgba(38, 50, 56, 0.12);
+        box-shadow: var(--shadow);
 
         .image{
           width: 100%;
