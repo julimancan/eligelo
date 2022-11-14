@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { useRouter } from "next/router";
 import Header from "./header";
 
 const StyledLayout = styled.div`
@@ -16,9 +17,10 @@ const StyledLayout = styled.div`
   }
 `;
 const Layout = ({ children }) => {
+  const {pathname} = useRouter()
   return (
     <StyledLayout>
-      <Header />
+      {!pathname.includes("admin") && <Header />}
       {children}
     </StyledLayout>
   );
