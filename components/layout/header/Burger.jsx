@@ -2,15 +2,16 @@ import styled from "@emotion/styled";
 
 const StyledBurgerContainer = styled.div`
   position: fixed;
-  z-index: 1;
+  z-index: 2;
   cursor: pointer;
   height: 20px;
   display: flex;
   align-items: center;
   top: 1.5rem;
-  right: ${({open}) => open ? "1rem" : "auto"};
-  left: ${({open}) => open ? "auto" : "1rem"};
-  transition: ${({ transitionDuration }) => `left ${transitionDuration}, right ${transitionDuration}`};
+  right: ${({ open }) => (open ? "1rem" : "auto")};
+  left: ${({ open }) => (open ? "auto" : "1rem")};
+  transition: ${({ transitionDuration }) =>
+    `left ${transitionDuration}, right ${transitionDuration}`};
   /* @media (min-width: 600px) {
     right: 3rem;
   } */
@@ -35,7 +36,8 @@ const StyledBurgerContainer = styled.div`
     &:after {
       content: "";
       border-radius: 5px;
-      width: ${({ open }) => (open ? "var(--burger-top-line-width)" : "var(--burger-top-line-width)")};
+      width: ${({ open }) =>
+        open ? "var(--burger-top-line-width)" : "var(--burger-top-line-width)"};
       height: var(--burger-middle-line-height);
       background: ${({ open }) =>
         open ? "var(--burger-line-color)" : "var(--burger-line-color)"};
@@ -63,8 +65,24 @@ const StyledBurgerContainer = styled.div`
 `;
 
 const Burger = ({ open, setOpen }) => {
+  const setScrollBarColor = (color) => {
+    console.log({ document });
+    document.documentElement.style.setProperty(
+      "--scroll-bar-thumb-color",
+      color
+    );
+  };
+
+  const handleOpen = () => {
+    setOpen(!open);
+    setScrollBarColor("#fff");
+  };
   return (
-    <StyledBurgerContainer open={open} transitionDuration={".1s"} onClick={() => setOpen(!open)}>
+    <StyledBurgerContainer
+      open={open}
+      transitionDuration={".1s"}
+      onClick={handleOpen}
+    >
       <div className="burger"></div>
     </StyledBurgerContainer>
   );

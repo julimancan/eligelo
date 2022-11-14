@@ -11,6 +11,9 @@ import Street from "../public/backgrounds/street.svg";
 import F15 from "../public/cars/f15.svg";
 import Toyota from "../public/cars/toyota.svg";
 import Image from "next/image";
+import {Inter} from "@next/font/google"
+
+const inter = Inter({weight: "variable"})
 
 export const getStaticProps = async (ctx) => {
   const queryClient = new QueryClient();
@@ -33,13 +36,15 @@ const QuienesSomos = () => {
     ["quienesSomosContent"],
     getQuienesSomosContent
   );
+  console.log({ quienesSomosContent });
 
-  const { SEO, hero, reasonsToSell, reasonsToBuy, ourServices } = quienesSomosContent;
+  const { SEO, hero, reasonsToSell, reasonsToBuy, ourServices } =
+    quienesSomosContent;
 
   return (
     <>
       <Seo description={SEO.description} title={SEO.title} />
-      <StyledQuienesSomos>
+      <StyledQuienesSomos className={inter.className}>
         <Logo className="logo" />
 
         <section className="hero">
@@ -58,8 +63,9 @@ const QuienesSomos = () => {
             <F15 className="car-svg" />
             <h2 className="title">{reasonsToSell.title}</h2>
             <ul className="list">
-              {reasonsToSell.reasons.map((reason) => (
-                <li key={reason._key} className="reason text">
+              {reasonsToSell.reasons.map((reason, index) => (
+                <li key={index} className="reason text">
+                  <Image src={reason.icon} width="40" height="40" alt={reason.text}/>
                   <p>{reason.text}</p>
                 </li>
               ))}
@@ -75,8 +81,9 @@ const QuienesSomos = () => {
             <h2 className="title">{reasonsToBuy.title}</h2>
             <h3 className="text">{reasonsToBuy.subtitle}</h3>
             <ul className="list">
-              {reasonsToBuy.reasons.map((reason) => (
-                <li key={reason._key} className="reason text">
+              {reasonsToBuy.reasons.map((reason, index) => (
+                <li key={index} className="reason text">
+                  <Image src={reason.icon} width="40" height="40" alt={reason.text}/>
                   <p>{reason.text}</p>
                 </li>
               ))}
@@ -90,10 +97,10 @@ const QuienesSomos = () => {
           <section className="content">
             <h2 className="title">{ourServices.title}</h2>
             <ul className="list services">
-              {ourServices.name.map((service) => (
-                <li className="service" key={service._key}>
-                  {/* TODO: img */}
+              {ourServices.services.map((service, index) => (
+                <li className="service" key={index}>
                   <h3 className="title-card">{service.text}</h3>
+                  <Image src={service.image.url} width={service.image.width} height={service.image.height} alt={service.image.alt}/>
                 </li>
               ))}
             </ul>
@@ -189,6 +196,12 @@ const StyledQuienesSomos = styled.main`
     .text {
       color: var(--light-gray);
     }
+    .list {
+      li {
+        display: flex;
+        gap: 1rem;
+      }
+    }
   }
 
   .reasons-to-buy {
@@ -209,6 +222,12 @@ const StyledQuienesSomos = styled.main`
     .title,
     .text {
       color: var(--light-gray);
+    }
+    .list {
+      li {
+        display: flex;
+        gap: 1rem;
+      }
     }
   }
 
@@ -232,30 +251,35 @@ const StyledQuienesSomos = styled.main`
       display: grid;
       gap: 1rem;
       grid-auto-rows: 10.25rem;
-      grid-template-columns: repeat(auto-fill, minmax(min(100%, 10rem), 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(150px ,1fr));
+      /* place-content: center; */
 
       .service {
         position: relative;
         border-radius: 8px;
         overflow: hidden;
         box-shadow: var(--shadow);
-
-        .image {
+        background-color: red;
+        display: grid;
+        /* place-content: center; */
+        align-items: end;
+        img {
           width: 100%;
           height: 100%;
           object-fit: cover;
-          object-position: center;
+          position: absolute;
         }
 
         .title-card {
-          position: absolute;
+          position: relative;
+          z-index: 2;
           font-size: 12px;
           line-height: 15px;
-          bottom: 0;
           width: 100%;
           padding: 0.6rem 0.5rem;
         }
         &::before {
+          z-index: 1;
           content: "";
           position: absolute;
           height: 60%;
