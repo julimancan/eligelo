@@ -25,11 +25,16 @@ export default {
       title: "Precio",
       type: "number",
     },
-    // {
-    //   name: "mileage",
-    //   title: "Kilometraje",
-    //   type: "number",
-    // },
+    {
+      name: "year",
+      title: "Año",
+      type: "number",
+    },
+    {
+      name: "mileage",
+      title: "Kilometraje",
+      type: "number",
+    },
     {
       name: "fuelType",
       title: "Combustible",

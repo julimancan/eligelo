@@ -14,7 +14,7 @@ export const navModalItems = [
   {
     icon: BlueCar,
     name: "Catálogo",
-    linkTo: "/destacados",
+    linkTo: "/catalogo",
   },
   {
     icon: BlueMoneyExchange,

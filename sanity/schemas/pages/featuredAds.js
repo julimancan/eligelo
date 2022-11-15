@@ -3,7 +3,7 @@ import seo from "../objects/seo";
 
 export default {
   name: "featuredAds",
-  title: "Featured ads",
+  title: "Catálogo",
   type: "document",
   icon: RiPagesLine,
   groups: [
