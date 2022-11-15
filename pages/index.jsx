@@ -2,20 +2,11 @@ import { dehydrate, QueryClient, useQuery } from "@tanstack/react-query";
 import { getSiteSettings } from "../sanity/queries/siteSettings";
 import SearchBar from "../components/SearchBar";
 import Logo from "/public/logo.svg";
-import BlueCity from "/public/homepageElements/blue-city.svg";
-import BlueSedan from "/public/homepageElements/blue-sedan.svg";
 import { getHomepageContent } from "../sanity/queries/pages/homepage";
 import Seo from "../components/layout/header/Seo";
 import styled from "styled-components";
-import CarProductBack from "/public/homepageElements/car-product-background.svg";
-import CarProduct from "/public/homepageElements/car-product.svg";
-import MotoProductBack from "/public/homepageElements/moto-product-background.svg";
-import MotoProduct from "/public/homepageElements/moto-product.svg";
-import BiciProductBack from "/public/homepageElements/bici-product-background.svg";
-import BiciProduct from "/public/homepageElements/bici-product.svg";
-import PatinetaProductBack from "/public/homepageElements/patineta-product-background.svg";
-import PatinetaProduct from "/public/homepageElements/patineta-product.svg";
 import Link from "next/link";
+import Image from "next/image";
 
 export const getStaticProps = async () => {
   const queryClient = new QueryClient();
@@ -44,8 +35,8 @@ const Homepage = () => {
       <StyledHomePage>
         <Logo className="logo" />
         <article className="hero">
-          <BlueCity className="background" />
-          <BlueSedan className="image" />
+          <Image src="/backgrounds/blue-city-homepage.webp" width={"627"} height="230" alt="blue-city" className="background" />
+          <Image src="/vehicles/blue-sedan.webp" className="image" width={"520"} height="185" alt="blue-sedan"/>
           <section>
             <h1 className="title">
               {pageContent.hero.blackText}
@@ -63,26 +54,26 @@ const Homepage = () => {
           <section className="products">
             <Link className="product" href="/resultados?search=*carro*">
               <h3 className="title">Carros</h3>
-              <CarProductBack className="back"/>
-              <CarProduct className="element"/>
+              <Image src={"/backgrounds/car-prod-back.webp"} height="164" width={"130"} className="back" alt="blue city background"/>
+              <Image src={"/vehicles/black-suv.webp"} height="81" width={"157"} className="element" alt="black suv"/>
             </Link>
 
             <Link className="product" href="/resultados?search=*moto*">
               <h3 className="title">Motos</h3>
-              <MotoProductBack className="back"/>
-              <MotoProduct className="element"/>
+              <Image src={"/backgrounds/moto-prod-back.webp"} height="164" width={"130"} className="back" alt="blue city background"/>
+              <Image src={"/vehicles/prod-moto.webp"} height="81" width={"157"} className="element" alt="motorcycle"/>
             </Link>
 
             <Link className="product" href="/resultados?search=*bicicleta*">
               <h3 className="title">Bicicletas</h3>
-              <BiciProductBack className="back"/>
-              <BiciProduct className="element"/>
+              <Image src={"/backgrounds/bike-prod-back.webp"} height="164" width={"130"} className="back" alt="blue city background"/>
+              <Image src={"/vehicles/white-bike.webp"} height="81" width={"157"} className="element" alt="white bicycle"/>
             </Link>
 
             <Link className="product" href="/resultados?search=*patineta*">
               <h3 className="title">Patinetas</h3>
-              <PatinetaProductBack className="back"/>
-              <PatinetaProduct className="element"/>
+              <Image src={"/backgrounds/scooter-prod-back.webp"} height="164" width={"130"} className="back" alt="blue city background"/>
+              <Image src={"/vehicles/black-scooter.webp"} height="81" width={"157"} className="element" alt="black scooter"/>
             </Link>
           </section>
         </section>
