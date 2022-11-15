@@ -4,16 +4,11 @@ import { getQuienesSomosContent } from "../sanity/queries/pages/quienesSomos";
 import Seo from "../components/layout/header/Seo";
 import styled from "styled-components";
 import Logo from "../public/logo.svg";
-import KisspngCar from "../public/cars/kisspngCar.svg";
 import Ellipse from "../public/shapes/ellipse.svg";
-
-import Street from "../public/backgrounds/street.svg";
-import F15 from "../public/cars/f15.svg";
-import Toyota from "../public/cars/toyota.svg";
 import Image from "next/image";
-import {Inter} from "@next/font/google"
+import { Inter } from "@next/font/google";
 
-const inter = Inter({weight: "variable"})
+const inter = Inter({ weight: "variable" });
 
 export const getStaticProps = async (ctx) => {
   const queryClient = new QueryClient();
@@ -50,22 +45,45 @@ const QuienesSomos = () => {
         <section className="hero">
           <picture className="hero-image">
             <Ellipse className="ellipse" />
-            <KisspngCar className="image" />
+            <Image
+              src={"/vehicles/car-mechanics.webp"}
+              className="image"
+              alt="car mechanics"
+              width={"303"}
+              height="223"
+            />
           </picture>
           <h1 className="title">{hero.title}</h1>
           <p className="text">{hero.text}</p>
         </section>
 
         <section className="reasons-to-sell">
-          <Street className="background" />
-
+          <Image
+              src={"/backgrounds/street.webp"}
+              className="background"
+              alt="street background"
+              width={"815"}
+              height="850"
+            />
           <section className="content">
-            <F15 className="car-svg" />
+            <Image
+              src={"/vehicles/red-pick-up.webp"}
+              className="car-svg"
+              alt="red pickup"
+              width={"303"}
+              height="165"
+            />
+
             <h2 className="title">{reasonsToSell.title}</h2>
             <ul className="list">
               {reasonsToSell.reasons.map((reason, index) => (
                 <li key={index} className="reason text">
-                  <Image src={reason.icon} width="40" height="40" alt={reason.text}/>
+                  <Image
+                    src={reason.icon}
+                    width="40"
+                    height="40"
+                    alt={reason.text}
+                  />
                   <p>{reason.text}</p>
                 </li>
               ))}
@@ -74,16 +92,34 @@ const QuienesSomos = () => {
         </section>
 
         <section className="reasons-to-buy">
-          <Street className="background" />
+          <Image
+              src={"/backgrounds/street.webp"}
+              className="background"
+              alt="street background"
+              width={"815"}
+              height="850"
+            />
 
           <section className="content">
-            <Toyota className="car-svg" />
+            <Image
+              src={"/vehicles/white-suv.webp"}
+              className="car-svg"
+              alt="white suv"
+              width={"303"}
+              height="165"
+            />
+
             <h2 className="title">{reasonsToBuy.title}</h2>
             <h3 className="text">{reasonsToBuy.subtitle}</h3>
             <ul className="list">
               {reasonsToBuy.reasons.map((reason, index) => (
                 <li key={index} className="reason text">
-                  <Image src={reason.icon} width="40" height="40" alt={reason.text}/>
+                  <Image
+                    src={reason.icon}
+                    width="40"
+                    height="40"
+                    alt={reason.text}
+                  />
                   <p>{reason.text}</p>
                 </li>
               ))}
@@ -92,7 +128,14 @@ const QuienesSomos = () => {
         </section>
 
         <section className="our-services">
-          <Street className="background" />
+          <Image
+              src={"/backgrounds/street.webp"}
+              className="background"
+              alt="street background"
+              width={"815"}
+              height="850"
+            />
+
 
           <section className="content">
             <h2 className="title">{ourServices.title}</h2>
@@ -100,7 +143,12 @@ const QuienesSomos = () => {
               {ourServices.services.map((service, index) => (
                 <li className="service" key={index}>
                   <h3 className="title-card">{service.text}</h3>
-                  <Image src={service.image.url} width={service.image.width} height={service.image.height} alt={service.image.alt}/>
+                  <Image
+                    src={service.image.url}
+                    width={service.image.width}
+                    height={service.image.height}
+                    alt={service.image.alt}
+                  />
                 </li>
               ))}
             </ul>
@@ -251,7 +299,7 @@ const StyledQuienesSomos = styled.main`
       display: grid;
       gap: 1rem;
       grid-auto-rows: 10.25rem;
-      grid-template-columns: repeat(auto-fit, minmax(150px ,1fr));
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
       /* place-content: center; */
 
       .service {
