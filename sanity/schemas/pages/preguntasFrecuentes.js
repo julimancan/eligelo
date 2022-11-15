@@ -1,9 +1,11 @@
 import seo from "../objects/seo";
+import {FaQuestion} from "react-icons/fa"
 
 export default {
   name: 'preguntasFrecuentes',
   title: 'Preguntas frecuentes',
   type: 'document',
+  icon: FaQuestion,
   groups: [
     { title: "SEO", name: "SEO" },
     { title: "Contenido", name: "contenido", default: true },

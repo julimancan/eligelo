@@ -7,6 +7,7 @@ import brand from "../schemas/documents/brand";
 import model from "../schemas/documents/model";
 import featuredAds from "../schemas/pages/featuredAds";
 import vendeTuVehiculo from "../schemas/pages/vendeTuVehiculo";
+import preguntasFrecuentes from "../schemas/pages/preguntasFrecuentes";
 
 export default (S, context) => {
   const siteSettingsListItem = S.listItem()
@@ -39,10 +40,15 @@ export default (S, context) => {
     .icon(vendeTuVehiculo.icon)
     .child(S.editor().schemaType(vendeTuVehiculo.name).id(vendeTuVehiculo.name));
 
+  const preguntasFrecuentesItem = S.listItem()
+    .title(preguntasFrecuentes.title)
+    .icon(preguntasFrecuentes.icon)
+    .child(S.editor().schemaType(preguntasFrecuentes.name).id(preguntasFrecuentes.name));
+
   const pages = S.listItem()
     .title("Páginas")
     .icon(MdWeb)
-    .child(S.list().title("Páginas").items([homepageItem, quienesSomosItem, featuredAdsItem, vendeTuVehiculoItem]));
+    .child(S.list().title("Páginas").items([homepageItem, quienesSomosItem, featuredAdsItem, vendeTuVehiculoItem, preguntasFrecuentesItem]));
 
   const hiddenDocTypes = (listItem) => {
     return ![
@@ -52,7 +58,8 @@ export default (S, context) => {
       brand.name,
       model.name,
       featuredAds.name,
-      vendeTuVehiculo.name
+      vendeTuVehiculo.name,
+      preguntasFrecuentes.name
     ].includes(listItem.getId());
   };
 
