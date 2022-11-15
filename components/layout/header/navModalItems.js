@@ -24,7 +24,7 @@ export const navModalItems = [
   {
     icon: BluePeopleExchange,
     name: "¿Quiénes somos?",
-    linkTo: "/quienesSomos",
+    linkTo: "/quienes-somos",
   },
   {
     icon: BlueQuestionMark,

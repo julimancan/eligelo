@@ -13,14 +13,22 @@ export default {
   fields: [
     seo,
     {
+      name: 'titulo',
+      title: 'Título',
+      type: 'string',
+      group: "contenido"
+    },
+    {
       name: 'preguntas',
       title: 'Preguntas',
       type: 'array',
+      group: "contenido",
       of: [
         {
           name: 'pregunta',
           title: 'Pregunta',
           type: 'object',
+          icon: FaQuestion,
           fields: [
             {
               name: 'titulo',
