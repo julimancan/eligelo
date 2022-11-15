@@ -10,7 +10,7 @@ import { Inter } from "@next/font/google";
 
 const inter = Inter({ weight: "variable" });
 
-export const getStaticProps = async (ctx) => {
+export const getStaticProps = async () => {
   const queryClient = new QueryClient();
 
   await queryClient.prefetchQuery(["siteSettings"], getSiteSettings);

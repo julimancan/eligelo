@@ -13,6 +13,7 @@ import scooter from "./schemas/documents/scooter";
 import featuredAds from "./schemas/pages/featuredAds";
 import vendeTuVehiculo from "./schemas/pages/vendeTuVehiculo";
 import {visionTool} from '@sanity/vision'
+import preguntasFrecuentes from "./schemas/pages/preguntasFrecuentes";
 
 export const sanityConfig = {
   projectId: "yqg1fsel",
@@ -40,6 +41,7 @@ export const sanityConfig = {
       quienesSomos, 
       featuredAds,
       vendeTuVehiculo,
+      preguntasFrecuentes,
 
       // documents
       car,
