@@ -1,9 +1,9 @@
 import { dehydrate, QueryClient, useQuery } from "@tanstack/react-query";
 import { getSiteSettings } from "../sanity/queries/siteSettings";
 import SearchBar from "../components/SearchBar";
-import Logo from "/public/logo.svg"
-import BlueCity from "/public/homepageElements/blue-city.svg"
-import BlueSedan from "/public/homepageElements/blue-sedan.svg"
+import Logo from "/public/logo.svg";
+import BlueCity from "/public/homepageElements/blue-city.svg";
+import BlueSedan from "/public/homepageElements/blue-sedan.svg";
 import { getHomepageContent } from "../sanity/queries/pages/homepage";
 import Seo from "../components/layout/header/Seo";
 import styled from "styled-components";
@@ -12,7 +12,7 @@ export const getStaticProps = async () => {
   const queryClient = new QueryClient();
 
   await queryClient.prefetchQuery(["siteSettings"], getSiteSettings);
-  await queryClient.prefetchQuery(["homepage"], getHomepageContent)
+  await queryClient.prefetchQuery(["homepage"], getHomepageContent);
 
   return {
     props: {
@@ -22,26 +22,30 @@ export const getStaticProps = async () => {
 };
 
 const Homepage = () => {
-  // const { data: siteSettings } = useQuery(["siteSettings"], getSiteSettings);
-  // console.log({ siteSettings });
-  const {data: pageContent} = useQuery(["homepapge"], getHomepageContent);
+  const { data: siteSettings } = useQuery(["siteSettings"], getSiteSettings);
+  const { data: pageContent } = useQuery(["homepapge"], getHomepageContent);
 
-  const {SEO} = pageContent;
-  console.log({pageContent})
+  if (!pageContent || !siteSettings) return;
+
+  const { SEO } = pageContent;
+  console.log({ pageContent });
   return (
     <>
       <Seo description={SEO.description} title={SEO.title} />
       <StyledHomePage>
-        <Logo/>
+        <Logo className="logo"/>
         <article className="hero">
-          <BlueCity/>
-          <BlueSedan/>
+          <BlueCity className="background"/>
+          <BlueSedan className="image"/>
           <section>
-            <h1>{pageContent.hero.blackText}<span>{pageContent.hero.blueText}</span></h1>
+            <h1 className="title">
+              {pageContent.hero.blackText}
+              <span>{pageContent.hero.blueText}</span>
+            </h1>
           </section>
         </article>
 
-        <SearchBar/>
+        <SearchBar />
 
         <article className="products">
           <h2>{pageContent.productsTitle}</h2>
@@ -67,7 +71,37 @@ const Homepage = () => {
 };
 
 const StyledHomePage = styled.main`
- padding: 0 !important;
-`
+  padding: 0 !important;
+
+  .logo{
+    margin: 0 auto;
+  }
+  
+  .hero {
+    position: relative;
+    &::after{
+      content: '';
+      display: block;
+      height: 3.5rem;
+      width: 100%;
+      background-color: var(--primary-blue);
+    }
+    .title {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 90%;
+      text-align: center;
+      transform: translateX(-50%);
+      span{
+        color: var(--primary-blue);
+      }
+    }
+    .image{
+      position: absolute;
+      bottom: -5%;
+    }
+  }
+`;
 
 export default Homepage;
