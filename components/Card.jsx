@@ -6,21 +6,30 @@ import Button from "./Button";
 const Card = ({ content }) => {
   return (
     <StyledCard>
-      <Image src={content.image.image} className="image" alt="" width={200} height={200}/>
+      {content.image? (
+        <Image
+          src={content.image.image}
+          className="image"
+          alt=""
+          width={200}
+          height={200}
+        />): <div className="image"></div>
+      }
       <section className="information">
         <section className="about">
-            <h2>{content.brand.name} {content.model.name}</h2>
-            <div className="tags">
-                <p className="year">{content.year}</p>
-                <p className="mileage">{content.mileage} km</p>
-            </div>
-            <h3>${content.price}COP</h3>
+          <h2>
+            {content.brand.name} {content.model.name}
+          </h2>
+          <div className="tags">
+            <p className="year">{content.year}</p>
+            <p className="mileage">{content.mileage} km</p>
+          </div>
+          <h3>${content.price}COP</h3>
         </section>
         <section className="contact">
-            <p>Contacta con el vendedor:</p>
-            <Button>Más información</Button>
+          <p>Contacta con el vendedor:</p>
+          <Button>Más información</Button>
         </section>
-
       </section>
     </StyledCard>
   );
@@ -37,24 +46,23 @@ const StyledCard = styled.div`
   display: flex;
   flex-direction: column;
 
-  .image{
+  .image {
     width: 100%;
     min-height: 50%;
     object-fit: cover;
   }
 
-  .information{
+  .information {
     padding: 1rem;
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    .tags{
-        display: flex;
-        gap: 1rem;
+    .tags {
+      display: flex;
+      gap: 1rem;
     }
   }
-
 `;
 
 export default Card;
