@@ -20,7 +20,7 @@ const SearchBar = ({ resultsPage = false }) => {
   };
   return (
     <StyledSearchBar onSubmit={handleSearch} className={roboto.className}>
-      <BlueCarSearch class="icon" />
+      <BlueCarSearch className="icon" />
       {resultsPage ? (
         <input
           placeholder="¿Qué vehiculo estas buscando?"
