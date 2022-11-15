@@ -47,7 +47,7 @@ const Catalogo = () => {
             </section>
             <div className="list-products">
               {pageContent.cars.map((car, index) => (
-                <Card key={`${car.brand.name}${index}}`} />
+                <Card key={`${car.brand.name}${index}}`} content={car}/>
               ))}
             </div>
           </article>
@@ -83,11 +83,13 @@ const StyledCatalogo = styled.main`
       }
       .list-products {
         padding-inline-start: 0;
+        padding-right: 2.5rem;
+        padding-bottom: 2rem;
         display: flex;
         width: 100vw;
         flex-wrap: nowrap;
         gap: 1rem;
-        overflow: auto;
+        overflow-x: auto;
         &::-webkit-scrollbar {
           display: none;
         }
