@@ -27,7 +27,6 @@ const Catalogo = () => {
   const { data: pageContent } = useQuery(["catalogo"], getCatalogoContent);
 
   const { SEO } = pageContent;
-  console.log(pageContent);
   return (
     <>
       <Seo description={SEO.description} title={SEO.title} />
@@ -44,11 +43,11 @@ const Catalogo = () => {
             <article className="section">
               <section className="header">
                 <h3>Carros</h3>
-                <Link href="/">ver mas</Link>
+                <Link href="/">Ver mas</Link>
               </section>
               <div className="list-products">
                 {pageContent.cars.map((car, index) => (
-                  <Card key={`${car.brand.name}${index}}`} content={car} />
+                  <Card key={`${car.brand.name}${index}}`} content={car}/>
                 ))}
               </div>
             </article>
@@ -58,7 +57,7 @@ const Catalogo = () => {
             <article className="section">
               <section className="header">
                 <h3>Motos</h3>
-                <Link href="/">ver mas</Link>
+                <Link href="/">Ver mas</Link>
               </section>
               <div className="list-products">
                 {pageContent.motos.map((moto, index) => (
@@ -72,7 +71,7 @@ const Catalogo = () => {
             <article className="section">
               <section className="header">
                 <h3>Bicicletas</h3>
-                <Link href="/">ver mas</Link>
+                <Link href="/">Ver mas</Link>
               </section>
               <div className="list-products">
                 {pageContent.bikes.map((bike, index) => (
@@ -86,7 +85,7 @@ const Catalogo = () => {
             <article className="section">
               <section className="header">
                 <h3>Patinetas</h3>
-                <Link href="/">ver mas</Link>
+                <Link href="/">Ver mas</Link>
               </section>
               <div className="list-products">
                 {pageContent.scooters.map((scooter, index) => (
