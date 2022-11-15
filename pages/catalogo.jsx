@@ -40,17 +40,64 @@ const Catalogo = () => {
         <section className="content">
           <SearchBar />
 
-          <article className="section">
-            <section className="header">
-              <h3>Carros</h3>
-              <Link href="/">ver mas</Link>
-            </section>
-            <div className="list-products">
-              {pageContent.cars.map((car, index) => (
-                <Card key={`${car.brand.name}${index}}`} content={car}/>
-              ))}
-            </div>
-          </article>
+          {pageContent.cars && (
+            <article className="section">
+              <section className="header">
+                <h3>Carros</h3>
+                <Link href="/">ver mas</Link>
+              </section>
+              <div className="list-products">
+                {pageContent.cars.map((car, index) => (
+                  <Card key={`${car.brand.name}${index}}`} content={car} />
+                ))}
+              </div>
+            </article>
+          )}
+
+          {pageContent.motos && (
+            <article className="section">
+              <section className="header">
+                <h3>Motos</h3>
+                <Link href="/">ver mas</Link>
+              </section>
+              <div className="list-products">
+                {pageContent.motos.map((moto, index) => (
+                  <Card key={`${moto.brand.name}${index}}`} content={moto} />
+                ))}
+              </div>
+            </article>
+          )}
+
+          {pageContent.bikes && (
+            <article className="section">
+              <section className="header">
+                <h3>Bicicletas</h3>
+                <Link href="/">ver mas</Link>
+              </section>
+              <div className="list-products">
+                {pageContent.bikes.map((bike, index) => (
+                  <Card key={`${bike.brand.name}${index}}`} content={bike} />
+                ))}
+              </div>
+            </article>
+          )}
+
+          {pageContent.scooters && (
+            <article className="section">
+              <section className="header">
+                <h3>Patinetas</h3>
+                <Link href="/">ver mas</Link>
+              </section>
+              <div className="list-products">
+                {pageContent.scooters.map((scooter, index) => (
+                  <Card
+                    key={`${scooter.brand.name}${index}}`}
+                    content={scooter}
+                  />
+                ))}
+              </div>
+            </article>
+          )}
         </section>
       </StyledCatalogo>
     </>
@@ -70,16 +117,29 @@ const StyledCatalogo = styled.main`
 
   .content {
     padding: 1.5rem 1rem;
-    /* padding-right: 0; */
     background-color: var(--primary-blue);
     min-height: 100vh;
     overflow-x: hidden;
 
+    form {
+      margin-bottom: 1.5rem;
+    }
+
     .section {
-      padding: 1rem 0;
+      padding: 0;
       .header {
+        margin-bottom: 1rem;
         display: flex;
         justify-content: space-between;
+        color: var(--light-gray);
+        h3 {
+          font-size: 24px;
+        }
+        a {
+          font-size: 16px;
+          line-height: 24px;
+          text-decoration-line: underline;
+        }
       }
       .list-products {
         padding-inline-start: 0;
