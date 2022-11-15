@@ -15,6 +15,7 @@ import BiciProductBack from "/public/homepageElements/bici-product-background.sv
 import BiciProduct from "/public/homepageElements/bici-product.svg";
 import PatinetaProductBack from "/public/homepageElements/patineta-product-background.svg";
 import PatinetaProduct from "/public/homepageElements/patineta-product.svg";
+import Link from "next/link";
 
 export const getStaticProps = async () => {
   const queryClient = new QueryClient();
@@ -60,29 +61,29 @@ const Homepage = () => {
         <section className="products-section">
           <h2 className="title">{pageContent.productsTitle}</h2>
           <section className="products">
-            <section className="product">
+            <Link className="product" href="/resultados?search=*carro*">
               <h3 className="title">Carros</h3>
               <CarProductBack className="back"/>
               <CarProduct className="element"/>
-            </section>
+            </Link>
 
-            <section className="product">
+            <Link className="product" href="/resultados?search=*moto*">
               <h3 className="title">Motos</h3>
               <MotoProductBack className="back"/>
               <MotoProduct className="element"/>
-            </section>
+            </Link>
 
-            <section className="product">
+            <Link className="product" href="/resultados?search=*bicicleta*">
               <h3 className="title">Bicicletas</h3>
               <BiciProductBack className="back"/>
               <BiciProduct className="element"/>
-            </section>
+            </Link>
 
-            <section className="product">
+            <Link className="product" href="/resultados?search=*patineta*">
               <h3 className="title">Patinetas</h3>
               <PatinetaProductBack className="back"/>
               <PatinetaProduct className="element"/>
-            </section>
+            </Link>
           </section>
         </section>
       </StyledHomePage>
