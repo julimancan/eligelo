@@ -61,25 +61,25 @@ const Homepage = () => {
           <h2 className="title">{pageContent.productsTitle}</h2>
           <section className="products">
             <section className="product">
-              <h3>Carros</h3>
+              <h3 className="title">Carros</h3>
               <CarProductBack className="back"/>
               <CarProduct className="element"/>
             </section>
 
             <section className="product">
-              <h3>Motos</h3>
+              <h3 className="title">Motos</h3>
               <MotoProductBack className="back"/>
               <MotoProduct className="element"/>
             </section>
 
             <section className="product">
-              <h3>Bicicletas</h3>
+              <h3 className="title">Bicicletas</h3>
               <BiciProductBack className="back"/>
               <BiciProduct className="element"/>
             </section>
 
             <section className="product">
-              <h3>Patinetas</h3>
+              <h3 className="title">Patinetas</h3>
               <PatinetaProductBack className="back"/>
               <PatinetaProduct className="element"/>
             </section>
@@ -108,12 +108,14 @@ const StyledHomePage = styled.main`
     }
     .title {
       position: absolute;
-      top: 0;
+      top: 1.5rem;
       left: 50%;
-      width: 90%;
+      width: 85%;
       text-align: center;
       transform: translateX(-50%);
       span {
+        font-weight: inherit;
+        font-size: inherit;
         color: var(--primary-blue);
       }
     }
@@ -154,6 +156,7 @@ const StyledHomePage = styled.main`
     overflow: hidden;
     flex-direction: column;
     justify-content: space-between;
+    box-shadow: var(--shadow);
 
     h3{
       z-index: 1;
