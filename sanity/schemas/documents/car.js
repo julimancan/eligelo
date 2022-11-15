@@ -20,6 +20,11 @@ export default {
       type: "reference",
       to: [{ type: "model" }],
     },
+    {
+      name: "year",
+      title: "Año",
+      type: "number",
+    },
     imageArrayNoAlt,
     {
       name: "price",

@@ -2,6 +2,7 @@ import { sanityClient } from "../sanity.server";
 
 const siteSettingsItems = `
   SEO,
+  slogan,
   email,
   direccion,
   celular,

@@ -14,6 +14,12 @@ export default {
   fields: [
     seo,
     {
+      name: "slogan",
+      title: "Slogan",
+      type: "string",
+      group: "compInfo",
+    },
+    {
       name: "email",
       title: "Email",
       type: "string",
