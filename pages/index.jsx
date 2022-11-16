@@ -111,8 +111,15 @@ const StyledHomePage = styled.main`
         color: var(--primary-blue);
       }
     }
+    .background{
+      width: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
     .image {
       position: absolute;
+      right: 0;
+      width: fit-content;
       bottom: -5%;
     }
   }
@@ -156,10 +163,14 @@ const StyledHomePage = styled.main`
 
     .element{
       position: sticky;
+      align-self: center;
+      object-fit: fill;
     }
     
     .back{
       height: 90%;
+      width: fit-content;
+      object-fit: cover;
       left: 0;
       bottom: 1rem;
       position: absolute;
