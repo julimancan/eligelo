@@ -184,6 +184,8 @@ const StyledQuienesSomos = styled.main`
 
   .background {
     position: absolute;
+    height: 100%;
+    object-fit: cover;
     top: 0;
     left: 0;
     opacity: 0.08;
@@ -212,14 +214,16 @@ const StyledQuienesSomos = styled.main`
 
       .ellipse {
         position: absolute;
-        width: 70%;
         left: 50%;
+        width: 216px;
+        height: 216px;
         top: 0;
         transform: translateX(-50%);
         z-index: -1;
       }
       .image {
         position: sticky;
+        margin: 0 auto;
       }
     }
 
