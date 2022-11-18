@@ -53,18 +53,20 @@ const QuienesSomos = () => {
               height="223"
             />
           </picture>
-          <h1 className="title">{hero.title}</h1>
-          <p className="text">{hero.text}</p>
+          <section className="content">
+            <h1 className="title">{hero.title}</h1>
+            <p className="text">{hero.text}</p>
+          </section>
         </section>
 
-        <section className="reasons-to-sell">
+        <section className="reasons-to-sell section-reasons">
           <Image
-              src={"/backgrounds/street.webp"}
-              className="background"
-              alt="street background"
-              width={"815"}
-              height="850"
-            />
+            src={"/backgrounds/street.webp"}
+            className="background"
+            alt="street background"
+            width={"815"}
+            height="850"
+          />
           <section className="content">
             <Image
               src={"/vehicles/red-pick-up.webp"}
@@ -73,32 +75,33 @@ const QuienesSomos = () => {
               width={"303"}
               height="165"
             />
-
-            <h2 className="title">{reasonsToSell.title}</h2>
-            <ul className="list">
-              {reasonsToSell.reasons.map((reason, index) => (
-                <li key={index} className="reason text">
-                  <Image
-                    src={reason.icon}
-                    width="40"
-                    height="40"
-                    alt={reason.text}
-                  />
-                  <p>{reason.text}</p>
-                </li>
-              ))}
-            </ul>
+            <section>
+              <h2 className="title">{reasonsToSell.title}</h2>
+              <ul className="list">
+                {reasonsToSell.reasons.map((reason, index) => (
+                  <li key={index} className="reason text">
+                    <Image
+                      src={reason.icon}
+                      width="40"
+                      height="40"
+                      alt={reason.text}
+                    />
+                    <p>{reason.text}</p>
+                  </li>
+                ))}
+              </ul>
+            </section>
           </section>
         </section>
 
-        <section className="reasons-to-buy">
+        <section className="reasons-to-buy section-reasons">
           <Image
-              src={"/backgrounds/street.webp"}
-              className="background"
-              alt="street background"
-              width={"815"}
-              height="850"
-            />
+            src={"/backgrounds/street.webp"}
+            className="background"
+            alt="street background"
+            width={"815"}
+            height="850"
+          />
 
           <section className="content">
             <Image
@@ -108,34 +111,34 @@ const QuienesSomos = () => {
               width={"303"}
               height="165"
             />
-
-            <h2 className="title">{reasonsToBuy.title}</h2>
-            <h3 className="text">{reasonsToBuy.subtitle}</h3>
-            <ul className="list">
-              {reasonsToBuy.reasons.map((reason, index) => (
-                <li key={index} className="reason text">
-                  <Image
-                    src={reason.icon}
-                    width="40"
-                    height="40"
-                    alt={reason.text}
-                  />
-                  <p>{reason.text}</p>
-                </li>
-              ))}
-            </ul>
+            <section>
+              <h2 className="title">{reasonsToBuy.title}</h2>
+              <h3 className="text">{reasonsToBuy.subtitle}</h3>
+              <ul className="list">
+                {reasonsToBuy.reasons.map((reason, index) => (
+                  <li key={index} className="reason text">
+                    <Image
+                      src={reason.icon}
+                      width="40"
+                      height="40"
+                      alt={reason.text}
+                    />
+                    <p>{reason.text}</p>
+                  </li>
+                ))}
+              </ul>
+            </section>
           </section>
         </section>
 
-        <section className="our-services">
+        {/* <section className="our-services">
           <Image
-              src={"/backgrounds/street.webp"}
-              className="background"
-              alt="street background"
-              width={"815"}
-              height="850"
-            />
-
+            src={"/backgrounds/street.webp"}
+            className="background"
+            alt="street background"
+            width={"815"}
+            height="850"
+          />
 
           <section className="content">
             <h2 className="title">{ourServices.title}</h2>
@@ -153,7 +156,7 @@ const QuienesSomos = () => {
               ))}
             </ul>
           </section>
-        </section>
+        </section> */}
       </StyledQuienesSomos>
     </>
   );
@@ -167,14 +170,6 @@ const StyledQuienesSomos = styled.main`
 
   .logo {
     margin: 1rem auto;
-  }
-
-  .title {
-    // TODO: add variable
-    text-align: center;
-    font-weight: 700;
-    font-size: 1.5rem;
-    line-height: 1.813rem;
   }
 
   .car-svg {
@@ -208,6 +203,10 @@ const StyledQuienesSomos = styled.main`
     flex-direction: column;
     gap: 1rem;
 
+    .title {
+      text-align: center;
+    }
+
     .hero-image {
       position: sticky;
       height: fit-content;
@@ -227,13 +226,19 @@ const StyledQuienesSomos = styled.main`
       }
     }
 
+    .content {
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+    }
+
     .title,
     .text {
       color: var(--gray);
     }
   }
 
-  .reasons-to-sell {
+  .section-reasons {
     padding: 4.5rem var(--space-slides);
     background-color: var(--dark-gray);
     position: relative;
@@ -254,36 +259,22 @@ const StyledQuienesSomos = styled.main`
         gap: 1rem;
       }
     }
+    .content {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
   }
 
   .reasons-to-buy {
-    padding: 4rem var(--space-slides) 0;
     background-color: var(--primary-blue);
-    position: relative;
-    overflow: hidden;
-
-    .title {
-      padding: 2.5rem 0;
-      text-align: left;
-    }
 
     h3.text {
       padding-bottom: 1.5rem;
     }
-
-    .title,
-    .text {
-      color: var(--light-gray);
-    }
-    .list {
-      li {
-        display: flex;
-        gap: 1rem;
-      }
-    }
   }
 
-  .our-services {
+  /* .our-services {
     padding: 2rem var(--space-slides) 4rem;
     background-color: var(--primary-blue);
     position: relative;
@@ -304,7 +295,6 @@ const StyledQuienesSomos = styled.main`
       gap: 1rem;
       grid-auto-rows: 10.25rem;
       grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      /* place-content: center; */
 
       .service {
         position: relative;
@@ -313,7 +303,6 @@ const StyledQuienesSomos = styled.main`
         box-shadow: var(--shadow);
         background-color: red;
         display: grid;
-        /* place-content: center; */
         align-items: end;
         img {
           width: 100%;
@@ -348,6 +337,68 @@ const StyledQuienesSomos = styled.main`
             grid-column: span 2;
           }
         }
+      }
+    }
+  } */
+
+  @media (min-width: 900px) {
+    .title {
+      font-size: 48px;
+      line-height: 58px;
+    }
+
+    .car-svg {
+      height: max-content;
+      translate: -5rem;
+      margin: auto;
+      width: 50%;
+    }
+
+    .background {
+      width: 100%;
+      height: max-content;
+      translate: 0 -50%;
+    }
+
+    .hero {
+      flex-direction: row;
+      .hero-image {
+        width: 50%;
+        .ellipse {
+          width: 100%;
+          height: 100%;
+          top: 45%;
+          transform: translate(-50%, -50%);
+        }
+        .image {
+          width: 80%;
+          height: max-content;
+        }
+      }
+      .content {
+        align-self: center;
+        width: 50%;
+        padding: 1rem;
+      }
+    }
+
+    .section-reasons {
+      padding-left: 0;
+
+      .content {
+        flex-direction: row;
+        align-self: center;
+        section {
+          padding-right: 7%;
+          width: 50%;
+        }
+      }
+    }
+
+    .reasons-to-buy {
+      padding-left: 7%;
+      .content {
+        flex-direction: row-reverse;
       }
     }
   }
