@@ -7,6 +7,7 @@ import Seo from "../components/layout/header/Seo";
 import styled from "styled-components";
 import Link from "next/link";
 import Image from "next/image";
+import ProductItem from "../components/homepage/ProductItem";
 
 export const getStaticProps = async () => {
   const queryClient = new QueryClient();
@@ -64,85 +65,72 @@ const Homepage = () => {
 
         <section className="products-section">
           <h2 className="title">{pageContent.productsTitle}</h2>
+
           <section className="products">
-            <Link className="product" href="/resultados?search=*carro*">
-              <h3 className="title">Carros</h3>
+            <ProductItem
+              productName="Carros"
+              link="/resultados?search=*carro*"
+              background={{
+                path: "/backgrounds/car-prod-back.webp",
+                height: 258,
+                width: 328,
+              }}
+              product={{
+                path: "/vehicles/black-suv.webp",
+                alt: "black suv",
+                height: 81,
+                width: 157,
+              }}
+            />
 
-              <Image
-                src={"/backgrounds/car-prod-back.webp"}
-                height="258"
-                width={"328"}
-                className="back"
-                alt="blue city background"
-              />
+            <ProductItem
+              productName="Motos"
+              link="/resultados?search=*moto*"
+              background={{
+                path: "/backgrounds/moto-prod-back.webp",
+                height: 164,
+                width: 130,
+              }}
+              product={{
+                path: "/vehicles/prod-moto.webp",
+                alt: "motorcycle",
+                height: 104,
+                width: 152,
+              }}
+            />
 
-              <Image
-                src={"/vehicles/black-suv.webp"}
-                height="81"
-                width={"157"}
-                className="element"
-                alt="black suv"
-              />
-            </Link>
+            <ProductItem
+              productName="Bicicletas"
+              link="/resultados?search=*bicicleta*"
+              background={{
+                path: "/backgrounds/bike-prod-back.webp",
+                height: 248,
+                width: 222,
+              }}
+              product={{
+                path: "/vehicles/white-bike.webp",
+                alt: "white-bike",
+                height: 154,
+                width: 154,
+              }}
+            />
 
-            <Link className="product" href="/resultados?search=*moto*">
-              <h3 className="title">Motos</h3>
+            <ProductItem
+              productName="Patinetas"
+              link="/resultados?search=*patineta*"
+              background={{
+                path: "/backgrounds/scooter-prod-back.webp",
+                height: 164,
+                width: 130,
+              }}
+              product={{
+                path: "/vehicles/black-scooter.webp",
+                alt: "black scooter",
+                height: 137,
+                width: 105,
+              }}
+            />
 
-              <Image
-                src={"/backgrounds/moto-prod-back.webp"}
-                height="164"
-                width={"130"}
-                className="back"
-                alt="blue city background"
-              />
-
-              <Image
-                src={"/vehicles/prod-moto.webp"}
-                height="104"
-                width={"152"}
-                className="element"
-                alt="motorcycle"
-              />
-            </Link>
-
-            <Link className="product" href="/resultados?search=*bicicleta*">
-              <h3 className="title">Bicicletas</h3>
-
-              <Image
-                src={"/backgrounds/bike-prod-back.webp"}
-                height="248"
-                width={"222"}
-                className="back"
-                alt="blue city background"
-              />
-
-              <Image
-                src={"/vehicles/white-bike.webp"}
-                height="154"
-                width={"154"}
-                className="element"
-                alt="white bicycle"
-              />
-            </Link>
-
-            <Link className="product" href="/resultados?search=*patineta*">
-              <h3 className="title">Patinetas</h3>
-
-              <Image
-                src={"/backgrounds/scooter-prod-back.webp"}
-                height="164"
-                width={"130"}
-                className="back"
-                alt="blue city background"
-              />
-              <Image
-                src={"/vehicles/black-scooter.webp"}
-                height="137"
-                width={"105"}
-                className="element scooter"
-                alt="black scooter"
-              />
-            </Link>
           </section>
         </section>
       </StyledHomePage>
@@ -188,7 +176,7 @@ const StyledHomePage = styled.main`
       position: absolute;
       right: 0;
       width: fit-content;
-      bottom: -5%;
+      bottom: -1.5rem;
     }
   }
 
@@ -213,38 +201,6 @@ const StyledHomePage = styled.main`
     }
   }
 
-  .product {
-    background-color: var(--blue-2);
-    border-radius: 8px;
-    padding: 1rem 1rem 0.1rem;
-    position: relative;
-    display: flex;
-    overflow: hidden;
-    flex-direction: column;
-    justify-content: space-between;
-    box-shadow: var(--shadow);
-
-    .title {
-      z-index: 1;
-    }
-
-    .element {
-      position: sticky;
-      align-self: center;
-      bottom: 0;
-      object-fit: fill;
-    }
-
-    .back {
-      height: 90%;
-      width: fit-content;
-      object-fit: cover;
-      left: 0;
-      bottom: 1rem;
-      position: absolute;
-    }
-  }
-
   @media (min-width: 900px) {
     .title {
       font-size: 30px;
@@ -261,16 +217,19 @@ const StyledHomePage = styled.main`
 
     .hero {
       .background {
-        width: max-content;
+        min-width: max-content;
+        width: fit-content;
         height: 18rem;
+        min-height: 18rem;
         margin: 0 auto;
+
         margin-top: 2rem;
       }
 
       .image {
         width: 50%;
         height: max-content;
-        bottom: -10%;
+        bottom: -4rem;
       }
       .title {
         top: 10%;
@@ -286,22 +245,6 @@ const StyledHomePage = styled.main`
       .products {
         gap: 1rem;
         grid-auto-rows: 24.375rem;
-      }
-    }
-    .product {
-      .title {
-        text-align: left;
-      }
-
-      .element {
-        width: 100%;
-        height: max-content;
-      }
-      .element.scooter {
-        width: 210px;
-      }
-
-      .back {
       }
     }
   }
