@@ -174,12 +174,13 @@ const StyledQuienesSomos = styled.main`
 
   .car-svg {
     width: 90%;
+    height: max-content;
     margin: 0 auto;
   }
 
   .background {
     position: absolute;
-    height: 100%;
+    height: max-content;
     object-fit: cover;
     top: 0;
     left: 0;
@@ -268,10 +269,6 @@ const StyledQuienesSomos = styled.main`
 
   .reasons-to-buy {
     background-color: var(--primary-blue);
-
-    h3.text {
-      padding-bottom: 1.5rem;
-    }
   }
 
   /* .our-services {
@@ -346,6 +343,9 @@ const StyledQuienesSomos = styled.main`
       font-size: 48px;
       line-height: 58px;
     }
+    .logo {
+      display: none;
+    }
 
     .car-svg {
       height: max-content;
@@ -399,6 +399,9 @@ const StyledQuienesSomos = styled.main`
       padding-left: 7%;
       .content {
         flex-direction: row-reverse;
+        .car-svg{
+          transform: scaleX(-1); 
+        }
       }
     }
   }
