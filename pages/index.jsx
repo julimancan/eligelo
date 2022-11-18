@@ -29,7 +29,6 @@ const Homepage = () => {
   if (!pageContent || !siteSettings) return;
 
   const { SEO } = pageContent;
-  console.log({ pageContent });
   return (
     <>
       <Seo description={SEO.description} title={SEO.title} />
