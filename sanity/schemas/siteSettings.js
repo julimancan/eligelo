@@ -20,6 +20,12 @@ export default {
       group: "compInfo",
     },
     {
+      name: "titleContact",
+      title: "Título Contacto",
+      type: "string",
+      group: "compInfo",
+    },
+    {
       name: "email",
       title: "Email",
       type: "string",
@@ -71,6 +77,16 @@ export default {
     {
       name: 'horario',
       title: 'horario',
+      type: 'string',
+    },
+    {
+      name: 'footerTitle',
+      title: 'Título Pie de Página',
+      type: 'string',
+    },
+    {
+      name: 'footerFaqLink',
+      title: 'Link a Preguntas Frecuentes',
       type: 'string',
     },
   ],

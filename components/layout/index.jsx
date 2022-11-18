@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import { useRouter } from "next/router";
+import Footer from "./Footer";
 import Header from "./header";
 
 const StyledLayout = styled.div`
@@ -18,10 +19,16 @@ const StyledLayout = styled.div`
 `;
 const Layout = ({ children }) => {
   const {pathname} = useRouter()
+
+  // removes the layout from Sanity
+  if (pathname.includes("admin")) return (<>{children}</>);
+
+  
   return (
     <StyledLayout>
-      {!pathname.includes("admin") && <Header />}
+      <Header />
       {children}
+      <Footer />
     </StyledLayout>
   );
 };

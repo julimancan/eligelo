@@ -11,7 +11,10 @@ const siteSettingsItems = `
   facebook,
   twitter,
   youtube,
-  horario
+  horario,
+  titleContact,
+  footerTitle,
+  footerFaqLink
 `;
 
 export const getSiteSettings = async () => {
