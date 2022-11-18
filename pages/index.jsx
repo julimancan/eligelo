@@ -235,7 +235,6 @@ const StyledHomePage = styled.main`
       object-fit: fill;
     }
 
-
     .back {
       height: 90%;
       width: fit-content;
@@ -246,12 +245,14 @@ const StyledHomePage = styled.main`
     }
   }
 
-
-
   @media (min-width: 900px) {
     .title {
       font-size: 30px;
       line-height: 40px;
+    }
+
+    .search {
+      padding: 3rem 10% 1rem;
     }
 
     .logo {
@@ -279,7 +280,7 @@ const StyledHomePage = styled.main`
     }
     .products-section {
       padding: 2.5rem;
-      .title{
+      .title {
         padding-bottom: 3.625rem;
       }
       .products {
@@ -296,7 +297,7 @@ const StyledHomePage = styled.main`
         width: 100%;
         height: max-content;
       }
-      .element.scooter{
+      .element.scooter {
         width: 210px;
       }
 
@@ -305,14 +306,13 @@ const StyledHomePage = styled.main`
     }
   }
 
-  @media (min-width: 1200px){
+  @media (min-width: 1200px) {
     .title {
       font-size: 48px;
       line-height: 58px;
       text-align: center;
     }
   }
-
 `;
 
 export default Homepage;

@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import BlueCarSearch from "/public/icons/blue-car-search.svg";
+import SearchIcon from "/public/icons/search.svg";
 import styled from "styled-components";
 import { Roboto } from "@next/font/google";
 const roboto = Roboto({ weight: "500" });
@@ -35,6 +36,7 @@ const SearchBar = ({ resultsPage = false }) => {
           name="search"
         />
       )}
+      <button className="button"><SearchIcon className="icon"/>Buscar</button>
     </StyledSearchBar>
   );
 };
@@ -64,6 +66,30 @@ const StyledSearchBar = styled.form`
 
     &:focus-visible {
       outline: none;
+    }
+  }
+
+  .button {
+    display: none;
+  }
+
+  @media (min-width: 900px) {
+    input{
+      border-radius: 8px 0 0 8px;
+    }
+    .button {
+      position: relative;
+      display: block;
+      cursor: pointer;
+      border-radius: 0 8px 8px 0;
+      border: none;
+      min-width: 213px;
+      font-weight: 500;
+      background-color: var(--btn-color);
+      color: var(--light-gray);
+      .icon{
+        left: 3.6rem;
+      }
     }
   }
 `;
