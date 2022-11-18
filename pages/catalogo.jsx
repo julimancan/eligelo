@@ -7,7 +7,8 @@ import SearchBar from "../components/SearchBar";
 import styled from "styled-components";
 import Seo from "../components/layout/header/Seo";
 import Link from "next/link";
-import Card from "../components/Card";
+import CatalogoCard from "../components/catalogo/CatalogoCard";
+import SliderProducts from "../components/catalogo/SliderProducts";
 
 const inter = Inter();
 
@@ -40,63 +41,21 @@ const Catalogo = () => {
           <SearchBar />
 
           {pageContent.cars && (
-            <article className="section">
-              <section className="header">
-                <h3>Carros</h3>
-                <Link href="/">Ver mas</Link>
-              </section>
-              <div className="list-products">
-                {pageContent.cars.map((car, index) => (
-                  <Card key={`${car.brand.name}${index}}`} content={car}/>
-                ))}
-              </div>
-            </article>
+            <SliderProducts products={pageContent.cars} link="/" productName="Carros"/>
           )}
 
           {pageContent.motos && (
-            <article className="section">
-              <section className="header">
-                <h3>Motos</h3>
-                <Link href="/">Ver mas</Link>
-              </section>
-              <div className="list-products">
-                {pageContent.motos.map((moto, index) => (
-                  <Card key={`${moto.brand.name}${index}}`} content={moto} />
-                ))}
-              </div>
-            </article>
+            <SliderProducts products={pageContent.motos} link="/" productName="Motos"/>
           )}
 
           {pageContent.bikes && (
-            <article className="section">
-              <section className="header">
-                <h3>Bicicletas</h3>
-                <Link href="/">Ver mas</Link>
-              </section>
-              <div className="list-products">
-                {pageContent.bikes.map((bike, index) => (
-                  <Card key={`${bike.brand.name}${index}}`} content={bike} />
-                ))}
-              </div>
-            </article>
+            <SliderProducts products={pageContent.bikes} link="/" productName="Bicicletas"/>
           )}
 
           {pageContent.scooters && (
-            <article className="section">
-              <section className="header">
-                <h3>Patinetas</h3>
-                <Link href="/">Ver mas</Link>
-              </section>
-              <div className="list-products">
-                {pageContent.scooters.map((scooter, index) => (
-                  <Card
-                    key={`${scooter.brand.name}${index}}`}
-                    content={scooter}
-                  />
-                ))}
-              </div>
-            </article>
+            <SliderProducts products={pageContent.scooters} link="/" productName="Patinetas"/>
           )}
+
         </section>
       </StyledCatalogo>
     </>
@@ -122,37 +81,6 @@ const StyledCatalogo = styled.main`
 
     form {
       margin-bottom: 1.5rem;
-    }
-
-    .section {
-      padding: 0;
-      .header {
-        margin-bottom: 1rem;
-        display: flex;
-        justify-content: space-between;
-        color: var(--light-gray);
-        h3 {
-          font-size: 24px;
-        }
-        a {
-          font-size: 16px;
-          line-height: 24px;
-          text-decoration-line: underline;
-        }
-      }
-      .list-products {
-        padding-inline-start: 0;
-        padding-right: 2.5rem;
-        padding-bottom: 2rem;
-        display: flex;
-        width: 100vw;
-        flex-wrap: nowrap;
-        gap: 1rem;
-        overflow-x: auto;
-        &::-webkit-scrollbar {
-          display: none;
-        }
-      }
     }
   }
 `;

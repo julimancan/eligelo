@@ -1,9 +1,9 @@
 import Image from "next/image";
 import React from "react";
 import styled from "styled-components";
-import Button from "./Button";
+import Button from "../Button";
 
-const Card = ({ content, type = "vertical" }) => {
+const CatalogoCard = ({ content, type = "vertical" }) => {
   return (
     <StyledCard className={type}>
       {content.image ? (
@@ -37,7 +37,7 @@ const Card = ({ content, type = "vertical" }) => {
   );
 };
 
-const StyledCard = styled.div`
+const StyledCard = styled.li`
   background-color: var(--blue-2);
   border-radius: 8px;
   overflow: hidden;
@@ -135,4 +135,4 @@ const StyledCard = styled.div`
 
 `;
 
-export default Card;
+export default CatalogoCard;
