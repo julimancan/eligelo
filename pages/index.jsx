@@ -7,7 +7,7 @@ import Seo from "../components/layout/header/Seo";
 import styled from "styled-components";
 import Link from "next/link";
 import Image from "next/image";
-import ProductItem from "../components/homepage/ProductItem";
+import HomepageCard from "../components/homepage/HomepageCard";
 
 export const getStaticProps = async () => {
   const queryClient = new QueryClient();
@@ -67,7 +67,7 @@ const Homepage = () => {
           <h2 className="title">{pageContent.productsTitle}</h2>
 
           <section className="products">
-            <ProductItem
+            <HomepageCard
               productName="Carros"
               link="/resultados?search=*carro*"
               background={{
@@ -83,7 +83,7 @@ const Homepage = () => {
               }}
             />
 
-            <ProductItem
+            <HomepageCard
               productName="Motos"
               link="/resultados?search=*moto*"
               background={{
@@ -99,7 +99,7 @@ const Homepage = () => {
               }}
             />
 
-            <ProductItem
+            <HomepageCard
               productName="Bicicletas"
               link="/resultados?search=*bicicleta*"
               background={{
@@ -115,7 +115,7 @@ const Homepage = () => {
               }}
             />
 
-            <ProductItem
+            <HomepageCard
               productName="Patinetas"
               link="/resultados?search=*patineta*"
               background={{
