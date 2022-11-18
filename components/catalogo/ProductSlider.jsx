@@ -3,23 +3,23 @@ import React from "react";
 import styled from "styled-components";
 import CatalogoCard from "./CatalogoCard";
 
-const SliderProducts = ({products, link, productName}) => {
+const ProductSlider = ({products, link, productName}) => {
   return (
-    <StyledSliderProducts>
-      <section className="header">
+    <StyledProductSlider>
+      <header className="header">
         <h3>{productName}</h3>
         <Link href={`${link}`}>Ver mas</Link>
-      </section>
+      </header>
       <ul className="list-products">
         {products.map((product, index) => (
           <CatalogoCard key={`${product.brand.name}${index}}`} content={product} />
         ))}
       </ul>
-    </StyledSliderProducts>
+    </StyledProductSlider>
   );
 };
 
-const StyledSliderProducts = styled.article`
+const StyledProductSlider = styled.article`
   padding: 0;
   .header {
     margin-bottom: 1rem;
@@ -50,4 +50,4 @@ const StyledSliderProducts = styled.article`
   }
 `;
 
-export default SliderProducts;
+export default ProductSlider;

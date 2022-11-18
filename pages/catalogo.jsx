@@ -8,7 +8,7 @@ import styled from "styled-components";
 import Seo from "../components/layout/header/Seo";
 import Link from "next/link";
 import CatalogoCard from "../components/catalogo/CatalogoCard";
-import SliderProducts from "../components/catalogo/SliderProducts";
+import ProductSlider from "../components/catalogo/ProductSlider";
 
 const inter = Inter();
 
@@ -41,19 +41,19 @@ const Catalogo = () => {
           <SearchBar />
 
           {pageContent.cars && (
-            <SliderProducts products={pageContent.cars} link="/" productName="Carros"/>
+            <ProductSlider products={pageContent.cars} link="/" productName="Carros"/>
           )}
 
           {pageContent.motos && (
-            <SliderProducts products={pageContent.motos} link="/" productName="Motos"/>
+            <ProductSlider products={pageContent.motos} link="/" productName="Motos"/>
           )}
 
           {pageContent.bikes && (
-            <SliderProducts products={pageContent.bikes} link="/" productName="Bicicletas"/>
+            <ProductSlider products={pageContent.bikes} link="/" productName="Bicicletas"/>
           )}
 
           {pageContent.scooters && (
-            <SliderProducts products={pageContent.scooters} link="/" productName="Patinetas"/>
+            <ProductSlider products={pageContent.scooters} link="/" productName="Patinetas"/>
           )}
 
         </section>
