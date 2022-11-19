@@ -7,7 +7,7 @@ import Email from "../../../public/icons/email.svg";
 const ContactLabels = ({ horario, celular, email }) => {
   return (
     <StyledContactLabels>
-      <section>
+      <section className="contact-method">
         <Whatsapp />
         <div>
           <h4>Whatsapp</h4>
@@ -16,7 +16,7 @@ const ContactLabels = ({ horario, celular, email }) => {
           </p>
         </div>
       </section>
-      <section>
+      <section className="contact-method">
         <Celular />
         <div>
           <h4>Teléfono</h4>
@@ -25,7 +25,7 @@ const ContactLabels = ({ horario, celular, email }) => {
           </p>
         </div>
       </section>
-      <section>
+      <section className="contact-method">
         <Email />
         <div>
           <h4>Correo</h4>
@@ -38,6 +38,20 @@ const ContactLabels = ({ horario, celular, email }) => {
   );
 };
 
-const StyledContactLabels = styled.section``;
+const StyledContactLabels = styled.section`
+    padding-top: 1.5rem;
+    padding-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    .contact-method{
+        display: flex;
+        gap: 0.75rem;
+        svg{
+            margin-top: .25rem;
+        }
+    }
+`;
 
 export default ContactLabels;

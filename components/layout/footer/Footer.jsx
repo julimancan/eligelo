@@ -24,8 +24,13 @@ const Footer = () => {
     <>
       <Seo description={SEO.description} title={SEO.title} />
       <StyledFooter>
-
-        <Image src={footerBack} alt="footer-background" className="footer-back" width={825} height={301}/>
+        <Image
+          src={footerBack}
+          alt="footer-background"
+          className="footer-back"
+          width={825}
+          height={301}
+        />
 
         <div className="content">
           <section>
@@ -72,12 +77,16 @@ const Footer = () => {
             </section>
           </section>
           <section className="preguntas-frecuentes">
-            <h3>
-              {siteSettings.footerTitle}{" "}
+            <h3 className="text-preguntas">
+              {siteSettings.footerTitle}
+              <br />
               <Link href="/preguntas-frecuentes">
                 {siteSettings.footerFaqLink}
               </Link>
             </h3>
+          </section>
+          <section className="copyright">
+            <p>Todos los derechos reservados 2022.</p>
           </section>
         </div>
       </StyledFooter>
@@ -87,22 +96,44 @@ const Footer = () => {
 
 const StyledFooter = styled.footer`
   background-color: var(--dark-gray);
+  padding: 2.5rem 1rem 1.5rem;
   color: white;
   position: relative;
 
-  .footer-back{
+  .footer-back {
     position: absolute;
     bottom: 0;
     width: 100%;
     height: max-content;
-
   }
-  .content{
+  .content {
     position: sticky;
   }
 
-  
+  .social-media {
+    border-bottom: 0.5px solid var(--light-gray);
+    .links {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      padding: 1.5rem 0;
+    }
+  }
 
+  .contact .titleContact {
+    padding-top: 1.5rem;
+  }
+
+  .preguntas-frecuentes .text-preguntas {
+    text-align: center;
+    padding-bottom: 1.5rem;
+    border-bottom: 0.5px solid var(--light-gray);
+  }
+
+  .copyright{
+    padding-top: 1.5rem;
+    text-align: center;
+  }
 `;
 
 export default Footer;
