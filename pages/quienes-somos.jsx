@@ -7,6 +7,7 @@ import Logo from "../public/logo.svg";
 import Ellipse from "../public/shapes/ellipse.svg";
 import Image from "next/image";
 import { Inter } from "@next/font/google";
+import LocalPictureComponent from "../components/LocalPictureComponent";
 
 const inter = Inter({ weight: "variable" });
 
@@ -45,13 +46,17 @@ const QuienesSomos = () => {
         <section className="hero">
           <picture className="hero-image">
             <Ellipse className="ellipse" />
-            <Image
-              src={"/vehicles/car-mechanics.webp"}
-              className="image"
+        
+            <LocalPictureComponent 
+              smallSrc={"/vehicles/car-mechanics.webp"}
+              defaultSrc={"/vehicles/car-mechanics-desktop.webp"}
+              largeSrc={"/vehicles/car-mechanics-desktop.webp"}
               alt="car mechanics"
-              width={"303"}
-              height="223"
+              width={"557"}
+              height="411"
+              className="image"
             />
+ 
           </picture>
           <section className="content">
             <h1 className="title">{hero.title}</h1>
@@ -68,12 +73,15 @@ const QuienesSomos = () => {
             height="850"
           />
           <section className="content">
-            <Image
-              src={"/vehicles/red-pick-up.webp"}
-              className="car-svg"
+            
+            <LocalPictureComponent
+              smallSrc={"/vehicles/red-pick-up.webp"}
+              defaultSrc={"/vehicles/red-pickup-desktop.webp"}
               alt="red pickup"
-              width={"303"}
-              height="165"
+              width={"696"}
+              height="379"
+              smScreenMaxWidth="(max-width: 900px)"
+              lgScreenMaxWidth="(max-width: 901px)"
             />
             <section>
               <h2 className="title">{reasonsToSell.title}</h2>
@@ -104,9 +112,9 @@ const QuienesSomos = () => {
           />
 
           <section className="content">
-            <Image
-              src={"/vehicles/white-suv.webp"}
-              className="car-svg"
+            <LocalPictureComponent
+              defaultSrc={"/vehicles/white-suv-desktop.webp"}
+              smallSrc={"/vehicles/white-suv.webp"}
               alt="white suv"
               width={"303"}
               height="165"
@@ -172,11 +180,6 @@ const StyledQuienesSomos = styled.main`
     margin: 1rem auto;
   }
 
-  .car-svg {
-    width: 90%;
-    height: max-content;
-    margin: 0 auto;
-  }
 
   .background {
     position: absolute;
@@ -211,19 +214,27 @@ const StyledQuienesSomos = styled.main`
     .hero-image {
       position: sticky;
       height: fit-content;
-
+      width: fit-content;
+      display: grid;
+      justify-content: center;
+      align-items: flex-start;
+      margin: 0 auto;
       .ellipse {
         position: absolute;
         left: 50%;
-        width: 216px;
-        height: 216px;
+        width: 100%;
+        height: 100%;
         top: 0;
         transform: translateX(-50%);
         z-index: -1;
       }
       .image {
-        position: sticky;
+        /* background-color: red; */
+        height: fit-content;
+        /* position: sticky; */
         margin: 0 auto;
+        width: 60%;
+        max-width: 303
       }
     }
 
@@ -264,11 +275,33 @@ const StyledQuienesSomos = styled.main`
       display: flex;
       flex-direction: column;
       gap: 2rem;
+      align-items: center;
+      picture {
+        img {
+          width: 100%;
+        }
+      }
     }
   }
 
+  .reasons-to-sell {
+    .content {
+      gap: 10%;
+    }
+  }
   .reasons-to-buy {
     background-color: var(--primary-blue);
+
+    .content {
+      picture {
+        min-height: 100%;
+        width: fit-content;
+        img {
+          height: 30vw;
+          max-height: 406px;
+        }
+      }
+    }
   }
 
   /* .our-services {
@@ -347,13 +380,6 @@ const StyledQuienesSomos = styled.main`
       display: none;
     }
 
-    .car-svg {
-      height: max-content;
-      translate: -5rem;
-      margin: auto;
-      width: 50%;
-    }
-
     .background {
       width: 100%;
       height: max-content;
@@ -399,9 +425,6 @@ const StyledQuienesSomos = styled.main`
       padding-left: 7%;
       .content {
         flex-direction: row-reverse;
-        .car-svg{
-          transform: scaleX(-1); 
-        }
       }
     }
   }
