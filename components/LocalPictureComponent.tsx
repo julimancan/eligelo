@@ -10,7 +10,8 @@ type LocalPictureComponentProps = {
   height: number,
   className?: string
   smScreenMaxWidth?: string
-  lgScreenMaxWidth?: string
+  lgScreenMaxWidth?: string,
+  objectFit?: "fill" | "contain" | "cover" | "none" | "scale-down"
 }
 
 const LocalPictureComponent = ({
@@ -24,7 +25,7 @@ const LocalPictureComponent = ({
   className = "",
   smScreenMaxWidth = "(max-width: 600px)",
   lgScreenMaxWidth = "(min-width: 601px)",
-
+  objectFit = "contain"
 
 }: LocalPictureComponentProps) => {
   return (
@@ -38,7 +39,7 @@ const LocalPictureComponent = ({
         width={width}
         height={height}
         className={className}
-        style={{objectFit: "contain"}}
+        style={{objectFit}}
       />
     </picture>
   );

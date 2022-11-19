@@ -41,19 +41,19 @@ const Catalogo = () => {
           <SearchBar />
 
           {pageContent.cars && (
-            <ProductSlider products={pageContent.cars} link="/" productName="Carros"/>
+            <ProductSlider products={pageContent.cars} link="/resultados?search=*carros*" productName="Carros"/>
           )}
 
           {pageContent.motos && (
-            <ProductSlider products={pageContent.motos} link="/" productName="Motos"/>
+            <ProductSlider products={pageContent.motos} link="/resultados?search=*motos*" productName="Motos"/>
           )}
 
           {pageContent.bikes && (
-            <ProductSlider products={pageContent.bikes} link="/" productName="Bicicletas"/>
+            <ProductSlider products={pageContent.bikes} link="/resultados?search=*bicicletas*" productName="Bicicletas"/>
           )}
 
           {pageContent.scooters && (
-            <ProductSlider products={pageContent.scooters} link="/" productName="Patinetas"/>
+            <ProductSlider products={pageContent.scooters} link="/resultados?search=*patinetas*" productName="Patinetas"/>
           )}
 
         </section>
