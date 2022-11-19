@@ -99,11 +99,11 @@ const StyledFooter = styled.footer`
   padding: 2.5rem 1rem 1.5rem;
   color: white;
   position: relative;
-  overflow-x: hidden;
+  overflow: hidden;
 
   .footer-back {
     position: absolute;
-    bottom: 0;
+    bottom: -1rem;
     width: 100%;
     height: max-content;
   }
@@ -144,11 +144,19 @@ const StyledFooter = styled.footer`
     text-align: center;
   }
 
-  @media (min-width: 900px) {
+  @media (min-width: 1000px) {
     padding: 3rem 2.5rem 2rem;
+
+    .footer-back {
+      width: 65%;
+      right: 0;
+      height: max-content;
+    }
+
     .information {
       flex-direction: row-reverse;
       justify-content: space-between;
+      gap: 1rem;
     }
 
     .social-media {
