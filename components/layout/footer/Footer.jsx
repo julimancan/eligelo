@@ -15,11 +15,8 @@ import Image from "next/image";
 const Footer = () => {
   const { data: siteSettings } = useQuery(["siteSettings"], getSiteSettings);
 
-  console.log({ siteSettings });
-
   const { SEO } = siteSettings;
 
-  // TODO El link a preguntas frecuentes debe ir a /preguntas-frecuentes
   return (
     <>
       <Seo description={SEO.description} title={SEO.title} />
