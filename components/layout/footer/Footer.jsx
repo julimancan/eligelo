@@ -13,7 +13,9 @@ import footerBack from "../../../public/backgrounds/footer-back.webp";
 import Image from "next/image";
 
 const Footer = () => {
-  const { data: siteSettings } = useQuery(["siteSettings"], getSiteSettings);
+  const { data: siteSettings, isLoading } = useQuery(["siteSettings"], getSiteSettings);
+
+  if(isLoading) return;
 
   const { SEO } = siteSettings;
 
