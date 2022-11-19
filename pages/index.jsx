@@ -8,6 +8,7 @@ import styled from "styled-components";
 import Link from "next/link";
 import Image from "next/image";
 import HomepageCard from "../components/homepage/HomepageCard";
+import LocalPictureComponent from "../components/LocalPictureComponent";
 
 export const getStaticProps = async () => {
   const queryClient = new QueryClient();
@@ -35,16 +36,25 @@ const Homepage = () => {
       <StyledHomePage>
         <Logo className="logo" />
         <article className="hero">
-          <Image
-            src="/backgrounds/blue-city-homepage.webp"
+          <LocalPictureComponent
+            smallSrc="/backgrounds/blue-city-homepage.webp"
+             largeSrc="/backgrounds/blue-city-homepage.webp"
             width={"627"}
             height="230"
             alt="blue-city"
             className="background"
           />
+          {/* <Image
+            src="/backgrounds/blue-city-homepage.webp"
+            width={"627"}
+            height="230"
+            alt="blue-city"
+            className="background"
+          /> */}
 
-          <Image
-            src="/vehicles/blue-sedan.webp"
+          <LocalPictureComponent
+            smallSrc="/vehicles/blue-sedan.webp"
+            largeSrc="/vehicles/blue-sedan-desktop.webp"
             className="image"
             width={"520"}
             height="185"
@@ -129,7 +139,6 @@ const Homepage = () => {
                 width: 105,
               }}
             />
-
           </section>
         </section>
       </StyledHomePage>

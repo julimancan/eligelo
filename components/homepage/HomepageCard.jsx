@@ -2,26 +2,30 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import styled from "styled-components";
+import LocalPictureComponent from "../LocalPictureComponent";
 
 const HomepageCard = ({ productName, link, background, product }) => {
   return (
       <StyledProductItem href={link}>
         <h3 className="title">{productName}</h3>
 
-        <Image
-          src={background.path}
+        <LocalPictureComponent
+          defaultSrc={background.path}
           alt="blue city background"
           height={background.height}
           width={background.width}
           className="back"
+          objectFit="cover"
         />
 
-        <Image
-          src={product.path}
+        <LocalPictureComponent
+          smallSrc={product.path}
+          largeSrc={`${product.path.split(".webp")[0]}-desktop.webp`}
           alt={product.alt}
           height={product.height}
           width={product.width}
           className="element"
+          objectFit="contain"
         />
       </StyledProductItem>
   );
@@ -44,10 +48,14 @@ const StyledProductItem = styled(Link)`
   }
 
   .element {
-    position: sticky;
-    align-self: center;
-    bottom: 0;
+    z-index: 1;
+    position: absolute;
+    left: 50%;
+    translate: -50% 0;
+    bottom: 10px;
+    width: 90%;
     object-fit: fill;
+
   }
 
   .back {
