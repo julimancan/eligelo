@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { useRouter } from "next/router";
-import Footer from "./Footer";
+import Footer from "./footer/Footer";
 import Header from "./header";
 
 const StyledLayout = styled.div`
