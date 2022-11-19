@@ -33,7 +33,7 @@ const Footer = () => {
         />
 
         <div className="content">
-          <section>
+          <section className="information">
             <section className="social-media">
               <h2 className="linksTitle">{siteSettings.linksTitle}</h2>
               <div className="links">
@@ -99,6 +99,7 @@ const StyledFooter = styled.footer`
   padding: 2.5rem 1rem 1.5rem;
   color: white;
   position: relative;
+  overflow-x: hidden;
 
   .footer-back {
     position: absolute;
@@ -110,6 +111,11 @@ const StyledFooter = styled.footer`
     position: sticky;
   }
 
+  .information {
+    display: flex;
+    flex-direction: column;
+  }
+
   .social-media {
     border-bottom: 0.5px solid var(--light-gray);
     .links {
@@ -117,6 +123,9 @@ const StyledFooter = styled.footer`
       align-items: center;
       gap: 1.5rem;
       padding: 1.5rem 0;
+      svg {
+        min-width: min-content;
+      }
     }
   }
 
@@ -130,9 +139,39 @@ const StyledFooter = styled.footer`
     border-bottom: 0.5px solid var(--light-gray);
   }
 
-  .copyright{
+  .copyright {
     padding-top: 1.5rem;
     text-align: center;
+  }
+
+  @media (min-width: 900px) {
+    padding: 3rem 2.5rem 2rem;
+    .information {
+      flex-direction: row-reverse;
+      justify-content: space-between;
+    }
+
+    .social-media {
+      border: none;
+      align-self: flex-end;
+      width: 50%;
+      display: grid;
+      place-content: center;
+
+      .linksTitle {
+        font-size: 24px;
+        line-height: 29px;
+      }
+
+      .links {
+        justify-content: center;
+        gap: 4rem;
+      }
+    }
+    .preguntas-frecuentes .text-preguntas {
+      border: none;
+      padding: 3.2rem 0 0;
+    }
   }
 `;
 
