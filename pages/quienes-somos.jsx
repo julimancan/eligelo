@@ -46,8 +46,8 @@ const QuienesSomos = () => {
         <section className="hero">
           <picture className="hero-image">
             <Ellipse className="ellipse" />
-        
-            <LocalPictureComponent 
+
+            <LocalPictureComponent
               smallSrc={"/vehicles/car-mechanics.webp"}
               defaultSrc={"/vehicles/car-mechanics-desktop.webp"}
               largeSrc={"/vehicles/car-mechanics-desktop.webp"}
@@ -56,7 +56,6 @@ const QuienesSomos = () => {
               height="411"
               className="image"
             />
- 
           </picture>
           <section className="content">
             <h1 className="title">{hero.title}</h1>
@@ -73,7 +72,6 @@ const QuienesSomos = () => {
             height="850"
           />
           <section className="content">
-            
             <LocalPictureComponent
               smallSrc={"/vehicles/red-pick-up.webp"}
               defaultSrc={"/vehicles/red-pickup-desktop.webp"}
@@ -180,7 +178,6 @@ const StyledQuienesSomos = styled.main`
     margin: 1rem auto;
   }
 
-
   .background {
     position: absolute;
     height: max-content;
@@ -229,12 +226,10 @@ const StyledQuienesSomos = styled.main`
         z-index: -1;
       }
       .image {
-        /* background-color: red; */
         height: fit-content;
-        /* position: sticky; */
         margin: 0 auto;
         width: 60%;
-        max-width: 303
+        max-width: 303;
       }
     }
 
@@ -274,11 +269,13 @@ const StyledQuienesSomos = styled.main`
     .content {
       display: flex;
       flex-direction: column;
-      gap: 2rem;
       align-items: center;
       picture {
+        min-height: 100%;
+        width: fit-content;
         img {
-          width: 100%;
+          width: 100vw;
+          height: max-content;
         }
       }
     }
@@ -294,11 +291,8 @@ const StyledQuienesSomos = styled.main`
 
     .content {
       picture {
-        min-height: 100%;
-        width: fit-content;
         img {
-          height: 30vw;
-          max-height: 406px;
+          transform: scaleX(-1);
         }
       }
     }
@@ -418,6 +412,12 @@ const StyledQuienesSomos = styled.main`
           padding-right: 7%;
           width: 50%;
         }
+        picture {
+          width: 50%;
+          img {
+            width: 100%;
+          }
+        }
       }
     }
 
@@ -425,6 +425,11 @@ const StyledQuienesSomos = styled.main`
       padding-left: 7%;
       .content {
         flex-direction: row-reverse;
+        picture {
+          img {
+            transform: scaleX(1);
+          }
+        }
       }
     }
   }
