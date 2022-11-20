@@ -39,6 +39,7 @@ const Homepage = () => {
           <LocalPictureComponent
             smallSrc="/backgrounds/blue-city-homepage.webp"
              largeSrc="/backgrounds/blue-city-homepage.webp"
+             defaultSrc={"/backgrounds/blue-city-homepage.webp"}
             width={"627"}
             height="230"
             alt="blue-city"
@@ -55,6 +56,7 @@ const Homepage = () => {
           <LocalPictureComponent
             smallSrc="/vehicles/blue-sedan.webp"
             largeSrc="/vehicles/blue-sedan-desktop.webp"
+            defaultSrc={"/vehicles/blue-sedan-desktop.webp"}
             className="image"
             width={"520"}
             height="185"
