@@ -54,6 +54,16 @@ export default {
       initialValue: ["bicicleta", "bicis", "bici"],
       of: [{ type: 'string' }],
     },
+    {
+      title: 'Slug',
+      name: 'slug',
+      type: 'slug',
+      options: {
+        source: doc => {
+          if (doc._id.includes("drafts")) return `${doc._id.split("drafts")[1].split(".")}`
+          return `${doc._id}`},
+      }
+    }
   ],
   preview: {
     select: {

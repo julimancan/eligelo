@@ -1,6 +1,24 @@
 // import image from "../objects/image";
 import { AiFillCar } from "react-icons/ai";
+import { sanityClient } from "../../sanity.server";
 import imageArrayNoAlt from "../objects/imageArrayNoAlt";
+
+function myAsyncSlugifier(input, type) {
+  // const slug = slugify(input)
+  // const slug = "something"
+  console.log({type, input})
+  const query = `*[_type=="car" && _id == $_id]{
+    _id, 
+    "brand": brand -> {name},
+    "model": model -> {name}
+  }`
+  const params = {_id: input}
+  return sanityClient(false).fetch(query, params).then(res => {
+    console.log('Movies with identical slug', res)
+    return `${slug}`
+  })
+}
+
 
 export default {
   name: "car",
@@ -106,6 +124,16 @@ export default {
       initialValue: ["carro", "automovil"],
       of: [{ type: 'string' }],
     },
+    {
+      title: 'Slug',
+      name: 'slug',
+      type: 'slug',
+      options: {
+        source: doc => {
+          if (doc._id.includes("drafts")) return `${doc._id.split("drafts")[1].split(".")}`
+          return `${doc._id}`},
+      }
+    }
   ],
 
   preview: {

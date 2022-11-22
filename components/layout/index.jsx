@@ -20,8 +20,8 @@ const StyledLayout = styled.div`
 const Layout = ({ children }) => {
   const {pathname} = useRouter()
 
-  // removes the layout from Sanity
-  if (pathname.includes("admin")) return (<>{children}</>);
+  // removes the header and footer from Sanity
+  if (pathname.includes("admin")) return (<StyledLayout>{children}</StyledLayout>);
 
   
   return (
