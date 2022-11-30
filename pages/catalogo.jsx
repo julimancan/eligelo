@@ -6,8 +6,6 @@ import { Inter } from "@next/font/google";
 import SearchBar from "../components/SearchBar";
 import styled from "styled-components";
 import Seo from "../components/layout/header/Seo";
-import Link from "next/link";
-import CatalogoCard from "../components/catalogo/CatalogoCard";
 import ProductSlider from "../components/catalogo/ProductSlider";
 
 const inter = Inter();
