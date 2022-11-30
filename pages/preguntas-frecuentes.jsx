@@ -2,7 +2,7 @@ import { dehydrate, QueryClient, useQuery } from "@tanstack/react-query";
 import { getFaqContent } from "../sanity/queries/pages/preguntasFrecuentes";
 import { getSiteSettings } from "../sanity/queries/siteSettings";
 
-export const getStaticProps = async (ctx) => {
+export const getStaticProps = async () => {
 
   const queryClient = new QueryClient();
 

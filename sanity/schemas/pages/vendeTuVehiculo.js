@@ -1,5 +1,6 @@
 import {GiCarKey} from "react-icons/gi"
 import seo from "../objects/seo"
+import image from "../objects/image"
 
 export default {
   name: 'vendeTuVehiculo',
@@ -39,6 +40,7 @@ export default {
       group: "contenido",
 
       fields: [
+        image,
         {
           name: 'title',
           title: 'Título',
@@ -47,16 +49,17 @@ export default {
         {
           name: 'subtitle',
           title: 'Subtítulo',
-          type: 'string',
+          type: 'text',
         },
       ],
     },
     {
       name: 'paymentOptions',
-      title: 'Medios de Pago',
+      title: 'Realiza el pago',
       type: 'object',
       group: "contenido",
       fields: [
+        image,
         {
           name: 'title',
           title: 'Título',
@@ -65,7 +68,7 @@ export default {
         {
           name: 'subtitle',
           title: 'Subtítulo',
-          type: 'string',
+          type: 'text',
         },
         {
           name: 'options',
@@ -95,10 +98,11 @@ export default {
     },
     {
       name: 'appointments',
-      title: 'Citas',
+      title: 'Agenda tu Cita',
       type: 'object',
       group: "contenido",
       fields: [
+        image,
         {
           name: 'title',
           title: 'Título',
@@ -107,40 +111,18 @@ export default {
         {
           name: 'subtitle',
           title: 'Subtítulo',
-          type: 'string',
+          type: 'text',
         },
-        {
-          name: 'apps',
-          title: 'Citas',
-          type: 'array',
-          of: [
-            {
-              name: 'appointment',
-              title: 'Cita',
-              type: 'object',
-              fields: [
-                {
-                  name: 'title',
-                  title: 'Título',
-                  type: 'string',
-                },
-                {
-                  name: 'ammount',
-                  title: 'Cifra',
-                  type: 'number',
-                },
-              ],
-            },
-          ],
-        },
+        
       ],
     },
     {
-      name: 'photos',
-      title: 'Sección de Fotos',
+      name: 'mechanic',
+      title: 'Recibe al Mecánico',
       type: 'object',
       group: "contenido",
       fields: [
+        image,
         {
           name: 'title',
           title: 'Título',
@@ -149,26 +131,23 @@ export default {
         {
           name: 'subtitle',
           title: 'Subtítulo',
-          type: 'string',
+          type: 'text',
         },
         {
-          name: 'price',
-          title: 'Precio',
-          type: 'string',
-        },
-        {
-          name: 'ammount',
-          title: 'Cifra',
-          type: 'number',
+          name: 'recommendations',
+          title: 'Recomendaciones',
+          type: 'array',
+          of: [{ type: 'string' }],
         },
       ],
     },
     {
       name: 'rest',
-      title: 'Sección de Descanso',
+      title: 'A Descansar',
       type: 'object',
       group: "contenido",
       fields: [
+        image,
         {
           name: 'title',
           title: 'Título',
@@ -177,7 +156,7 @@ export default {
         {
           name: 'subtitle',
           title: 'Subtítulo',
-          type: 'string',
+          type: 'text',
         },
       ],
     },
