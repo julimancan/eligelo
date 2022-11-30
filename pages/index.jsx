@@ -5,8 +5,6 @@ import Logo from "/public/logo.svg";
 import { getHomepageContent } from "../sanity/queries/pages/homepage";
 import Seo from "../components/layout/header/Seo";
 import styled from "styled-components";
-import Link from "next/link";
-import Image from "next/image";
 import HomepageCard from "../components/homepage/HomepageCard";
 import LocalPictureComponent from "../components/LocalPictureComponent";
 
@@ -39,6 +37,7 @@ const Homepage = () => {
           <LocalPictureComponent
             smallSrc="/backgrounds/blue-city-homepage.webp"
              largeSrc="/backgrounds/blue-city-homepage.webp"
+             defaultSrc={"/backgrounds/blue-city-homepage.webp"}
             width={"627"}
             height="230"
             alt="blue-city"
@@ -55,6 +54,7 @@ const Homepage = () => {
           <LocalPictureComponent
             smallSrc="/vehicles/blue-sedan.webp"
             largeSrc="/vehicles/blue-sedan-desktop.webp"
+            defaultSrc={"/vehicles/blue-sedan-desktop.webp"}
             className="image"
             width={"520"}
             height="185"

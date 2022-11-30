@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import styled from "styled-components";
@@ -21,6 +20,7 @@ const HomepageCard = ({ productName, link, background, product }) => {
         <LocalPictureComponent
           smallSrc={product.path}
           largeSrc={`${product.path.split(".webp")[0]}-desktop.webp`}
+          defaultSrc={`${product.path.split(".webp")[0]}-desktop.webp`}
           alt={product.alt}
           height={product.height}
           width={product.width}
@@ -68,8 +68,8 @@ const StyledProductItem = styled(Link)`
   }
 
   @media (min-width: 900px) {
-    .title {
-      text-align: left;
+    h3.title {
+      text-align: left ;
     }
 
     .element {
