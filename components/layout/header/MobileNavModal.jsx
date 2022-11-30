@@ -10,7 +10,7 @@ const StyledModal = styled.div`
   height: 100vh;
   background-color: white;
   transition: ${({ transitionDuration }) => `width ${transitionDuration}`};
-  z-index: 1;
+  z-index: 2;
   .content {
     display: ${({ open }) => (open ? "block" : "none")};
     color: black;

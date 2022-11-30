@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 
 const StyledBurgerContainer = styled.div`
   position: fixed;
-  z-index: 2;
+  z-index: 3;
   cursor: pointer;
   height: 20px;
   display: flex;

@@ -48,7 +48,6 @@ const StyledProductItem = styled(Link)`
   }
 
   .element {
-    z-index: 1;
     position: absolute;
     left: 50%;
     translate: -50% 0;
