@@ -252,7 +252,7 @@ const StyledHomePage = styled.main`
       }
       .products {
         gap: 1rem;
-        grid-auto-rows: 24.375rem;
+        grid-auto-rows: 27vw;
       }
     }
   }
