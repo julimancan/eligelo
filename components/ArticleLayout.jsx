@@ -2,9 +2,9 @@ import Image from "next/image";
 import React from "react";
 import styled from "styled-components";
 
-const ArticleLayout = ({ image, children }) => {
+const ArticleLayout = ({ image, children , className}) => {
   return (
-    <StyledArticleLayout>
+    <StyledArticleLayout className={className}>
       <picture className="image">
         <Image
           src={image.url}
@@ -20,15 +20,34 @@ const ArticleLayout = ({ image, children }) => {
 };
 
 const StyledArticleLayout = styled.article`
-  .image{
-    img{
+  display: flex;
+  flex-direction: column;
+  background-color: black;
+  .image {
+    height: 100%;
+
+    img {
+      height: 100%;
       width: 100%;
       object-fit: contain;
-      height: 100%;
     }
   }
-  .content{
-    min-height: 406px;
+  .content {
+  }
+
+  @media (min-width: 900px) {
+    height: 42rem;
+    flex-direction: ${props =>  props.className == 'left'? 'row-reverse': 'row'};
+    .image {
+      width: 50%;
+      img{
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+    .content {
+      width: 50%;
+    }
   }
 `;
 
