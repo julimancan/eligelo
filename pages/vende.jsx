@@ -21,14 +21,13 @@ export const getStaticProps = async () => {
   };
 };
 const Vende = () => {
-  // TODO the data for the contact information (phone #, horario, etc) is in the siteSettings
+  
   const { data: siteSettings } = useQuery(["siteSettings"], getSiteSettings);
 
   const { data: pageContent } = useQuery(["vendeContent"], getVendeContent);
 
-  const { SEO, contact, paymentOptions, appointments, mechanic, rest } =
-    pageContent;
-  console.log({ pageContent, siteSettings });
+  const { SEO, contact, paymentOptions, appointments, mechanic, rest } = pageContent;
+
   return (
     <>
       <Seo description={SEO.description} title={SEO.title} />
@@ -46,6 +45,7 @@ const Vende = () => {
             <h2 className="title">{contact.title}</h2>
             <p>{contact.subtitle}</p>
             <ContactLabels
+              className="vende-version"
               email={siteSettings.email}
               horario={siteSettings.horario}
               celular={siteSettings.celular}
@@ -57,7 +57,6 @@ const Vende = () => {
           <section className="article-content blue">
             <h2 className="title">{paymentOptions.title}</h2>
             <p className="subtitle">{paymentOptions.subtitle}</p>
-            {/* TODO: items */}
             <ul className="payment-options">
               {paymentOptions.options.map((option, index) => (
                 <li key={index} className="options text">
