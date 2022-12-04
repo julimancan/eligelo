@@ -80,7 +80,7 @@ const StyledContactLabels = styled.section`
   }
 
   @media (min-width: 900px) {
-    flex-direction: ${props=> props.version !== 'vende-version' && "row" };
+    flex-direction: ${({version})=> version !== 'vende-version' && "row" };
     padding-top: 2.5rem;
     .contact-method {
       padding: 0 1rem;
