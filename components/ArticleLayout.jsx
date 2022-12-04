@@ -14,7 +14,7 @@ const ArticleLayout = ({ image, children , className}) => {
         />
       </picture>
 
-      <div className="content">{children}</div>
+      <section className="content">{children}</section>
     </StyledArticleLayout>
   );
 };
