@@ -4,10 +4,10 @@ import Celular from "../../../public/icons/celular.svg";
 import Whatsapp from "../../../public/icons/whatsapp.svg";
 import Email from "../../../public/icons/email.svg";
 
-const ContactLabels = ({ horario, celular, email }) => {
+const ContactLabels = ({ horario, celular, email, className="" }) => {
   return (
-    <StyledContactLabels>
-      <section className="contact-method">
+    <StyledContactLabels version={className}>
+      <section className={`contact-method ${className}`}>
         <Whatsapp />
         <div>
           <h4 className="method-title">Whatsapp</h4>
@@ -17,7 +17,7 @@ const ContactLabels = ({ horario, celular, email }) => {
           </section>
         </div>
       </section>
-      <section className="contact-method">
+      <section className={`contact-method ${className}`}>
         <Celular />
         <div>
           <h4 className="method-title">Teléfono</h4>
@@ -27,7 +27,7 @@ const ContactLabels = ({ horario, celular, email }) => {
           </section>
         </div>
       </section>
-      <section className="contact-method">
+      <section className={`contact-method ${className}`}>
         <Email />
         <div>
           <h4 className="method-title">Correo</h4>
@@ -67,8 +67,20 @@ const StyledContactLabels = styled.section`
     }
   }
 
+  .vende-version{
+    .text-info{
+      flex-direction: column;
+      .text::after {
+        content: "";
+      }
+      .horario {
+        margin-left: 0rem;
+      }
+    }
+  }
+
   @media (min-width: 900px) {
-    flex-direction: row;
+    flex-direction: ${({version})=> version !== 'vende-version' && "row" };
     padding-top: 2.5rem;
     .contact-method {
       padding: 0 1rem;
@@ -91,6 +103,11 @@ const StyledContactLabels = styled.section`
     }
     .contact-method:first-child{
         border: none;
+    }
+
+    .vende-version{
+      padding: 0 ;
+      border: none;
     }
   }
 `;

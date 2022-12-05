@@ -14,6 +14,7 @@ const vendeItems = `
   "paymentOptions": paymentOptions {
     title,
     subtitle,
+    "image": ${imageObject},
     "options": options [] {
       name,
       "icon": icon.asset->url
