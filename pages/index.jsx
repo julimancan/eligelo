@@ -36,20 +36,13 @@ const Homepage = () => {
         <article className="hero">
           <LocalPictureComponent
             smallSrc="/backgrounds/blue-city-homepage.webp"
-             largeSrc="/backgrounds/blue-city-homepage.webp"
-             defaultSrc={"/backgrounds/blue-city-homepage.webp"}
+            largeSrc="/backgrounds/blue-city-homepage.webp"
+            defaultSrc={"/backgrounds/blue-city-homepage.webp"}
             width={"627"}
             height="230"
             alt="blue-city"
             className="background"
           />
-          {/* <Image
-            src="/backgrounds/blue-city-homepage.webp"
-            width={"627"}
-            height="230"
-            alt="blue-city"
-            className="background"
-          /> */}
 
           <LocalPictureComponent
             smallSrc="/vehicles/blue-sedan.webp"
@@ -60,8 +53,8 @@ const Homepage = () => {
             height="185"
             alt="blue-sedan"
           />
-          <section>
-            <h1 className="title">
+          <section className="title">
+            <h1 >
               {pageContent.hero.blackText}
               <span>{pageContent.hero.blueText}</span>
             </h1>
@@ -169,16 +162,23 @@ const StyledHomePage = styled.main`
       width: 85%;
       text-align: center;
       transform: translateX(-50%);
+      h1{
+        font-size: inherit;
+        line-height: inherit;
+      }
       span {
         font-weight: inherit;
         font-size: inherit;
         color: var(--primary-blue);
       }
     }
-    .background {
-      width: 100%;
-      object-fit: cover;
-      object-position: center;
+    picture:has(.background) {
+      .background {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+      }
     }
     .image {
       position: absolute;
@@ -210,6 +210,7 @@ const StyledHomePage = styled.main`
   }
 
   @media (min-width: 900px) {
+
     .title {
       font-size: 30px;
       line-height: 40px;
@@ -224,25 +225,26 @@ const StyledHomePage = styled.main`
     }
 
     .hero {
-      .background {
-        min-width: max-content;
-        width: fit-content;
-        height: 18rem;
-        min-height: 18rem;
-        margin: 0 auto;
-
-        margin-top: 2rem;
+      section.title{
+        height: 80%;
+        display: grid;
+        place-content: center;
+        left: 23rem;
+        width: 42rem;
+      }
+      picture:has(.background) {
+        height: 40vh;
+        .background {
+          width: max-content;
+          height: 100%;
+          margin: 0 auto;
+        }
       }
 
       .image {
         width: 50%;
         height: max-content;
         bottom: -4rem;
-      }
-      .title {
-        top: 10%;
-        left: 23rem;
-        width: 670px;
       }
     }
     .products-section {
@@ -252,7 +254,7 @@ const StyledHomePage = styled.main`
       }
       .products {
         gap: 1rem;
-        grid-auto-rows: 24.375rem;
+        grid-auto-rows: 27vw;
       }
     }
   }
