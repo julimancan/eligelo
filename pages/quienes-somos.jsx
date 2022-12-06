@@ -8,6 +8,7 @@ import Ellipse from "../public/shapes/ellipse.svg";
 import Image from "next/image";
 import { Inter } from "@next/font/google";
 import LocalPictureComponent from "../components/LocalPictureComponent";
+import ArticleLayout from "../components/ArticleLayout";
 
 const inter = Inter({ weight: "variable" });
 
@@ -137,13 +138,14 @@ const QuienesSomos = () => {
           </section>
         </section>
 
-        {/* <section className="our-services">
+        <section className="our-services">
           <Image
             src={"/backgrounds/street.webp"}
             className="background"
             alt="street background"
-            width={"815"}
-            height="850"
+
+            layout="fill"
+            objectFit="contain"
           />
 
           <section className="content">
@@ -151,18 +153,20 @@ const QuienesSomos = () => {
             <ul className="list services">
               {ourServices.services.map((service, index) => (
                 <li className="service" key={index}>
-                  <h3 className="title-card">{service.text}</h3>
-                  <Image
-                    src={service.image.url}
-                    width={service.image.width}
-                    height={service.image.height}
-                    alt={service.image.alt}
-                  />
+                  <ArticleLayout
+                    image={service.image}
+                    className={index % 2 == 0 ? "" : "left"}
+                    maxHeight={"auto"}
+                  >
+                    <section className="service-content">
+                      <h3 className="title-card">{service.text}</h3>
+                    </section>
+                  </ArticleLayout>
                 </li>
               ))}
             </ul>
           </section>
-        </section> */}
+        </section>
       </StyledQuienesSomos>
     </>
   );
@@ -298,11 +302,15 @@ const StyledQuienesSomos = styled.main`
     }
   }
 
-  /* .our-services {
-    padding: 2rem var(--space-slides) 4rem;
-    background-color: var(--primary-blue);
+  .our-services {
+    padding: 2rem 0 4rem;
+    background-color: var(--dark-gray);
     position: relative;
     overflow: hidden;
+
+    .background {
+      height: 100%;
+    }
 
     .title {
       padding-bottom: 2rem;
@@ -315,55 +323,18 @@ const StyledQuienesSomos = styled.main`
     }
 
     .services {
-      display: grid;
-      gap: 1rem;
-      grid-auto-rows: 10.25rem;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
       .service {
-        position: relative;
-        border-radius: 8px;
-        overflow: hidden;
-        box-shadow: var(--shadow);
-        background-color: red;
-        display: grid;
-        align-items: end;
-        img {
-          width: 100%;
+        .service-content{
+          display: flex;
+          align-items: center;
           height: 100%;
-          object-fit: cover;
-          position: absolute;
-        }
-
-        .title-card {
-          position: relative;
-          z-index: 2;
-          font-size: 12px;
-          line-height: 15px;
-          width: 100%;
-          padding: 0.6rem 0.5rem;
-        }
-        &::before {
-          z-index: 1;
-          content: "";
-          position: absolute;
-          height: 60%;
-          width: 100%;
-          bottom: 0;
-          background: linear-gradient(
-            360deg,
-            rgba(31, 31, 31, 0.9) 35.23%,
-            rgba(31, 31, 31, 0) 93.18%
-          );
-        }
-        &:nth-child(odd).service:last-child {
-          @media (min-width: 370px) {
-            grid-column: span 2;
-          }
         }
       }
     }
-  } */
+  }
 
   @media (min-width: 900px) {
     .title {
