@@ -143,9 +143,8 @@ const QuienesSomos = () => {
             src={"/backgrounds/street.webp"}
             className="background"
             alt="street background"
-
-            layout="fill"
-            objectFit="contain"
+            width={"815"}
+            height="850"
           />
 
           <section className="content">
@@ -155,11 +154,11 @@ const QuienesSomos = () => {
                 <li className="service" key={index}>
                   <ArticleLayout
                     image={service.image}
-                    className={index % 2 == 0 ? "" : "left"}
-                    maxHeight={"auto"}
+                    className={index % 2 == 0 ? "article" : "article left"}
                   >
                     <section className="service-content">
                       <h3 className="title-card">{service.text}</h3>
+                      <p></p>
                     </section>
                   </ArticleLayout>
                 </li>
@@ -303,14 +302,9 @@ const StyledQuienesSomos = styled.main`
   }
 
   .our-services {
-    padding: 2rem 0 4rem;
+    padding: 2rem var(--space-slides);
     background-color: var(--dark-gray);
-    position: relative;
     overflow: hidden;
-
-    .background {
-      height: 100%;
-    }
 
     .title {
       padding-bottom: 2rem;
@@ -327,10 +321,17 @@ const StyledQuienesSomos = styled.main`
       flex-direction: column;
       gap: 2rem;
       .service {
-        .service-content{
+        .service-content {
+          padding-top: 1rem;
           display: flex;
-          align-items: center;
+          flex-direction: column;
+          justify-content: center;
+          gap: 1rem;
           height: 100%;
+          h3 {
+            font-size: 18px;
+            line-height: 22px;
+          }
         }
       }
     }
@@ -401,6 +402,46 @@ const StyledQuienesSomos = styled.main`
             transform: scaleX(1);
           }
         }
+      }
+    }
+    .our-services {
+      padding: 5rem 2.5rem 4rem;
+      position: relative;
+
+      .title {
+        text-align: center;
+      }
+
+      .services {
+        padding-top: 1.5rem;
+        gap: 3rem;
+        .service {
+          .article {
+            height: auto;
+            gap: 1rem;
+            .content {
+              padding-left: 4.5rem;
+            }
+          }
+
+          .left {
+            .content {
+              padding-left: 0;
+              padding-right: 4.5rem;
+            }
+          }
+          .service-content {
+            h3 {
+              font-size: 40px;
+              line-height: 48px;
+            }
+          }
+        }
+      }
+
+      .background {
+        height: 100%;
+        translate: 0;
       }
     }
   }
