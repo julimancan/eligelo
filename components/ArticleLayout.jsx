@@ -2,9 +2,9 @@ import Image from "next/image";
 import React from "react";
 import styled from "styled-components";
 
-const ArticleLayout = ({ image, children , className, maxHeight}) => {
+const ArticleLayout = ({ image, children , className}) => {
   return (
-    <StyledArticleLayout className={className} maxHeight={maxHeight}>
+    <StyledArticleLayout className={className}>
       <picture className="image">
         <Image
           src={image.url}
@@ -35,8 +35,8 @@ const StyledArticleLayout = styled.article`
   }
 
   @media (min-width: 900px) {
-    height: ${({maxHeight}) =>  !!maxHeight? maxHeight: '42rem'};
-    flex-direction: ${({className}) =>  className == 'left'? 'row-reverse': 'row'};
+    height: 42rem;
+    flex-direction: ${({className}) =>  className.includes('left')? 'row-reverse': 'row'};
     .image {
       width: 50%;
       img{
