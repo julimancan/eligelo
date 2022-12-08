@@ -123,10 +123,8 @@ const StyledCatalogo = styled.main`
 
   .content {
     padding: 1.5rem 1rem;
-    background-color: var(--primary-blue);
     min-height: 100vh;
     overflow-x: hidden;
-
     
   }
 

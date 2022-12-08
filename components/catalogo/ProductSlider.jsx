@@ -6,7 +6,7 @@ import CatalogoCard from "./CatalogoCard";
 const ProductSlider = ({products, link, productName}) => {
   return (
     <StyledProductSlider>
-      <header className="header">
+      <header className="header-product">
         <h3>{productName}</h3>
         <Link href={`${link}`}>Ver mas</Link>
       </header>
@@ -21,11 +21,11 @@ const ProductSlider = ({products, link, productName}) => {
 
 const StyledProductSlider = styled.article`
   padding: 0;
-  .header {
+  .header-product {
     margin-bottom: 1rem;
     display: flex;
     justify-content: space-between;
-    color: var(--light-gray);
+    color: var(--dark-gray);
     h3 {
       font-size: 24px;
     }
