@@ -7,6 +7,7 @@ import SearchBar from "../components/SearchBar";
 import styled from "styled-components";
 import Seo from "../components/layout/header/Seo";
 import ProductSlider from "../components/catalogo/ProductSlider";
+import LocalPictureComponent from "../components/LocalPictureComponent";
 
 const inter = Inter();
 
@@ -31,29 +32,56 @@ const Catalogo = () => {
       <Seo description={SEO.description} title={SEO.title} />
       <StyledCatalogo className={inter.className}>
         <header className="header">
-          <Logo className="logo" />
-          <h3>{pageContent.slogan.slogan}</h3>
+          <LocalPictureComponent
+            smallSrc="/backgrounds/catalogo-back.webp"
+            largeSrc="/backgrounds/catalogo-back.webp"
+            defaultSrc={"/backgrounds/catalogo-back.webp"}
+            width={"627"}
+            height="230"
+            alt="blue-city"
+            className="background"
+          />
+          <section className="header-content">
+            <Logo className="logo" />
+            <h3>{pageContent.slogan.slogan}</h3>
+          </section>
+          <SearchBar />
         </header>
 
         <section className="content">
-          <SearchBar />
+          
 
           {pageContent.cars && (
-            <ProductSlider products={pageContent.cars} link="/resultados?search=*carros*" productName="Carros"/>
+            <ProductSlider
+              products={pageContent.cars}
+              link="/resultados?search=*carros*"
+              productName="Carros"
+            />
           )}
 
           {pageContent.motos && (
-            <ProductSlider products={pageContent.motos} link="/resultados?search=*motos*" productName="Motos"/>
+            <ProductSlider
+              products={pageContent.motos}
+              link="/resultados?search=*motos*"
+              productName="Motos"
+            />
           )}
 
           {pageContent.bikes && (
-            <ProductSlider products={pageContent.bikes} link="/resultados?search=*bicicletas*" productName="Bicicletas"/>
+            <ProductSlider
+              products={pageContent.bikes}
+              link="/resultados?search=*bicicletas*"
+              productName="Bicicletas"
+            />
           )}
 
           {pageContent.scooters && (
-            <ProductSlider products={pageContent.scooters} link="/resultados?search=*patinetas*" productName="Patinetas"/>
+            <ProductSlider
+              products={pageContent.scooters}
+              link="/resultados?search=*patinetas*"
+              productName="Patinetas"
+            />
           )}
-
         </section>
       </StyledCatalogo>
     </>
@@ -65,9 +93,31 @@ const StyledCatalogo = styled.main`
 
   .header {
     text-align: center;
+    padding: 0 1rem;
     margin-bottom: 0.7rem;
+    position: relative;
+
     .logo {
       margin: 0.2rem auto;
+    }
+    picture:has(.background) {
+      .background {
+        background-color: transparent;
+        width: 100%;
+        height: min-content;
+        object-fit: cover;
+        object-position: center;
+      }
+    }
+    .header-content{
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    form {
+      margin-top: -.5rem;
+      margin-bottom:2rem;
     }
   }
 
@@ -77,8 +127,19 @@ const StyledCatalogo = styled.main`
     min-height: 100vh;
     overflow-x: hidden;
 
-    form {
-      margin-bottom: 1.5rem;
+    
+  }
+
+  @media (min-width: 900px) {
+    .header {
+      picture:has(.background) {
+        height: 40vh;
+        .background {
+          width: max-content;
+          height: 100%;
+          margin: 0 auto;
+        }
+      }
     }
   }
 `;
