@@ -6,6 +6,7 @@ import Burger from "./Burger";
 import MobileNavModal from "./MobileNavModal";
 import ModalContent from "./ModalContent";
 import { Roboto } from "@next/font/google";
+import Navbar from "./Navbar";
 
 const roboto = Roboto({ weight: "500" });
 const StyledNav = styled.nav`
@@ -14,12 +15,21 @@ const StyledNav = styled.nav`
   width: calc(100% - 2rem);
   margin: 1rem auto 0;
   display: flex;
-  justify-content: flex-end;
   align-items: center;
-  gap: 2rem;
-  a[href="/catalogo"] {
-    color: var(--primary-blue);
-    font-size: 16px;
+  justify-content: flex-end;
+
+  .links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    a[href="/catalogo"] {
+      color: var(--primary-blue);
+      font-size: 16px;
+    }
+  }
+
+  @media (min-width: 1000px) {
+    justify-content: space-between;
   }
 `;
 
@@ -32,12 +42,15 @@ const Nav = () => {
       <MobileNavModal open={navOpen}>
         <ModalContent setOpen={setNavOpen} />
       </MobileNavModal>
-      <Link href={"/catalogo"} className={roboto.className}>
-        Catálogo
-      </Link>
-      <Button>
-        <Link href="/vende-tu-vehiculo">Vender</Link>
-      </Button>
+      <Navbar />
+      <section className="links">
+        <Link href={"/catalogo"} className={roboto.className}>
+          Catálogo
+        </Link>
+        <Button>
+          <Link href="/vende-tu-vehiculo">Vender</Link>
+        </Button>
+      </section>
     </StyledNav>
   );
 };
