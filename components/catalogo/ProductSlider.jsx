@@ -53,6 +53,20 @@ const StyledProductSlider = styled.article`
       display: none;
     }
   }
+
+  @media (min-width: 900px) {
+    .header-product {
+      margin-bottom: 1.5rem;
+      h3 {
+        font-weight: 700;
+        font-size: 48px;
+        line-height: 58px;
+      }
+    }
+    .list-products{
+      padding-bottom: 3rem;
+    }
+  }
 `;
 
 export default ProductSlider;

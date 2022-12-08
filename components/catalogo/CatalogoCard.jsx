@@ -137,6 +137,12 @@ const StyledCard = styled.li`
       }
     }
   }
+
+  @media (min-width: 900px){
+    .information{
+      padding: 1.25rem;
+    }
+  }
 `;
 
 export default CatalogoCard;
