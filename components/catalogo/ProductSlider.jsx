@@ -3,7 +3,7 @@ import React from "react";
 import styled from "styled-components";
 import CatalogoCard from "./CatalogoCard";
 
-const ProductSlider = ({products, link, productName}) => {
+const ProductSlider = ({ products, link, productName }) => {
   return (
     <StyledProductSlider>
       <header className="header-product">
@@ -12,7 +12,10 @@ const ProductSlider = ({products, link, productName}) => {
       </header>
       <ul className="list-products">
         {products.map((product, index) => (
-          <CatalogoCard key={`${product.brand.name}${index}}`} content={product} />
+          <CatalogoCard
+            key={`${product.brand.name}${index}}`}
+            content={product}
+          />
         ))}
       </ul>
     </StyledProductSlider>
@@ -32,7 +35,9 @@ const StyledProductSlider = styled.article`
     a {
       font-size: 16px;
       line-height: 24px;
+      font-weight: 500;
       text-decoration-line: underline;
+      color: var(--primary-blue);
     }
   }
   .list-products {

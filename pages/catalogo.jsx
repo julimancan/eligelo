@@ -49,8 +49,6 @@ const Catalogo = () => {
         </header>
 
         <section className="content">
-          
-
           {pageContent.cars && (
             <ProductSlider
               products={pageContent.cars}
@@ -97,27 +95,32 @@ const StyledCatalogo = styled.main`
     margin-bottom: 0.7rem;
     position: relative;
 
-    .logo {
-      margin: 0.2rem auto;
-    }
     picture:has(.background) {
       .background {
         background-color: transparent;
+        min-width: 17.25rem;
         width: 100%;
-        height: min-content;
+        height: max-content;
         object-fit: cover;
         object-position: center;
       }
     }
-    .header-content{
+    .header-content {
       position: absolute;
       top: 0;
       left: 50%;
+      width: 100%;
       transform: translateX(-50%);
+      h3{
+        color: var(--gray-2);
+      }
+      .logo {
+        margin: 0.2rem auto;
+      }
     }
     form {
-      margin-top: -.5rem;
-      margin-bottom:2rem;
+      margin-top: -0.5rem;
+      margin-bottom: 2rem;
     }
   }
 
@@ -125,15 +128,30 @@ const StyledCatalogo = styled.main`
     padding: 1.5rem 1rem;
     min-height: 100vh;
     overflow-x: hidden;
-    
   }
 
   @media (min-width: 900px) {
     .header {
+      padding: 0 10%;
+
+      .header-content {
+        top: 1.2rem;
+        h3 {
+          font-style: normal;
+          font-weight: 700;
+          font-size: 48px;
+          line-height: 58px;
+        }
+        svg.logo {
+          width: 327.23px;
+          height: 94.7px;
+        }
+      }
+
       picture:has(.background) {
-        height: 40vh;
+        /* height: 40vh; */
         .background {
-          width: max-content;
+          width: 98%;
           height: 100%;
           margin: 0 auto;
         }
