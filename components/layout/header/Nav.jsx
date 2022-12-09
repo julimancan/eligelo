@@ -10,10 +10,15 @@ import Navbar from "./Navbar";
 
 const roboto = Roboto({ weight: "500" });
 const StyledNav = styled.nav`
-  /* background-color: violet; */
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 11;
+  background-color: var(--nav-bg-color);
   height: 40px;
-  width: calc(100% - 2rem);
-  margin: 1rem auto 0;
+  width: 100%;
+  padding: 2rem 1rem;
   display: flex;
   align-items: center;
   justify-content: flex-end;
