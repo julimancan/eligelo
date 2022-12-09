@@ -36,7 +36,7 @@ const StyledArticleLayout = styled.article`
 
   @media (min-width: 900px) {
     height: 42rem;
-    flex-direction: ${({className}) =>  className.includes('left')? 'row-reverse': 'row'};
+    flex-direction: ${({className}) =>  className?.includes('left')? 'row-reverse': 'row'};
     .image {
       width: 50%;
       img{
