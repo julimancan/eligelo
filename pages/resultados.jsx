@@ -25,9 +25,11 @@ const Resultados = () => {
   const { data: searchResults } = useQuery(["searchResults"], () =>
     getAnyResultsFromText(search)
   );
+  console.log(!searchResults.length)
   return (
     <main>
       <SearchBar resultsPage={true}/>
+      {!searchResults.length && <h1>no se encontraron resultados</h1>}
       {searchResults?.map((item, index) => (
         <div key={index}>
           <h1>{item.brand?.name}</h1>

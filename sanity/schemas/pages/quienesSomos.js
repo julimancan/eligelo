@@ -88,7 +88,7 @@ export default {
         },
         {
           name: "name",
-          title: "name",
+          title: "Servicio",
           type: "array",
           of: [
             {
@@ -98,14 +98,19 @@ export default {
               fields: [
                 image,
                 {
+                  name: "title",
+                  title: "Título",
+                  type: "string",
+                },
+                {
                   name: "text",
                   title: "Texto",
-                  type: "string",
+                  type: "text",
                 },
               ],
               preview: {
                 select: {
-                  title: "text",
+                  title: "title",
                   media: "imageObject.image"
                 },
               prepare({title, media}) {
