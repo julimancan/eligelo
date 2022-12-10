@@ -53,7 +53,7 @@ const Nav = () => {
           Catálogo
         </Link>
         <Button>
-          <Link href="/vende-tu-vehiculo">Vender</Link>
+          <Link href="/vende">Vender</Link>
         </Button>
       </section>
     </StyledNav>
