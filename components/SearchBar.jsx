@@ -12,17 +12,17 @@ const SearchBar = ({ resultsPage = false }) => {
     event.preventDefault();
     let search = "";
 
-    if (event.type === "change") {
-      search = `*${event.target.value}*`;
-    } else {
-      search = `*${event.target[0].value}*`;
-    }
+    // if (event.type === "change") {
+    //   search = `*${event.target.value}*`;
+    // } else {
+    search = `*${event.target[0].value}*`;
+    // }
     router.push({ pathname: `/resultados/`, query: { search }, shallow: true });
   };
   return (
     <StyledSearchBar onSubmit={handleSearch} className={roboto.className}>
       <BlueCarSearch className="icon" />
-      {resultsPage ? (
+      {/* {resultsPage ? (
         <input
           placeholder="¿Qué vehiculo estas buscando?"
           type="text"
@@ -35,8 +35,16 @@ const SearchBar = ({ resultsPage = false }) => {
           type="text"
           name="search"
         />
-      )}
-      <button className="button"><SearchIcon className="icon"/>Buscar</button>
+      )} */}
+      <input
+        placeholder="¿Qué vehiculo estas buscando?"
+        type="text"
+        name="search"
+      />
+      <button className="button">
+        <SearchIcon className="icon" />
+        Buscar
+      </button>
     </StyledSearchBar>
   );
 };
@@ -45,7 +53,11 @@ const StyledSearchBar = styled.form`
   display: flex;
   justify-content: center;
   position: relative;
-  filter: drop-shadow(0px 16px 32px rgba(38, 50, 56, 0.08)) drop-shadow(0px 8px 16px rgba(38, 50, 56, 0.09)) drop-shadow(0px 4px 8px rgba(38, 50, 56, 0.1)) drop-shadow(0px 2px 4px rgba(38, 50, 56, 0.11)) drop-shadow(0px 0px 2px rgba(38, 50, 56, 0.12));
+  filter: drop-shadow(0px 16px 32px rgba(38, 50, 56, 0.08))
+    drop-shadow(0px 8px 16px rgba(38, 50, 56, 0.09))
+    drop-shadow(0px 4px 8px rgba(38, 50, 56, 0.1))
+    drop-shadow(0px 2px 4px rgba(38, 50, 56, 0.11))
+    drop-shadow(0px 0px 2px rgba(38, 50, 56, 0.12));
 
   .icon {
     position: absolute;
@@ -75,7 +87,7 @@ const StyledSearchBar = styled.form`
   }
 
   @media (min-width: 900px) {
-    input{
+    input {
       border-radius: 8px 0 0 8px;
     }
     .button {
@@ -88,7 +100,7 @@ const StyledSearchBar = styled.form`
       font-weight: 500;
       background-color: var(--btn-color);
       color: var(--light-gray);
-      .icon{
+      .icon {
         left: 3.6rem;
       }
     }
