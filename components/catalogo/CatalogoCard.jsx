@@ -26,10 +26,9 @@ const CatalogoCard = ({ content, type = "vertical" }) => {
             {content.year && <p className="year">{content.year}</p>}
             {content.mileage && <p className="mileage">{content.mileage} km</p>}
           </div>
-          <h3 className="price">${content.price}COP</h3>
         </section>
+        <h3 className="price">${content.price}COP</h3>
         <section className="contact">
-          <p>Contacta con el vendedor:</p>
           <Button type="secondary">Más información</Button>
         </section>
       </section>
@@ -38,10 +37,9 @@ const CatalogoCard = ({ content, type = "vertical" }) => {
 };
 
 const StyledCard = styled.li`
-  background-color: var(--blue-2);
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: var(--shadow);
+  box-shadow: 0px 5px 15px rgba(31, 31, 31, 0.15);
   display: flex;
 
   .information {
@@ -50,39 +48,46 @@ const StyledCard = styled.li`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    color: var(--light-gray);
+    color: var(--dark-gray);
 
     .about {
       h2 {
-        font-size: 0.875rem;
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 20px;
       }
       .tags {
         display: flex;
-        gap: .25rem;
+        gap: 0.25rem;
         padding: 0.5rem 0;
 
         p {
-          padding: 0.2rem 0.5rem;
-          background-color: var(--light-gray);
-          border-radius: 8px;
+          box-shadow: 0px 4px 8px rgba(38, 50, 56, 0.1),
+            0px 2px 4px rgba(38, 50, 56, 0.11),
+            0px 0px 2px rgba(38, 50, 56, 0.12);
+          border-radius: 4px;
           color: var(--gray);
+          font-size: 10px;
+          line-height: 16px;
+          font-weight: 500;
+          padding: 0.25rem 0.5rem;
         }
       }
-      .price {
-        font-weight: 800;
-        font-size: 1rem;
-        line-height: 1.25rem;
-      }
+    }
+    .price {
+      flex: 1;
+      padding-top: 1rem;
+      font-weight: 800;
+      font-size: 1rem;
+      line-height: 1.25rem;
     }
 
     .contact {
-      p {
-        padding-bottom: 0.5rem;
-        font-weight: 700;
-        font-size: 12px;
-        line-height: 20px;
-      }
       button {
+        background-color: var(--primary-blue);
+        color: var(--light-gray);
+        box-shadow: 0px 4px 8px rgba(38, 50, 56, 0.1),
+          0px 2px 4px rgba(38, 50, 56, 0.11), 0px 0px 2px rgba(38, 50, 56, 0.12);
         width: 100%;
       }
     }
@@ -96,7 +101,7 @@ const StyledCard = styled.li`
 
     .image {
       width: 100%;
-      min-height: 42%;
+      min-height: 45%;
       object-fit: cover;
     }
   }
@@ -113,26 +118,31 @@ const StyledCard = styled.li`
       object-fit: cover;
     }
 
-    .information{
-      padding: .5rem;
+    .information {
+      padding: 0.5rem;
       align-items: flex-end;
       text-align: end;
-      .tags{
+      .tags {
         justify-content: flex-end;
         padding: 0.25rem 0;
       }
-      .price{
+      .price {
         font-size: 0.875rem;
       }
     }
 
-    .contact{
-      p{
+    .contact {
+      p {
         padding-bottom: 0.25rem;
       }
     }
   }
 
+  @media (min-width: 900px){
+    .information{
+      padding: 1.25rem;
+    }
+  }
 `;
 
 export default CatalogoCard;

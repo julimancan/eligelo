@@ -3,16 +3,19 @@ import React from "react";
 import styled from "styled-components";
 import CatalogoCard from "./CatalogoCard";
 
-const ProductSlider = ({products, link, productName}) => {
+const ProductSlider = ({ products, link, productName }) => {
   return (
     <StyledProductSlider>
-      <header className="header">
+      <header className="header-product">
         <h3>{productName}</h3>
         <Link href={`${link}`}>Ver mas</Link>
       </header>
       <ul className="list-products">
         {products.map((product, index) => (
-          <CatalogoCard key={`${product.brand.name}${index}}`} content={product} />
+          <CatalogoCard
+            key={`${product.brand.name}${index}}`}
+            content={product}
+          />
         ))}
       </ul>
     </StyledProductSlider>
@@ -21,18 +24,20 @@ const ProductSlider = ({products, link, productName}) => {
 
 const StyledProductSlider = styled.article`
   padding: 0;
-  .header {
+  .header-product {
     margin-bottom: 1rem;
     display: flex;
     justify-content: space-between;
-    color: var(--light-gray);
+    color: var(--dark-gray);
     h3 {
       font-size: 24px;
     }
     a {
       font-size: 16px;
       line-height: 24px;
+      font-weight: 500;
       text-decoration-line: underline;
+      color: var(--primary-blue);
     }
   }
   .list-products {
@@ -46,6 +51,20 @@ const StyledProductSlider = styled.article`
     overflow-x: auto;
     &::-webkit-scrollbar {
       display: none;
+    }
+  }
+
+  @media (min-width: 900px) {
+    .header-product {
+      margin-bottom: 1.5rem;
+      h3 {
+        font-weight: 700;
+        font-size: 48px;
+        line-height: 58px;
+      }
+    }
+    .list-products{
+      padding-bottom: 3rem;
     }
   }
 `;

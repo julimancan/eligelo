@@ -45,6 +45,7 @@ const StyledSearchBar = styled.form`
   display: flex;
   justify-content: center;
   position: relative;
+  filter: drop-shadow(0px 16px 32px rgba(38, 50, 56, 0.08)) drop-shadow(0px 8px 16px rgba(38, 50, 56, 0.09)) drop-shadow(0px 4px 8px rgba(38, 50, 56, 0.1)) drop-shadow(0px 2px 4px rgba(38, 50, 56, 0.11)) drop-shadow(0px 0px 2px rgba(38, 50, 56, 0.12));
 
   .icon {
     position: absolute;
