@@ -18,8 +18,8 @@ export const navModalItems = [
   },
   {
     icon: BlueMoneyExchange,
-    name: "Vende Tu V",
-    linkTo: "/vende-tu-vehiculo",
+    name: "Vende Tu vehículo",
+    linkTo: "/vende",
   },
   {
     icon: BluePeopleExchange,

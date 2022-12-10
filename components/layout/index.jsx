@@ -12,7 +12,7 @@ const StyledLayout = styled.div`
     }
   }
   main {
-    margin-top: 1rem;
+    margin-top: 4.5rem;
     /* padding-top: 2.5rem; */
     padding-left: 1rem;
   }

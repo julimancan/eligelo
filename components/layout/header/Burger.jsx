@@ -59,7 +59,7 @@ const StyledBurgerContainer = styled.div`
         open ? "rotate(-45deg) translateY(15px)" : ""};
     }
     @media (min-width: 1000px) {
-      /* display: none; */
+      display: none;
     }
   }
 `;
