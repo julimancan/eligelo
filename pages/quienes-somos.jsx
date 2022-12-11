@@ -33,7 +33,6 @@ const QuienesSomos = () => {
     ["quienesSomosContent"],
     getQuienesSomosContent
   );
-  console.log({ quienesSomosContent });
 
   const { SEO, hero, reasonsToSell, reasonsToBuy, ourServices } =
     quienesSomosContent;
@@ -157,8 +156,8 @@ const QuienesSomos = () => {
                     className={index % 2 == 0 ? "article" : "article left"}
                   >
                     <section className="service-content">
-                      <h3 className="title-card">{service.text}</h3>
-                      <p></p>
+                      <h3 className="title-card">{service.title}</h3>
+                      <p>{service.text}</p>
                     </section>
                   </ArticleLayout>
                 </li>
