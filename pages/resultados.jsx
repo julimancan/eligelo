@@ -29,19 +29,30 @@ const Resultados = () => {
   );
   console.log(searchResults);
   return (
-    <main>
+    <StyledResults>
       <SearchBar resultsPage={true} />
       {!searchResults.length && <h1>no se encontraron resultados</h1>}
       <ul>
         {searchResults?.map((item, index) => (
-          <li key={index}>
-            <ProductCard product={item} />
-          </li>
+          <ProductCard key={index} product={item} />
         ))}
       </ul>
-    </main>
+    </StyledResults>
   );
 };
 
-const StyledResults = styled
+const StyledResults = styled.main`
+  padding-right: 1rem;
+  ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(252px, 1fr));
+    gap: 1rem;
+    padding: 0;
+    margin-top: 1rem;
+    li {
+      margin: 0 auto;
+    }
+  }
+
+`;
 export default Resultados;

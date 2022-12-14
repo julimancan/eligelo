@@ -48,7 +48,10 @@ const searchAnyResults = `*[${carsByBrandName} || ${motosByBrandName} || ${bikes
     ${brandRef},
     ${modelRef},
     "image": images[0].image.asset->url,
-    _type
+    "type": _type,
+    year,
+    mileage,
+    price
   }`;
 
 export const getAnyResultsFromText = async (searchText) => {
