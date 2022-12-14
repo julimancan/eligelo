@@ -1,6 +1,25 @@
 import styled from "@emotion/styled";
 import { Roboto } from "@next/font/google";
+
 const roboto = Roboto({ weight: "500" });
+
+type ButtonProps = {
+  children: JSX.Element,
+  type?: "primary" | "secondary",
+  classNames?: string,
+  onClick: () => void
+}
+
+
+const Button = ({ children, type = "primary", classNames, onClick }: ButtonProps) => {
+  return (
+    <StyledButton className={`${roboto.className} ${type} ${classNames}`}
+      onClick={onClick}
+    >
+      {children}
+    </StyledButton>
+  );
+};
 
 const StyledButton = styled.button`
   display: flex;
@@ -12,7 +31,7 @@ const StyledButton = styled.button`
   border: var(--button-border);
   font-size: 16px;
   line-height: 24px;
-  a:nth-child(1) {
+  a:nth-of-type(1) {
     translate: 0 5%;
   }
   &.primary {
@@ -22,15 +41,7 @@ const StyledButton = styled.button`
   &.secondary{
     background-color: white;
     color: var(--primary-blue);
+    box-shadow: 0px 4px 8px rgba(38, 50, 56, 0.1), 0px 2px 4px rgba(38, 50, 56, 0.11), 0px 0px 2px rgba(38, 50, 56, 0.12);
   }
 `;
-
-const Button = ({ children, type = "primary" }) => {
-  return (
-    <StyledButton className={`${roboto.className} ${type}`}>
-      {children}
-    </StyledButton>
-  );
-};
-
 export default Button;

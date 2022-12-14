@@ -101,7 +101,7 @@ const StyledContactLabels = styled.section`
         }
       }
     }
-    .contact-method:first-child{
+    .contact-method:first-of-type{
         border: none;
     }
 

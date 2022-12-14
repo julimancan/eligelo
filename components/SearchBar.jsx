@@ -5,7 +5,7 @@ import { Roboto } from "@next/font/google";
 import styled from "@emotion/styled";
 const roboto = Roboto({ weight: "500" });
 
-const SearchBar = ({ resultsPage = false }) => {
+const SearchBar = () => {
   const router = useRouter();
 
   const handleSearch = (event) => {

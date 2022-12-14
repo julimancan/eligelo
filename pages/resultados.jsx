@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import ProductCard from "../components/ProductCard";
 import SearchBar from "../components/SearchBar";
 import { getAnyResultsFromText } from "../sanity/queries/pages/resultados";
+import Filters from "../components/Resultados/Filters"
 
 export const getServerSideProps = async ({ query }) => {
   const { search } = query;
@@ -30,13 +31,19 @@ const Resultados = () => {
   console.log(searchResults);
   return (
     <StyledResults>
-      <SearchBar resultsPage={true} />
-      {!searchResults.length && <h1>no se encontraron resultados</h1>}
-      <ul>
-        {searchResults?.map((item, index) => (
-          <ProductCard key={index} product={item} />
-        ))}
-      </ul>
+      <SearchBar />
+      {!searchResults.length ? (
+        <h1>no se encontraron resultados</h1>
+      ) : (
+        <>
+          <Filters></Filters>
+          <ul>
+            {searchResults.map((item, index) => (
+              <ProductCard key={index} product={item} />
+            ))}
+          </ul>
+        </>
+      )}
     </StyledResults>
   );
 };
@@ -53,6 +60,5 @@ const StyledResults = styled.main`
       margin: 0 auto;
     }
   }
-
 `;
 export default Resultados;

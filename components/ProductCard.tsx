@@ -48,7 +48,7 @@ const ProductCard = ({ product, type = "vertical" }: ProductCardProps) => {
             {product.mileage && <p className="mileage">{product.mileage} km</p>}
           </div>
         </section>
-        <h3 className="price">${product.price} COP</h3>
+        <h3 className="price">${product.price.toLocaleString()} COP</h3>
         <section className="contact">
           <Button type="secondary">Más información</Button>
         </section>
