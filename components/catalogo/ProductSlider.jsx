@@ -1,6 +1,6 @@
+import styled from "@emotion/styled";
 import Link from "next/link";
 import React from "react";
-import styled from "styled-components";
 import ProductCard from "../ProductCard";
 
 const ProductSlider = ({ products, link, productName }) => {

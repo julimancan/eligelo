@@ -1,10 +1,7 @@
 import Image from "next/image";
-import styled from "styled-components";
 import Button from "./Button";
+import styled from "@emotion/styled";
 
-interface Image {
-  image: string
-}
 
 interface Brand {
   name: string
@@ -13,7 +10,7 @@ interface Model {
   name: string
 }
 interface ProductInt {
-  image: Image
+  image: string
   brand: Brand
   model: Model
   year: number
@@ -32,7 +29,7 @@ const ProductCard = ({ product, type = "vertical" }: ProductCardProps) => {
     <StyledCard className={type}>
       {product.image ? (
         <Image
-          src={product.image.image}
+          src={product.image}
           className="image"
           alt={`${product.year} - ${product.brand.name} - ${product.model.name}`}
           width={200}

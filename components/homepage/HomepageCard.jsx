@@ -1,6 +1,6 @@
+import styled from "@emotion/styled";
 import Link from "next/link";
 import React from "react";
-import styled from "styled-components";
 import LocalPictureComponent from "../LocalPictureComponent";
 
 const HomepageCard = ({ productName, link, background, product }) => {

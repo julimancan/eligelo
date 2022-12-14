@@ -4,7 +4,7 @@ import SearchBar from "../components/SearchBar";
 import Logo from "/public/logo.svg";
 import { getHomepageContent } from "../sanity/queries/pages/homepage";
 import Seo from "../components/layout/header/Seo";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import HomepageCard from "../components/homepage/HomepageCard";
 import LocalPictureComponent from "../components/LocalPictureComponent";
 

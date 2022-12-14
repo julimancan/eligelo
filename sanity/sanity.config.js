@@ -17,7 +17,7 @@ import preguntasFrecuentes from "./schemas/pages/preguntasFrecuentes";
 
 export const sanityConfig = {
   projectId: process.env.SANITY_PROJECT_ID,
-  dataset: process.env.SANITY_DATASET,
+  dataset: process.env.SANITY_DATASET_NAME,
   apiVersion: "2021-10-21",
   title: "Elígelo",
   basePath: "/admin",

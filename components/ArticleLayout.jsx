@@ -1,6 +1,6 @@
+import styled from "@emotion/styled";
 import Image from "next/image";
 import React from "react";
-import styled from "styled-components";
 
 const ArticleLayout = ({ image, children , className}) => {
   return (

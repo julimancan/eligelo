@@ -2,7 +2,7 @@ import { dehydrate, QueryClient, useQuery } from "@tanstack/react-query";
 import { getSiteSettings } from "../sanity/queries/siteSettings";
 import { getQuienesSomosContent } from "../sanity/queries/pages/quienesSomos";
 import Seo from "../components/layout/header/Seo";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import Logo from "../public/logo.svg";
 import Ellipse from "../public/shapes/ellipse.svg";
 import Image from "next/image";

@@ -1,8 +1,8 @@
 import { useRouter } from "next/router";
 import BlueCarSearch from "/public/icons/blue-car-search.svg";
 import SearchIcon from "/public/icons/search.svg";
-import styled from "styled-components";
 import { Roboto } from "@next/font/google";
+import styled from "@emotion/styled";
 const roboto = Roboto({ weight: "500" });
 
 const SearchBar = ({ resultsPage = false }) => {
