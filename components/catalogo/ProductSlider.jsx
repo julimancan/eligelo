@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
 import styled from "styled-components";
-import CatalogoCard from "./CatalogoCard";
+import ProductCard from "../ProductCard";
 
 const ProductSlider = ({ products, link, productName }) => {
   return (
@@ -12,9 +12,9 @@ const ProductSlider = ({ products, link, productName }) => {
       </header>
       <ul className="list-products">
         {products.map((product, index) => (
-          <CatalogoCard
+          <ProductCard
             key={`${product.brand.name}${index}}`}
-            content={product}
+            product={product}
           />
         ))}
       </ul>
