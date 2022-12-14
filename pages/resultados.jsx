@@ -1,5 +1,7 @@
+import styled from "@emotion/styled";
 import { dehydrate, QueryClient, useQuery } from "@tanstack/react-query";
 import { useRouter } from "next/router";
+import ProductCard from "../components/ProductCard";
 import SearchBar from "../components/SearchBar";
 import { getAnyResultsFromText } from "../sanity/queries/pages/resultados";
 
@@ -20,25 +22,26 @@ export const getServerSideProps = async ({ query }) => {
 };
 
 const Resultados = () => {
-  const {query} = useRouter();
-  const {search} = query;
+  const { query } = useRouter();
+  const { search } = query;
   const { data: searchResults } = useQuery(["searchResults"], () =>
     getAnyResultsFromText(search)
   );
-  console.log(!searchResults.length)
+  console.log(searchResults);
   return (
     <main>
-      <SearchBar resultsPage={true}/>
+      <SearchBar resultsPage={true} />
       {!searchResults.length && <h1>no se encontraron resultados</h1>}
-      {searchResults?.map((item, index) => (
-        <div key={index}>
-          <h1>{item.brand?.name}</h1>
-          <h2>{item.model?.name}</h2>
-          <p>{item._type}</p>
-        </div>
-      ))}
+      <ul>
+        {searchResults?.map((item, index) => (
+          <li key={index}>
+            <ProductCard product={item} />
+          </li>
+        ))}
+      </ul>
     </main>
   );
 };
 
+const StyledResults = styled
 export default Resultados;
