@@ -25,7 +25,8 @@ hero,
   title,
   "services": name[] {
     "image": ${imageObject},
-    text
+    text,
+    title
   }
 },
 `;
