@@ -1,6 +1,6 @@
 export const sanityClientConfig = {
-  dataset: "production",
-  projectId: "yqg1fsel",  
+  dataset: process.env.SANITY_DATASET_NAME,
+  projectId: process.env.SANITY_PROJECT_ID,  
   useCdn:
     typeof document !== 'undefined' && process.env.NODE_ENV === 'production',
   // useCdn == true gives fast, cheap responses using a globally distributed cache.

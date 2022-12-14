@@ -16,8 +16,8 @@ import {visionTool} from '@sanity/vision'
 import preguntasFrecuentes from "./schemas/pages/preguntasFrecuentes";
 
 export const sanityConfig = {
-  projectId: "yqg1fsel",
-  dataset: "production",
+  projectId: process.env.SANITY_PROJECT_ID,
+  dataset: process.env.SANITY_DATASET,
   apiVersion: "2021-10-21",
   title: "Elígelo",
   basePath: "/admin",
@@ -27,7 +27,7 @@ export const sanityConfig = {
     }),
     visionTool({
       defaultApiVersion: '2022-08-15', // optional
-      defaultDataset: 'production'    // optional
+      defaultDataset: process.env.SANITY_DATASET_NAME    // optional
     }),
 
   ],
