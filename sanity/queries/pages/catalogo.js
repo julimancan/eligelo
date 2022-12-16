@@ -10,9 +10,8 @@ const catalogoItem = `
 year,
 price,
 mileage,
-"image": images[0] {
-  "image": image.asset->url
-}
+"image": images[0].image.asset->url
+
 `
 const catalogoItems = `
   SEO,

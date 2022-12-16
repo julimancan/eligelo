@@ -4,7 +4,7 @@ import { getSiteSettings } from "../sanity/queries/siteSettings";
 import Logo from "/public/logo.svg";
 import { Inter } from "@next/font/google";
 import SearchBar from "../components/SearchBar";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import Seo from "../components/layout/header/Seo";
 import ProductSlider from "../components/catalogo/ProductSlider";
 import LocalPictureComponent from "../components/LocalPictureComponent";
@@ -52,7 +52,7 @@ const Catalogo = () => {
           {pageContent.cars && (
             <ProductSlider
               products={pageContent.cars}
-              link="/resultados?search=*carros*"
+              link="/resultados?search=*carro*"
               productName="Carros"
             />
           )}
@@ -60,7 +60,7 @@ const Catalogo = () => {
           {pageContent.motos && (
             <ProductSlider
               products={pageContent.motos}
-              link="/resultados?search=*motos*"
+              link="/resultados?search=*moto*"
               productName="Motos"
             />
           )}
@@ -68,7 +68,7 @@ const Catalogo = () => {
           {pageContent.bikes && (
             <ProductSlider
               products={pageContent.bikes}
-              link="/resultados?search=*bicicletas*"
+              link="/resultados?search=*bicicleta*"
               productName="Bicicletas"
             />
           )}
@@ -76,7 +76,7 @@ const Catalogo = () => {
           {pageContent.scooters && (
             <ProductSlider
               products={pageContent.scooters}
-              link="/resultados?search=*patinetas*"
+              link="/resultados?search=*patineta*"
               productName="Patinetas"
             />
           )}

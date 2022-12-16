@@ -1,16 +1,38 @@
 import Image from "next/image";
-import React from "react";
-import styled from "styled-components";
-import Button from "../Button";
+import Button from "./Button";
+import styled from "@emotion/styled";
 
-const CatalogoCard = ({ content, type = "vertical" }) => {
+
+interface Brand {
+  name: string
+}
+interface Model {
+  name: string
+}
+export interface ProductInt {
+  type: string
+  image: string
+  brand: Brand
+  model: Model
+  year: number
+  mileage: number
+  price: number
+}
+
+type ProductCardProps = {
+  type?: "vertical",
+  product: ProductInt,
+
+}
+
+const ProductCard = ({ product, type = "vertical" }: ProductCardProps) => {
   return (
     <StyledCard className={type}>
-      {content.image ? (
+      {product.image ? (
         <Image
-          src={content.image.image}
+          src={product.image}
           className="image"
-          alt=""
+          alt={`${product.year} - ${product.brand.name} - ${product.model.name}`}
           width={200}
           height={200}
         />
@@ -20,14 +42,14 @@ const CatalogoCard = ({ content, type = "vertical" }) => {
       <section className="information">
         <section className="about">
           <h2>
-            {content.brand.name} {content.model.name}
+            {product.brand.name} {product.model.name}
           </h2>
           <div className="tags">
-            {content.year && <p className="year">{content.year}</p>}
-            {content.mileage && <p className="mileage">{content.mileage} km</p>}
+            {product.year && <p className="year">{product.year}</p>}
+            {product.mileage && <p className="mileage">{product.mileage} km</p>}
           </div>
         </section>
-        <h3 className="price">${content.price}COP</h3>
+        <h3 className="price">${product.price.toLocaleString()} COP</h3>
         <section className="contact">
           <Button type="secondary">Más información</Button>
         </section>
@@ -145,4 +167,4 @@ const StyledCard = styled.li`
   }
 `;
 
-export default CatalogoCard;
+export default ProductCard;

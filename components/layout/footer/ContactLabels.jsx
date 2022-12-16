@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import Celular from "../../../public/icons/celular.svg";
 import Whatsapp from "../../../public/icons/whatsapp.svg";
 import Email from "../../../public/icons/email.svg";
@@ -101,7 +101,7 @@ const StyledContactLabels = styled.section`
         }
       }
     }
-    .contact-method:first-child{
+    .contact-method:first-of-type{
         border: none;
     }
 

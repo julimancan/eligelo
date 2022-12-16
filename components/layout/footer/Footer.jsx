@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import Link from "next/link";
 import { getSiteSettings } from "../../../sanity/queries/siteSettings";
 import Seo from "../header/Seo";

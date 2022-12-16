@@ -1,6 +1,6 @@
 import { dehydrate, QueryClient, useQuery } from "@tanstack/react-query";
 import Image from "next/image";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import ArticleLayout from "../components/ArticleLayout";
 import ContactLabels from "../components/layout/footer/ContactLabels";
 import Seo from "../components/layout/header/Seo";

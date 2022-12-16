@@ -1,49 +1,41 @@
 import { useRouter } from "next/router";
 import BlueCarSearch from "/public/icons/blue-car-search.svg";
 import SearchIcon from "/public/icons/search.svg";
-import styled from "styled-components";
 import { Roboto } from "@next/font/google";
+import styled from "@emotion/styled";
+import { useState } from "react";
+
 const roboto = Roboto({ weight: "500" });
 
-const SearchBar = ({ resultsPage = false }) => {
+const SearchBar = () => {
   const router = useRouter();
+  const search = router.query.search?.split("*")[1];
+  console.log({router});
+  
 
-  const handleSearch = (event) => {
+  const [searchParams, setSearchParams] = useState(search);
+
+  const handleFormSubmit = (event) => {
     event.preventDefault();
-    let search = "";
-
-    // if (event.type === "change") {
-    //   search = `*${event.target.value}*`;
-    // } else {
-    search = `*${event.target[0].value}*`;
-    // }
-    router.push({ pathname: `/resultados/`, query: { search }, shallow: true });
-  };
+    const button = document.getElementById("search")
+    button.click()
+  }
   return (
-    <StyledSearchBar onSubmit={handleSearch} className={roboto.className}>
+    <StyledSearchBar className={roboto.className}
+      onSubmit={handleFormSubmit}
+    >
       <BlueCarSearch className="icon" />
-      {/* {resultsPage ? (
-        <input
-          placeholder="¿Qué vehiculo estas buscando?"
-          type="text"
-          name="search"
-          onChange={handleSearch}
-        />
-      ) : (
-        <input
-          placeholder="¿Qué vehiculo estas buscando?"
-          type="text"
-          name="search"
-        />
-      )} */}
+      
       <input
         placeholder="¿Qué vehiculo estas buscando?"
         type="text"
         name="search"
+        value={searchParams}
+        onChange={(event) => setSearchParams(event.currentTarget.value)}
       />
       <button className="button">
         <SearchIcon className="icon" />
-        Buscar
+        <a href={`/resultados?search=*${searchParams}*`} id="search">Buscar</a>
       </button>
     </StyledSearchBar>
   );
