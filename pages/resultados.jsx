@@ -55,14 +55,13 @@ const StyledResults = styled.main`
   padding-right: 1rem;
   position: relative;
   min-height: 45vh;
-  /* background-color: red; */
   .product-list {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(252px, 1fr));
+    grid-template-columns: repeat(auto-fit, 252px);
     gap: 1rem;
     padding: 0;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+    margin: 1rem 0;
+    place-content: center;
     li {
       margin: 0 auto;
     }
