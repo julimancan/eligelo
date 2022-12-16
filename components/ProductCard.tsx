@@ -9,7 +9,8 @@ interface Brand {
 interface Model {
   name: string
 }
-interface ProductInt {
+export interface ProductInt {
+  type: string
   image: string
   brand: Brand
   model: Model

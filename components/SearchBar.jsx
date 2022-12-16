@@ -17,7 +17,7 @@ const SearchBar = () => {
     // } else {
     search = `*${event.target[0].value}*`;
     // }
-    router.push({ pathname: `/resultados/`, query: { search }, shallow: true });
+    router.push({ pathname: `/resultados/`, query: { search }, shallow: false });
   };
   return (
     <StyledSearchBar onSubmit={handleSearch} className={roboto.className}>

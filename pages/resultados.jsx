@@ -5,6 +5,7 @@ import ProductCard from "../components/ProductCard";
 import SearchBar from "../components/SearchBar";
 import { getAnyResultsFromText } from "../sanity/queries/pages/resultados";
 import Filters from "../components/Resultados/Filters"
+import { useState } from "react";
 
 export const getServerSideProps = async ({ query }) => {
   const { search } = query;
@@ -28,7 +29,9 @@ const Resultados = () => {
   const { data: searchResults } = useQuery(["searchResults"], () =>
     getAnyResultsFromText(search)
   );
-  console.log(searchResults);
+
+  const [results, setResults] = useState(searchResults);
+
   return (
     <StyledResults>
       <SearchBar />
@@ -36,9 +39,9 @@ const Resultados = () => {
         <h1>no se encontraron resultados</h1>
       ) : (
         <>
-          <Filters></Filters>
-          <ul>
-            {searchResults.map((item, index) => (
+          <Filters results={results} setResults={setResults}/>
+          <ul className="product-list">
+            {results.map((item, index) => (
               <ProductCard key={index} product={item} />
             ))}
           </ul>
@@ -50,12 +53,16 @@ const Resultados = () => {
 
 const StyledResults = styled.main`
   padding-right: 1rem;
-  ul {
+  position: relative;
+  min-height: 45vh;
+  /* background-color: red; */
+  .product-list {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(252px, 1fr));
     gap: 1rem;
     padding: 0;
     margin-top: 1rem;
+    margin-bottom: 1rem;
     li {
       margin: 0 auto;
     }

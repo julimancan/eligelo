@@ -4,16 +4,16 @@ import { Roboto } from "@next/font/google";
 const roboto = Roboto({ weight: "500" });
 
 type ButtonProps = {
-  children: JSX.Element,
+  children: JSX.Element | string,
   type?: "primary" | "secondary",
   classNames?: string,
-  onClick: () => void
+  onClick?: () => void
 }
 
 
 const Button = ({ children, type = "primary", classNames, onClick }: ButtonProps) => {
   return (
-    <StyledButton className={`${roboto.className} ${type} ${classNames}`}
+    <StyledButton className={`${roboto.className} ${classNames}  ${type}`}
       onClick={onClick}
     >
       {children}
@@ -22,11 +22,10 @@ const Button = ({ children, type = "primary", classNames, onClick }: ButtonProps
 };
 
 const StyledButton = styled.button`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 16px;
-  height: 40px;
+  display: grid;
+  place-content: center;
+  padding: 0px 16px;
+  min-height: 40px;
   border-radius: var(--button-border-radius);
   border: var(--button-border);
   font-size: 16px;
