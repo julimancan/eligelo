@@ -4,7 +4,7 @@ import Seo from "../components/layout/header/Seo";
 import { getFaqContent } from "../sanity/queries/pages/preguntasFrecuentes";
 import { getSiteSettings } from "../sanity/queries/siteSettings";
 import Logo from "../public/logo.svg";
-import DropdownArrow from "../components/Resultados/DropdownArrow";
+import PreguntaItem from "../components/PreguntaItem";
 
 export const getStaticProps = async () => {
   const queryClient = new QueryClient();
@@ -32,42 +32,28 @@ const PreguntasFrecuentes = () => {
         <h1 className="title">{faqContent.titulo}</h1>
 
         <ul className="list-preguntas">
-          {
-            preguntas.map(pre => (
-              <li className="item-pregunta" key={pre.pregunta}>
-                <h2 className="pregunta">{pre.pregunta}</h2>
-                <p className="respuesta">{pre.respuesta}</p>
-                <DropdownArrow isOpen={false}/>
-                
-              </li>
-            ))
-          }
+          {preguntas.map((pre) => (
+            <PreguntaItem key={pre.pregunta} pre={pre} />
+          ))}
         </ul>
-
-
       </StyledPreguntasFrecuentes>
     </>
   );
 };
 
 const StyledPreguntasFrecuentes = styled.main`
+  padding: 0 !important;
   .logo,
   .title {
     margin: 1rem auto;
     width: fit-content;
   }
 
-  .item-pregunta{
-    position: relative;
-    width: 50%;
-    div{
-      top: 0;
-      background-color: var(--primary-blue);
-      &::after{
-        transform: translate(0,-5px);
-      background-color: var(--primary-blue);
-      }
-    }
+  .list-preguntas {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
   }
 
   @media (min-width: 900px) {
@@ -75,8 +61,12 @@ const StyledPreguntasFrecuentes = styled.main`
       display: none;
     }
     .title {
+      padding: 4rem 0 1.5rem ;
       font-size: 48px;
       line-height: 58px;
+    }
+    .list-preguntas{
+      padding: 1rem 7%;
     }
   }
 `;
