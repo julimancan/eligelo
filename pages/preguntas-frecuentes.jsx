@@ -42,7 +42,8 @@ const PreguntasFrecuentes = () => {
 };
 
 const StyledPreguntasFrecuentes = styled.main`
-  padding: 0 !important;
+  padding: 0  0 4.5rem;
+
   .logo,
   .title {
     margin: 1rem auto;
