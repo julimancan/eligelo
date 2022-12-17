@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Inter } from "@next/font/google";
 import { ProductInt } from "../ProductCard";
 import Dropdown from "./Dropdown";
+import Range from "./Range";
 
 const inter = Inter({ weight: "variable" });
 
@@ -69,6 +70,7 @@ const Filters = ({ results, setResults }: FiltersProps) => {
               selectedName={vehicleTypeInSpanish.name}
               type="vehicle-type"
           />
+          <Range title="Precio" min="10000000" max="20000000"/>
         </section>
       )}
     </StyledFilters>
