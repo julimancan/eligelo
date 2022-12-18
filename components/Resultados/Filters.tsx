@@ -78,6 +78,7 @@ const Filters = ({ results, setResults }: FiltersProps) => {
             title="Precio"
             min={10000000}
             max={20000000}
+            type="money"
             config={{ defaultMin: 0, defaultMax: 20000000 }}
           />
           <Range
@@ -90,6 +91,7 @@ const Filters = ({ results, setResults }: FiltersProps) => {
             title="Kilometraje"
             min={ 20000 }
             max={ 100000 }
+            type="km"
             config={{ defaultMin: 10000, defaultMax: 100000 }}
           />
         </section>
