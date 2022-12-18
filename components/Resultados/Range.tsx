@@ -1,18 +1,20 @@
 import React from "react";
 import styled from "@emotion/styled";
 import RangeSlider from "./RangeSlider";
+import { formatByType } from "../../lib/helpers";
 
 type RangeProps = {
   title: string;
   min: number;
   max: number;
+  type?: 'money' | 'km'
   config:{
     defaultMin: number;
     defaultMax: number;
   }
 };
 
-const Range = ({ title, min, max, config }: RangeProps) => {
+const Range = ({ title, min, max, type, config }: RangeProps) => {
   const [value, setValue] = React.useState({ min, max });
 
   return (
@@ -30,11 +32,11 @@ const Range = ({ title, min, max, config }: RangeProps) => {
       <section className="values">
         <div className="min">
           <p>Mínimo</p>
-          <div className="value">{value.min}</div>
+          <div className="value">{formatByType(value.min,type)}</div>
         </div>
         <div className="max">
           <p>Máximo</p>
-          <div className="value">{value.max}</div>
+          <div className="value">{formatByType(value.max,type)}</div>
         </div>
       </section>
     </StyledRange>
