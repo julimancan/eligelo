@@ -38,15 +38,17 @@ const Filters = ({ results, setResults }: FiltersProps) => {
     setShowFilterModal(true);
   };
   const vehicleTypeFilter = (value) => {
-    const newResults = results.filter(item => item.type === value)
+    const newResults = results.filter((item) => item.type === value);
     console.log(value);
-    setResults(newResults)
+    setResults(newResults);
   };
 
-  const vehicleType = results.map(result => result.type)[0];
+  const vehicleType = results.map((result) => result.type)[0];
 
-  const vehicleTypeInSpanish = vehicleTypeOptions.find(vehicle => vehicle.value === vehicleType)
-  
+  const vehicleTypeInSpanish = vehicleTypeOptions.find(
+    (vehicle) => vehicle.value === vehicleType
+  );
+
   return (
     <StyledFilters>
       <Button type="secondary" classNames="filter-button" onClick={openFilters}>
@@ -61,16 +63,23 @@ const Filters = ({ results, setResults }: FiltersProps) => {
             onClick={() => setShowFilterModal(false)}
           />
 
-          <Dropdown 
-              classNames={"vehicle-type"}
-              titleFont={inter.className}
-              title={"Tipo de Vehículo"}
-              options={vehicleTypeOptions.filter(option => option.name !== vehicleTypeInSpanish.name)}
-              onClick={vehicleTypeFilter}
-              selectedName={vehicleTypeInSpanish.name}
-              type="vehicle-type"
+          <Dropdown
+            classNames={"vehicle-type"}
+            titleFont={inter.className}
+            title={"Tipo de Vehículo"}
+            options={vehicleTypeOptions.filter(
+              (option) => option.name !== vehicleTypeInSpanish.name
+            )}
+            onClick={vehicleTypeFilter}
+            selectedName={vehicleTypeInSpanish.name}
+            type="vehicle-type"
           />
-          <Range title="Precio" min="10000000" max="20000000"/>
+          <Range
+            title="Precio"
+            min={10000000}
+            max={20000000}
+            config={{ defaultMin: 0, defaultMax: 20000000 }}
+          />
         </section>
       )}
     </StyledFilters>
@@ -107,7 +116,7 @@ const StyledFilters = styled.section`
       height: fit-content;
       max-height: 70px;
       display: grid;
-      gap: .5em;
+      gap: 0.5em;
     }
     .close-filter {
       background: var(--primary-blue);
