@@ -30,11 +30,11 @@ const Range = ({ title, min, max, config }: RangeProps) => {
       <section className="values">
         <div className="min">
           <p>Mínimo</p>
-          <div className="value">${value.min}</div>
+          <div className="value">{value.min}</div>
         </div>
         <div className="max">
           <p>Máximo</p>
-          <div className="value">${value.max}</div>
+          <div className="value">{value.max}</div>
         </div>
       </section>
     </StyledRange>

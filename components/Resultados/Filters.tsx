@@ -80,6 +80,18 @@ const Filters = ({ results, setResults }: FiltersProps) => {
             max={20000000}
             config={{ defaultMin: 0, defaultMax: 20000000 }}
           />
+          <Range
+            title="Año"
+            min={ 2017 }
+            max={ new Date().getFullYear() }
+            config={{ defaultMin: 2015, defaultMax: new Date().getFullYear() }}
+          />
+          <Range
+            title="Kilometraje"
+            min={ 20000 }
+            max={ 100000 }
+            config={{ defaultMin: 10000, defaultMax: 100000 }}
+          />
         </section>
       )}
     </StyledFilters>
