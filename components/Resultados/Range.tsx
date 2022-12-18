@@ -4,20 +4,24 @@ import RangeSlider from "./RangeSlider";
 
 type RangeProps = {
   title: string;
-  min: string;
-  max: string;
+  min: number;
+  max: number;
+  config:{
+    defaultMin: number;
+    defaultMax: number;
+  }
 };
 
-const Range = ({ title, min, max }: RangeProps) => {
-    const [value, setValue] = React.useState({ min: 5, max: 100 });
+const Range = ({ title, min, max, config }: RangeProps) => {
+  const [value, setValue] = React.useState({ min, max });
 
   return (
     <StyledRange>
       <h3>{title}</h3>
       {/* slider */}
       <RangeSlider
-        min={0}
-        max={100}
+        min={config.defaultMin}
+        max={config.defaultMax}
         step={1}
         value={value}
         onChange={setValue}
@@ -26,17 +30,36 @@ const Range = ({ title, min, max }: RangeProps) => {
       <section className="values">
         <div className="min">
           <p>Mínimo</p>
-          <div>{min}</div>
+          <div className="value">${value.min}</div>
         </div>
         <div className="max">
           <p>Máximo</p>
-          <div>{max}</div>
+          <div className="value">${value.max}</div>
         </div>
       </section>
     </StyledRange>
   );
 };
 
-const StyledRange = styled.section``;
+const StyledRange = styled.section`
+    h3{
+        margin-bottom: 1.2rem;
+    }
+  .values {
+    display: flex;
+    gap: 1.625rem;
+    p{
+        margin-bottom: .25rem;
+    }
+    .value {
+      display: flex;
+      justify-content: flex-end;
+      width: 156px;
+      padding: 0.5rem 1rem;
+      border: 1px solid #dedede;
+      border-radius: 8px;
+    }
+  }
+`;
 
 export default Range;
