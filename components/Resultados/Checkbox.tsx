@@ -21,7 +21,6 @@ const StyledCheckbox = styled.section`
   display: block;
   position: relative;
   padding-left: 2rem;
-  margin-bottom: 12px;
   cursor: pointer;
   line-height: 19px;
   -webkit-user-select: none;
@@ -70,7 +69,7 @@ const StyledCheckbox = styled.section`
 
   & .checkmark:after {
     left: calc(50% - 12px / 2 + 0px);
-    top: calc(50% - 9.4px / 2 - 2.2px);
+    top: calc(50% - 8px / 2 - 2px);
     width: 12.5px;
     height: 8px;
     border: solid white;

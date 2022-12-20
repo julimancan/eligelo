@@ -5,6 +5,8 @@ import { Inter } from "@next/font/google";
 import { ProductInt } from "../ProductCard";
 import Dropdown from "./Dropdown";
 import Range from "./Range";
+import Checkbox from "./Checkbox";
+import SelectSection from "./SelectSection";
 
 const inter = Inter({ weight: "variable" });
 
@@ -83,17 +85,38 @@ const Filters = ({ results, setResults }: FiltersProps) => {
           />
           <Range
             title="Año"
-            min={ 2017 }
-            max={ new Date().getFullYear() }
+            min={2017}
+            max={new Date().getFullYear()}
             config={{ defaultMin: 2015, defaultMax: new Date().getFullYear() }}
           />
           <Range
             title="Kilometraje"
-            min={ 20000 }
-            max={ 100000 }
+            min={20000}
+            max={100000}
             type="km"
             config={{ defaultMin: 10000, defaultMax: 100000 }}
           />
+
+          <hr className="divider" />
+
+          <section className="options">
+            <SelectSection
+              title="Transmisión"
+              options={["Manual", "Automática"]}
+            />
+
+            <SelectSection
+              title="Tracción"
+              options={["4x2", "4x4"]}
+            />
+
+            <SelectSection
+              title="Dirección"
+              options={["Hidraulica", "Manual"]}
+            />
+          </section>
+
+          <hr className="divider" />
         </section>
       )}
     </StyledFilters>
@@ -112,6 +135,7 @@ const StyledFilters = styled.section`
 
   .filter-modal {
     position: fixed;
+    overflow: auto;
     background-color: white;
     width: 100vw;
     height: 100vh;
@@ -150,6 +174,17 @@ const StyledFilters = styled.section`
         position: absolute;
         border-radius: 4px;
       }
+    }
+    .divider {
+      margin: 1.5rem 0;
+      height: 0;
+      width: 100%;
+      border: 0.5px solid var(--gray-3);
+    }
+    .options{
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
     }
   }
 `;
