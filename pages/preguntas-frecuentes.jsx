@@ -23,7 +23,7 @@ const PreguntasFrecuentes = () => {
   const { data: faqContent } = useQuery(["faq"], getFaqContent);
 
   const { SEO, preguntas } = faqContent;
-  
+
   return (
     <>
       <Seo description={SEO.description} title={SEO.title} />
@@ -33,7 +33,7 @@ const PreguntasFrecuentes = () => {
 
         <ul className="list-preguntas">
           {preguntas.map((preguntaItem) => (
-            <PreguntaItem key={preguntaItem.pregunta} pre={preguntaItem} />
+            <PreguntaItem key={preguntaItem.pregunta} preguntaObj={preguntaItem} />
           ))}
         </ul>
       </StyledPreguntasFrecuentes>
