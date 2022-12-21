@@ -23,7 +23,7 @@ const PreguntasFrecuentes = () => {
   const { data: faqContent } = useQuery(["faq"], getFaqContent);
 
   const { SEO, preguntas } = faqContent;
-  console.log({ faqContent });
+  
   return (
     <>
       <Seo description={SEO.description} title={SEO.title} />
@@ -32,8 +32,8 @@ const PreguntasFrecuentes = () => {
         <h1 className="title">{faqContent.titulo}</h1>
 
         <ul className="list-preguntas">
-          {preguntas.map((pre) => (
-            <PreguntaItem key={pre.pregunta} pre={pre} />
+          {preguntas.map((preguntaItem) => (
+            <PreguntaItem key={preguntaItem.pregunta} pre={preguntaItem} />
           ))}
         </ul>
       </StyledPreguntasFrecuentes>
