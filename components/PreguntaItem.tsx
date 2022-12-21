@@ -3,13 +3,13 @@ import React, { useState } from "react";
 import DropdownArrow from "./Resultados/DropdownArrow";
 
 type PreguntaItemProps = {
-    pre: {
+    pregunta: {
         pregunta: string,
         respuesta: string
     },
 }
 
-const PreguntaItem = ({pre}:PreguntaItemProps) => {
+const PreguntaItem = ({pregunta}:PreguntaItemProps) => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <StyledItem
@@ -17,8 +17,8 @@ const PreguntaItem = ({pre}:PreguntaItemProps) => {
       onClick={() => setIsOpen(!isOpen)}
       isOpen={isOpen}
     >
-      <h2 className="pregunta">{pre.pregunta}</h2>
-      <p className="respuesta">{pre.respuesta}</p>
+      <h2 className="pregunta">{pregunta.pregunta}</h2>
+      <p className="respuesta">{pregunta.respuesta}</p>
       <DropdownArrow isOpen={isOpen} />
     </StyledItem>
   );
