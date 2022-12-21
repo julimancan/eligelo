@@ -3,13 +3,13 @@ import React, { useState } from "react";
 import DropdownArrow from "./Resultados/DropdownArrow";
 
 type PreguntaItemProps = {
-    pregunta: {
+    preguntaObj: {
         pregunta: string,
         respuesta: string
     },
 }
 
-const PreguntaItem = ({pregunta}:PreguntaItemProps) => {
+const PreguntaItem = ({preguntaObj}:PreguntaItemProps) => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <StyledItem
@@ -17,9 +17,9 @@ const PreguntaItem = ({pregunta}:PreguntaItemProps) => {
       onClick={() => setIsOpen(!isOpen)}
       isOpen={isOpen}
     >
-      <h2 className="pregunta">{pregunta.pregunta}</h2>
-      <p className="respuesta">{pregunta.respuesta}</p>
-      <DropdownArrow isOpen={isOpen} />
+      <h2 className="pregunta">{preguntaObj.pregunta}</h2>
+      <p className="respuesta">{preguntaObj.respuesta}</p>
+      <DropdownArrow isOpen={isOpen} className="pregunta-dropdown" />
     </StyledItem>
   );
 };
@@ -40,8 +40,7 @@ const StyledItem = styled.li<StyledItemProps>`
   height: ${({ isOpen }) => (isOpen ? `auto` : "57px")};
   transition: height 0.15s;
 
-  /* DropdownArrow */
-  div {
+  .pregunta-dropdown {
     top: 1rem;
     right: 2rem;
     background-color: var(--primary-blue);
