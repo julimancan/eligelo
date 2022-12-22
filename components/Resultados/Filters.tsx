@@ -39,20 +39,21 @@ const Filters = ({ results, setResults }: FiltersProps) => {
     setShowFilterModal(true);
   };
   const vehicleTypeFilter = (value) => {
-    const newResults = results.filter((item) => item.type === value);
+    const newResults = results.filter(item => item.type === value);
     console.log(value);
     setResults(newResults);
   };
 
-  const vehicleType = results.map((result) => result.type)[0];
+  const vehicleType = results.map(result => result.type)[0];
 
-  const vehicleTypeInSpanish = vehicleTypeOptions.find(
-    (vehicle) => vehicle.value === vehicleType
-  );
+  const vehicleTypeInSpanish = vehicleTypeOptions.find(vehicle => vehicle.value === vehicleType);
 
   return (
     <StyledFilters>
-      <Button type="secondary" classNames="filter-button" onClick={openFilters}>
+      <Button
+        type="secondary"
+        classNames="filter-button"
+        onClick={openFilters}>
         <>Filtros</>
       </Button>
 
@@ -180,7 +181,7 @@ const StyledFilters = styled.section`
       width: 100%;
       border: 0.5px solid var(--gray-3);
     }
-    .options{
+    .options {
       display: flex;
       flex-direction: column;
       gap: 2rem;
