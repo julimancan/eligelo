@@ -1,31 +1,33 @@
 import Image from "next/image";
 import Button from "./Button";
 import styled from "@emotion/styled";
-
+import Link from "next/link";
 
 interface Brand {
-  name: string
+  name: string;
 }
 interface Model {
-  name: string
+  name: string;
 }
 export interface ProductInt {
-  type: string
-  image: string
-  brand: Brand
-  model: Model
-  year: number
-  mileage: number
-  price: number
+  type: string;
+  image: string;
+  brand: Brand;
+  model: Model;
+  year: number;
+  mileage: number;
+  price: number;
+  slug: string
 }
 
 type ProductCardProps = {
-  type?: "vertical",
-  product: ProductInt,
-
-}
+  type?: "vertical";
+  product: ProductInt;
+};
 
 const ProductCard = ({ product, type = "vertical" }: ProductCardProps) => {
+  console.log({product});
+  
   return (
     <StyledCard className={type}>
       {product.image ? (
@@ -51,7 +53,9 @@ const ProductCard = ({ product, type = "vertical" }: ProductCardProps) => {
         </section>
         <h3 className="price">${product.price.toLocaleString()} COP</h3>
         <section className="contact">
-          <Button type="secondary">Más información</Button>
+          <Link href={`vehiculos/${product.slug}`}>
+            <Button type="secondary">Más información</Button>
+          </Link>
         </section>
       </section>
     </StyledCard>
@@ -160,8 +164,8 @@ const StyledCard = styled.li`
     }
   }
 
-  @media (min-width: 900px){
-    .information{
+  @media (min-width: 900px) {
+    .information {
       padding: 1.25rem;
     }
   }

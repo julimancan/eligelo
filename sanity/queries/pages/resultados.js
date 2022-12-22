@@ -1,37 +1,37 @@
 import { sanityClient } from "../../sanity.server";
 
-const brandRef = `"brand": brand -> {name}`;
-const modelRef = `"model": model -> {name}`;
+export const brandRef = `"brand": brand -> {name}`;
+export const modelRef = `"model": model -> {name}`;
 
-const brandName = `brand._ref in *[_type=="brand" && name match $searchText]._id`
+const brandName = `brand._ref in *[_type=="brand" && name match $searchText]._id`;
 
 const carsByBrandName = `_type == "car" && ${brandName}`;
 const motosByBrandName = `_type == "moto" && ${brandName}`;
 const bikesByBrandName = `_type == "bici" && ${brandName}`;
 const scootersByBrandName = `_type == "scooter" && ${brandName}`;
 
-const modelName = `model._ref in *[_type=="model" && name match $searchText]._id`
+const modelName = `model._ref in *[_type=="model" && name match $searchText]._id`;
 
 const carsByModelName = `_type == "car" && ${modelName}`;
 const motosByModelName = `_type == "moto" && ${modelName}`;
 const bikesByModelName = `_type == "bici" && ${modelName}`;
 const scootersByModelName = `_type == "scooter" && ${modelName}`;
 
-const fuelType = `fuelType match $searchText`
+const fuelType = `fuelType match $searchText`;
 
 const carsByFuelTypeName = `_type == "car" && ${fuelType}`;
 const motosByFuelTypeName = `_type == "moto" && ${fuelType}`;
 const bikesByFuelTypeName = `_type == "bici" && ${fuelType}`;
 const scootersByFuelTypeName = `_type == "scooter" && ${fuelType}`;
 
-const vehicleType = `type match $searchText`
+const vehicleType = `type match $searchText`;
 
 const carsByVehicleType = `_type == "car" && ${vehicleType}`;
 const motosByVehicleType = `_type == "moto" && ${vehicleType}`;
 const bikesByVehicleType = `_type == "bici" && ${vehicleType}`;
 const scootersByVehicleType = `_type == "scooter" && ${vehicleType}`;
 
-const tagType = `tags match $searchText`
+const tagType = `tags match $searchText`;
 
 const carsByTagType = `_type == "car" && ${tagType}`;
 const motosByTagType = `_type == "moto" && ${tagType}`;
@@ -51,7 +51,9 @@ const searchAnyResults = `*[${carsByBrandName} || ${motosByBrandName} || ${bikes
     "type": _type,
     year,
     mileage,
-    price
+    price,
+    "slug": slug.current,
+
   }`;
 
 export const getAnyResultsFromText = async (searchText) => {
