@@ -8,13 +8,14 @@ type RangeProps = {
   min: number;
   max: number;
   type?: 'money' | 'km'
+  step?: number
   config:{
     defaultMin: number;
     defaultMax: number;
   }
 };
 
-const Range = ({ title, min, max, type, config }: RangeProps) => {
+const Range = ({ title, min, max, type, config, step = 1 }: RangeProps) => {
   const [value, setValue] = useState({ min, max });
 
   return (
@@ -24,7 +25,7 @@ const Range = ({ title, min, max, type, config }: RangeProps) => {
       <RangeSlider
         min={config.defaultMin}
         max={config.defaultMax}
-        step={1}
+        step={step}
         value={value}
         onChange={setValue}
       />
