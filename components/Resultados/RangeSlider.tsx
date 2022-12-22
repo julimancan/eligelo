@@ -84,28 +84,28 @@ const RangeSlider = ({ min, max, value, step, onChange }:RangeSliderProps) => {
 
 const StyledRangeSlider = styled.div`
   --thumb-size: 16px;
-
+  width: 100%;
   position: relative;
   display: flex;
   align-items: center;
   margin: 1rem 0;
 
   .input-wrapper {
-    width: calc(100% + 16px);
-    margin: 0 calc(16px/ -2);
+    width: calc(100% + var(--thumb-size));
+    margin: 0 calc(var(--thumb-size)/ -2);
     position: absolute;
-    height: 16px;
+    height: var(--thumb-size);
   }
 
   .control-wrapper {
-    width: 100%;
+    width: calc(100% - var(--thumb-size));
     position: absolute;
-    height: 16px;
+    height: var(--thumb-size);
   }
 
   .input {
     position: absolute;
-    width: 100%;
+    width: calc(100% - var(--thumb-size));
     pointer-events: none;
     appearance: none;
     height: 100%;
@@ -134,12 +134,11 @@ const StyledRangeSlider = styled.div`
     &::-ms-thumb {
       appearance: none;
       pointer-events: all;
-      width: 16px;
-      height: 16px;
+      width: var(--thumb-size);
+      height: var(--thumb-size);
       border-radius: 0px;
       border: 0 none;
       cursor: grab;
-      background-color: red;
 
       &:active {
         cursor: grabbing;
@@ -149,12 +148,11 @@ const StyledRangeSlider = styled.div`
     &::-moz-range-thumb {
       appearance: none;
       pointer-events: all;
-      width: 16px;
-      height: 16px;
+      width: var(--thumb-size);
+      height: var(--thumb-size);
       border-radius: 0px;
       border: 0 none;
       cursor: grab;
-      background-color: red;
 
       &:active {
         cursor: grabbing;
@@ -164,12 +162,11 @@ const StyledRangeSlider = styled.div`
     &::-webkit-slider-thumb {
       appearance: none;
       pointer-events: all;
-      width: 16px;
-      height: 16px;
+      width: var(--thumb-size);
+      height: var(--thumb-size);
       border-radius: 0px;
       border: 0 none;
       cursor: grab;
-      background-color: red;
 
       &:active {
         cursor: grabbing;
@@ -199,7 +196,7 @@ const StyledRangeSlider = styled.div`
     position: absolute;
     background: var(--blue-2);
     top: 50%;
-    margin-left: calc(16px/ -2);
+    margin-left: calc(var(--thumb-size)/ -2);
     transform: translate3d(0, -50%, 0);
     z-index: 2;
   }
