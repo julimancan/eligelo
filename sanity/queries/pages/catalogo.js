@@ -10,7 +10,9 @@ const catalogoItem = `
 year,
 price,
 mileage,
-"image": images[0].image.asset->url
+"image": images[0].image.asset->url,
+"slug": slug.current,
+
 
 `
 const catalogoItems = `
