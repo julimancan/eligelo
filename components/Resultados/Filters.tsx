@@ -70,7 +70,7 @@ const Filters = ({ results, setResults }: FiltersProps) => {
             titleFont={inter.className}
             title={"Tipo de Vehículo"}
             options={vehicleTypeOptions.filter(
-              (option) => option.name !== vehicleTypeInSpanish.name
+              option => option.name !== vehicleTypeInSpanish.name
             )}
             onClick={vehicleTypeFilter}
             selectedName={vehicleTypeInSpanish.name}
@@ -90,7 +90,10 @@ const Filters = ({ results, setResults }: FiltersProps) => {
               title="Año"
               min={2017}
               max={new Date().getFullYear()}
-              config={{ defaultMin: 2015, defaultMax: new Date().getFullYear() }}
+              config={{
+                defaultMin: 2015,
+                defaultMax: new Date().getFullYear(),
+              }}
             />
             <Range
               title="Kilometraje"
@@ -117,11 +120,27 @@ const Filters = ({ results, setResults }: FiltersProps) => {
 
             <SelectSection
               title="Dirección"
-              options={["Hidraulica", "Manual"]}
+              options={["hidráulica", "Manual"]}
             />
           </section>
 
           <hr className="divider" />
+
+          <section className="otros-detalles">
+            <SelectSection
+              title="Otros detalles"
+              options={["Aire acondicionado", "Frenos ABS"]}
+            />
+          </section>
+
+          <section className="buttons">
+            <Button classNames="btn-add-filters">Agregar filtros</Button>
+            <Button
+              classNames="btn-remove-filters"
+              type="secondary">
+              Eliminar filtros
+            </Button>
+          </section>
         </section>
       )}
     </StyledFilters>
@@ -186,7 +205,7 @@ const StyledFilters = styled.section`
       width: 100%;
       border: 0.5px solid var(--gray-3);
     }
-    .ranges{
+    .ranges {
       margin-top: 2rem;
       display: flex;
       flex-direction: column;
@@ -196,6 +215,24 @@ const StyledFilters = styled.section`
       display: flex;
       flex-direction: column;
       gap: 2rem;
+    }
+    .otros-detalles {
+      margin-bottom: 4rem;
+    }
+    .buttons {
+      margin-bottom: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      .btn-add-filters {
+        width: 100%;
+        box-shadow: 0px 4px 8px rgba(38, 50, 56, 0.1),
+          0px 2px 4px rgba(38, 50, 56, 0.11), 0px 0px 2px rgba(38, 50, 56, 0.12);
+      }
+      .btn-remove-filters{
+        width: 100%;
+        box-shadow: none;
+      }
     }
   }
 `;
