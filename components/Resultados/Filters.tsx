@@ -83,6 +83,7 @@ const Filters = ({ results, setResults }: FiltersProps) => {
               min={10000000}
               max={20000000}
               type="money"
+              step={500000}
               config={{ defaultMin: 0, defaultMax: 20000000 }}
             />
             <Range
@@ -96,6 +97,7 @@ const Filters = ({ results, setResults }: FiltersProps) => {
               min={20000}
               max={100000}
               type="km"
+              step={1000}
               config={{ defaultMin: 10000, defaultMax: 100000 }}
             />
           </section>
