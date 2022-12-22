@@ -34,7 +34,9 @@ const Resultados = () => {
 
   return (
     <StyledResults>
-      <SearchBar />
+      <section className="search">
+        <SearchBar />
+      </section>
       {!searchResults.length ? (
         <h1>no se encontraron resultados</h1>
       ) : (
@@ -62,6 +64,7 @@ const StyledResults = styled.main`
   padding-right: 1rem;
   position: relative;
   min-height: 45vh;
+
   .product-list {
     display: grid;
     grid-template-columns: repeat(auto-fit, 252px);
@@ -75,6 +78,10 @@ const StyledResults = styled.main`
   }
 
   @media (min-width: 900px) {
+    .search{
+      padding: 2.5rem 10% 0;
+    }
+
     .main-content {
       display: flex;
       padding: 2.5rem 0 0 2.5rem;
