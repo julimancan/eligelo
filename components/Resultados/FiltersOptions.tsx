@@ -45,7 +45,7 @@ const FiltersOptions = ({
 }: FiltersOptionsProps) => {
   return (
     <StyledFiltersOptions className={type}>
-      <h2 className={inter.className}>Filtros</h2>
+      <h2 className={`${inter.className} title`}>Filtros</h2>
 
       {!!setShowFilterModal && (
         <div
@@ -149,6 +149,19 @@ const StyledFiltersOptions = styled.section`
     grid-template-columns: 1fr;
     padding: 1rem 5%;
     background-color: white;
+    h2.title {
+      font-weight: 500;
+      font-size: 18px;
+      line-height: 24px;
+      margin: 0 auto;
+    }
+    .otros-detalles {
+      margin-bottom: 4rem;
+    }
+  }
+
+  h2.title {
+    margin-bottom: 1.2rem;
   }
 
   h3 {
@@ -168,8 +181,8 @@ const StyledFiltersOptions = styled.section`
     height: 4px;
     rotate: 45deg;
     position: absolute;
-    top: 1rem;
-    right: 1rem;
+    top: 1.5rem;
+    right: 1.5rem;
     border-radius: 4px;
     &:after {
       content: "";
@@ -198,7 +211,7 @@ const StyledFiltersOptions = styled.section`
     gap: 2rem;
   }
   .otros-detalles {
-    margin-bottom: 4rem;
+    margin-bottom: 2rem;
   }
   .buttons {
     margin-bottom: 1rem;
