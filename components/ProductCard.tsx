@@ -118,7 +118,7 @@ const StyledCard = styled.li`
   &.vertical {
     flex-direction: column;
     min-width: 252px;
-    width: 252px;
+    width: 100%;
     height: 346px;
 
     .image {
