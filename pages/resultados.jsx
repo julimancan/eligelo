@@ -84,12 +84,13 @@ const StyledResults = styled.main`
 
     .main-content {
       display: flex;
-      padding: 2.5rem 0 0 2.5rem;
+      padding: 2.5rem 2.5rem 0 2.5rem;
       gap: 4rem;
     }
     .product-list {
       flex: 1;
-      grid-template-columns: repeat(auto-fit, 252px);
+      grid-template-columns: repeat(auto-fill, minmax( 15rem, 1fr ));
+      row-gap: 2.5rem;
       grid-auto-rows: min-content;
       place-items: center start;
       place-content: unset;
