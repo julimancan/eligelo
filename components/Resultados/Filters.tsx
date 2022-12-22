@@ -5,7 +5,6 @@ import { Inter } from "@next/font/google";
 import { ProductInt } from "../ProductCard";
 import Dropdown from "./Dropdown";
 import Range from "./Range";
-import Checkbox from "./Checkbox";
 import SelectSection from "./SelectSection";
 
 const inter = Inter({ weight: "variable" });
