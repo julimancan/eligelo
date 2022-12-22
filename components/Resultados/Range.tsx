@@ -1,7 +1,7 @@
-import React from "react";
 import styled from "@emotion/styled";
 import RangeSlider from "./RangeSlider";
 import { formatByType } from "../../lib/helpers";
+import { useState } from "react";
 
 type RangeProps = {
   title: string;
@@ -15,12 +15,12 @@ type RangeProps = {
 };
 
 const Range = ({ title, min, max, type, config }: RangeProps) => {
-  const [value, setValue] = React.useState({ min, max });
+  const [value, setValue] = useState({ min, max });
 
   return (
     <StyledRange>
       <h3>{title}</h3>
-      {/* slider */}
+      
       <RangeSlider
         min={config.defaultMin}
         max={config.defaultMax}

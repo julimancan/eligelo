@@ -1,4 +1,4 @@
-import React from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import styled from "@emotion/styled";
 
 type RangeSliderProps = {
@@ -9,18 +9,18 @@ type RangeSliderProps = {
     max: number;
   };
   step: number;
-  onChange: React.Dispatch<
-    React.SetStateAction<{
+  onChange: Dispatch<
+    SetStateAction<{
       min: number;
       max: number;
     }>
   >;
 };
 const RangeSlider = ({ min, max, value, step, onChange }:RangeSliderProps) => {
-    const [minValue, setMinValue] = React.useState(value ? value.min : min);
-    const [maxValue, setMaxValue] = React.useState(value ? value.max : max);
+    const [minValue, setMinValue] = useState(value ? value.min : min);
+    const [maxValue, setMaxValue] = useState(value ? value.max : max);
   
-    React.useEffect(() => {
+    useEffect(() => {
       if (value) {
         setMinValue(value.min);
         setMaxValue(value.max);
