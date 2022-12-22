@@ -76,30 +76,33 @@ const Filters = ({ results, setResults }: FiltersProps) => {
             selectedName={vehicleTypeInSpanish.name}
             type="vehicle-type"
           />
-          <Range
-            title="Precio"
-            min={10000000}
-            max={20000000}
-            type="money"
-            config={{ defaultMin: 0, defaultMax: 20000000 }}
-          />
-          <Range
-            title="Año"
-            min={2017}
-            max={new Date().getFullYear()}
-            config={{ defaultMin: 2015, defaultMax: new Date().getFullYear() }}
-          />
-          <Range
-            title="Kilometraje"
-            min={20000}
-            max={100000}
-            type="km"
-            config={{ defaultMin: 10000, defaultMax: 100000 }}
-          />
+
+          <section className="ranges">
+            <Range
+              title="Precio"
+              min={10000000}
+              max={20000000}
+              type="money"
+              config={{ defaultMin: 0, defaultMax: 20000000 }}
+            />
+            <Range
+              title="Año"
+              min={2017}
+              max={new Date().getFullYear()}
+              config={{ defaultMin: 2015, defaultMax: new Date().getFullYear() }}
+            />
+            <Range
+              title="Kilometraje"
+              min={20000}
+              max={100000}
+              type="km"
+              config={{ defaultMin: 10000, defaultMax: 100000 }}
+            />
+          </section>
 
           <hr className="divider" />
 
-          <section className="options">
+          <section className="options-checkbox">
             <SelectSection
               title="Transmisión"
               options={["Manual", "Automática"]}
@@ -181,7 +184,13 @@ const StyledFilters = styled.section`
       width: 100%;
       border: 0.5px solid var(--gray-3);
     }
-    .options {
+    .ranges{
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .options-checkbox {
       display: flex;
       flex-direction: column;
       gap: 2rem;
