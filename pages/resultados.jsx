@@ -65,6 +65,10 @@ const StyledResults = styled.main`
   position: relative;
   min-height: 45vh;
 
+  .search {
+    padding: 1rem;
+  }
+
   .product-list {
     display: grid;
     grid-template-columns: repeat(auto-fit, 252px);
@@ -78,7 +82,7 @@ const StyledResults = styled.main`
   }
 
   @media (min-width: 900px) {
-    .search{
+    .search {
       padding: 2.5rem 10% 0;
     }
 
@@ -89,7 +93,7 @@ const StyledResults = styled.main`
     }
     .product-list {
       flex: 1;
-      grid-template-columns: repeat(auto-fill, minmax( 15rem, 1fr ));
+      grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
       row-gap: 2.5rem;
       grid-auto-rows: min-content;
       place-items: center start;
