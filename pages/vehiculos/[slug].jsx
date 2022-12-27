@@ -13,6 +13,7 @@ import { getSiteSettings } from "../../sanity/queries/siteSettings";
 
 import { Inter } from "@next/font/google";
 import ProductCard from "../../components/ProductCard";
+import ProductSlider from "../../components/catalogo/ProductSlider";
 
 const inter = Inter({ weight: "variable" });
 
@@ -86,7 +87,7 @@ const VehiclePage = ({ slug }) => {
           <Details vehicleInfo={vehicleInfo}/>
         </section>
 
-        <section className="contact">
+        <section className="contact-section">
           <h2>Contacta con el vendedor:</h2>
           <Button classNames="btn-whatsapp">
             <span>Whatsapp</span>
@@ -94,10 +95,10 @@ const VehiclePage = ({ slug }) => {
         </section>
 
         <section className="vehiculos-similares">
-          <h2>Vehículos similares:</h2>
-          <sections className="vehiculo-list">
-            {/* Vehiculos similiares array */}
-            <ProductCard
+
+            <ProductSlider className="vehiculos-slider" products={[vehicleInfo,vehicleInfo,vehicleInfo]} productName="Vehículos similares: "/>
+
+            {/* <ProductCard
               key={`${vehicleInfo.brand.name}}`}
               product={vehicleInfo}
             />
@@ -112,8 +113,7 @@ const VehiclePage = ({ slug }) => {
             <ProductCard
               key={`${vehicleInfo.brand.name}1`}
               product={vehicleInfo}
-            />
-          </sections>
+            /> */}
         </section>
 
       </section>
@@ -171,7 +171,7 @@ const StyledVehiclePage = styled.main`
       padding: 3.1rem 1rem 2.6rem;
     }
   
-    .contact{
+    .contact-section{
       padding: 1rem;
       display: flex;
       flex-direction: column;
@@ -182,11 +182,16 @@ const StyledVehiclePage = styled.main`
       }
     }
 
-    .vehiculos-similares{
-
+      .vehiculos-similares{
+        padding: 1rem;
+        padding-right: 0;
+        .vehiculos-slider{
+          .header-product h3{
+            padding-bottom: 2rem;
+          }
+        }
+      }
     }
-
-  }
 
 
   @media (min-width: 900px){
@@ -201,13 +206,39 @@ const StyledVehiclePage = styled.main`
       .title-price{
         grid-column: 8 / 13;
       }
-      .contact{
+      .contact-section{
         background-color: var(--primary-blue);
         grid-column: 8 / 13;
         grid-row: 2 / 3;
       }
       .detalles{
         grid-column: 1 / 7;
+      }
+      .vehiculos-similares{
+        padding-top: 5rem;
+        grid-column: 7 / 13;
+        .vehiculos-slider{
+          display: grid;
+          .header-product{
+            margin-bottom: 0;
+            h3{
+              font-size: 32px;
+              line-height: 24px;
+              padding-bottom: .75rem;
+            }
+          } 
+          .list-products{
+            width: auto;
+            padding-left: 0;
+            padding-right: 0;
+            display: grid;
+            grid-template-columns: min-content min-content;
+            li{
+              margin: 0 auto;
+            }
+            
+          }
+        }
       }
     }
 
