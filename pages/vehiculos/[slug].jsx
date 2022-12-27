@@ -10,7 +10,11 @@ import {
   getVehicleInfo,
 } from "../../sanity/queries/pages/vehiculoIndividual";
 import { getSiteSettings } from "../../sanity/queries/siteSettings";
+
+import { Inter } from "@next/font/google";
 import ProductCard from "../../components/ProductCard";
+
+const inter = Inter({ weight: "variable" });
 
 const getAllSlugPaths = async () => {
   const allSlugs = await getAllVehicleSlugs();
@@ -53,7 +57,7 @@ const VehiclePage = ({ slug }) => {
   console.log({vehicleInfo});
 
   return (
-    <StyledVehiclePage>
+    <StyledVehiclePage className={inter.className}>
       <section className="search">
         <SearchBar/>
       </section>
@@ -74,7 +78,8 @@ const VehiclePage = ({ slug }) => {
 
         <section className="title-price">
           <h1>{vehicleInfo.brand.name} - {vehicleInfo.model.name}</h1>
-          <h2>${vehicleInfo.price}</h2>
+          <h2>$ {vehicleInfo.price.toLocaleString("es-ES")} COP
+          </h2>
         </section>
 
         <section className="detalles">
@@ -97,15 +102,15 @@ const VehiclePage = ({ slug }) => {
               product={vehicleInfo}
             />
             <ProductCard
-              key={`${vehicleInfo.brand.name}}`}
+              key={`${vehicleInfo.brand.name}3`}
               product={vehicleInfo}
             />
             <ProductCard
-              key={`${vehicleInfo.brand.name}}`}
+              key={`${vehicleInfo.brand.name}2`}
               product={vehicleInfo}
             />
             <ProductCard
-              key={`${vehicleInfo.brand.name}}`}
+              key={`${vehicleInfo.brand.name}1`}
               product={vehicleInfo}
             />
           </sections>
@@ -133,39 +138,76 @@ const StyledVehiclePage = styled.main`
     display: grid;
     grid-template-columns: repeat(1, 1fr);
 
-    .detalles{
+    .image-slider{
+      display: grid;
       padding: 1rem;
+      place-content: center;
+      background-color: var(--primary-blue);
+
+      /* .image img{
+        width: 100vw;
+        height: max-content;
+        object-fit: cover;
+      } */
+    }
+
+    .title-price{
+      background-color: var(--primary-blue);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      gap: .75rem;
+      padding: 1rem 1rem 3.5rem;
+      h1{
+        font-weight: 400;
+      }
+      h2{
+        font-size: 24px;
+        line-height: 19.5px;
+      }
+    }
+
+    .detalles{
+      padding: 3.1rem 1rem 2.6rem;
     }
   
     .contact{
       padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
       .btn-whatsapp{
         background-color: #25D366;
         width: 100%;
       }
     }
+
+    .vehiculos-similares{
+
+    }
+
   }
 
 
   @media (min-width: 900px){
     
     .content-grid{
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(12, 1fr);
       grid-template-rows: repeat(2,auto);
       .image-slider{
-        background-color: #25D366;
-        grid-column: 1 / 2;
+        grid-column: 1 / 8;
         grid-row: span 2;
       }
       .title-price{
-        grid-column: 2 / 3;
+        grid-column: 8 / 13;
       }
       .contact{
-        grid-column: 2 / 3;
+        background-color: var(--primary-blue);
+        grid-column: 8 / 13;
         grid-row: 2 / 3;
       }
       .detalles{
-        grid-column: 1 / 2;
+        grid-column: 1 / 7;
       }
     }
 
