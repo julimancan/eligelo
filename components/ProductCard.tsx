@@ -52,13 +52,7 @@ const ProductCard = ({ product, type = "vertical" }: ProductCardProps) => {
           </div>
         </section>
         <h3 className="price">
-          $
-          {product.price.toLocaleString("es-ES", {
-            useGrouping: true,
-            minimumFractionDigits: 0,
-            maximumFractionDigits: 0,
-          })}{" "}
-          COP
+          $ {product.price.toLocaleString("es-ES")} COP
         </h3>
         <section className="contact">
           <Link href={`vehiculos/${product.slug}`}>

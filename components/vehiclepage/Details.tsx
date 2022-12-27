@@ -77,6 +77,11 @@ const Details = ({ vehicleInfo }: DetailsProps) => {
 
 const StyledDetails = styled.section`
   /* width: 100%; */
+  h3{
+    padding-bottom: 2rem;
+    font-size: 18px;
+    line-height: 24px;
+  }
   .details-list {
     display: grid;
     gap: 1rem;
@@ -88,6 +93,10 @@ const StyledDetails = styled.section`
     h4,
     p {
       flex: 1;
+    }
+    h4{
+      font-size: 16px;
+      line-height: 19.36px;
     }
     .peritaje {
       flex-direction: column;
