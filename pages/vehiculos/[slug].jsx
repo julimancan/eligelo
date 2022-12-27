@@ -98,22 +98,6 @@ const VehiclePage = ({ slug }) => {
 
             <ProductSlider className="vehiculos-slider" products={[vehicleInfo,vehicleInfo,vehicleInfo]} productName="Vehículos similares: "/>
 
-            {/* <ProductCard
-              key={`${vehicleInfo.brand.name}}`}
-              product={vehicleInfo}
-            />
-            <ProductCard
-              key={`${vehicleInfo.brand.name}3`}
-              product={vehicleInfo}
-            />
-            <ProductCard
-              key={`${vehicleInfo.brand.name}2`}
-              product={vehicleInfo}
-            />
-            <ProductCard
-              key={`${vehicleInfo.brand.name}1`}
-              product={vehicleInfo}
-            /> */}
         </section>
 
       </section>
@@ -143,12 +127,6 @@ const StyledVehiclePage = styled.main`
       padding: 1rem;
       place-content: center;
       background-color: var(--primary-blue);
-
-      /* .image img{
-        width: 100vw;
-        height: max-content;
-        object-fit: cover;
-      } */
     }
 
     .title-price{
@@ -195,23 +173,31 @@ const StyledVehiclePage = styled.main`
 
 
   @media (min-width: 900px){
+    .search{ 
+      padding: 2rem 7% 2.5rem;
+    }
     
     .content-grid{
       grid-template-columns: repeat(12, 1fr);
       grid-template-rows: repeat(2,auto);
       .image-slider{
+        padding-bottom: 3.5rem;
         grid-column: 1 / 8;
         grid-row: span 2;
       }
       .title-price{
+        padding-right: 15%;
         grid-column: 8 / 13;
       }
       .contact-section{
+        padding-right: 20%;
         background-color: var(--primary-blue);
+        color: white;
         grid-column: 8 / 13;
         grid-row: 2 / 3;
       }
       .detalles{
+        padding: 5rem 15%;
         grid-column: 1 / 7;
       }
       .vehiculos-similares{

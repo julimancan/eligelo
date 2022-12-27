@@ -111,6 +111,11 @@ const StyledDetails = styled.section`
       }
     }
   }
+  @media (min-width: 900px){
+    h3{
+      font-size: 32px;
+    }
+  }
 `;
 
 export default Details;
