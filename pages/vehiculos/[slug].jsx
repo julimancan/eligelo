@@ -10,6 +10,7 @@ import {
   getVehicleInfo,
 } from "../../sanity/queries/pages/vehiculoIndividual";
 import { getSiteSettings } from "../../sanity/queries/siteSettings";
+import ProductCard from "../../components/ProductCard";
 
 const getAllSlugPaths = async () => {
   const allSlugs = await getAllVehicleSlugs();
@@ -60,16 +61,18 @@ const VehiclePage = ({ slug }) => {
       <section className="content-grid">
 
       {/* pictures slider */}
-        <picture className="image">
-          <Image
-            src={vehicleInfo.images[0].url}
-            width={vehicleInfo.images[0].width}
-            height={vehicleInfo.images[0].height}
-            alt={vehicleInfo.images[0].alt}
-          />
-        </picture>
+        <section className="image-slider">
+          <picture className="image">
+            <Image
+              src={vehicleInfo.images[0].url}
+              width={vehicleInfo.images[0].width}
+              height={vehicleInfo.images[0].height}
+              alt={vehicleInfo.images[0].alt || 'hola'}
+            />
+          </picture>
+        </section>
 
-        <section>
+        <section className="title-price">
           <h1>{vehicleInfo.brand.name} - {vehicleInfo.model.name}</h1>
           <h2>${vehicleInfo.price}</h2>
         </section>
@@ -87,6 +90,25 @@ const VehiclePage = ({ slug }) => {
 
         <section className="vehiculos-similares">
           <h2>Vehículos similares:</h2>
+          <sections className="vehiculo-list">
+            {/* Vehiculos similiares array */}
+            <ProductCard
+              key={`${vehicleInfo.brand.name}}`}
+              product={vehicleInfo}
+            />
+            <ProductCard
+              key={`${vehicleInfo.brand.name}}`}
+              product={vehicleInfo}
+            />
+            <ProductCard
+              key={`${vehicleInfo.brand.name}}`}
+              product={vehicleInfo}
+            />
+            <ProductCard
+              key={`${vehicleInfo.brand.name}}`}
+              product={vehicleInfo}
+            />
+          </sections>
         </section>
 
       </section>
@@ -106,17 +128,47 @@ const StyledVehiclePage = styled.main`
       filter: none;
     }
   }
+  
+  .content-grid{
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
 
-  .detalles{
-    padding: 1rem;
+    .detalles{
+      padding: 1rem;
+    }
+  
+    .contact{
+      padding: 1rem;
+      .btn-whatsapp{
+        background-color: #25D366;
+        width: 100%;
+      }
+    }
   }
 
-  .contact{
-    padding: 1rem;
-    .btn-whatsapp{
-      background-color: #25D366;
-      width: 100%;
+
+  @media (min-width: 900px){
+    
+    .content-grid{
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(2,auto);
+      .image-slider{
+        background-color: #25D366;
+        grid-column: 1 / 2;
+        grid-row: span 2;
+      }
+      .title-price{
+        grid-column: 2 / 3;
+      }
+      .contact{
+        grid-column: 2 / 3;
+        grid-row: 2 / 3;
+      }
+      .detalles{
+        grid-column: 1 / 2;
+      }
     }
+
   }
 
 `
