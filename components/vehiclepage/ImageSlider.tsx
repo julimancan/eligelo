@@ -4,18 +4,18 @@ import React, { lazy, useState } from "react";
 
 type ImageProps = {
   images: {
-    alt?: string;
-    aspectRatio: number;
-    height: number;
-    url: string;
-    width: number;
-  }[];
-  className?: string;
+    alt?: string,
+    aspectRatio: number,
+    height: number,
+    url: string,
+    width: number,
+  }[],
+  index: number,
+  setIndex: React.Dispatch<React.SetStateAction<number>>,
+  className?: string,
 };
 
-const ImageSlider = ({ images, className = "" }: ImageProps) => {
-  const [index, setIndex] = useState(0);
-
+const ImageSlider = ({ images, index, setIndex, className = "" }: ImageProps) => {
   const prevStep = () => {
     if (index === 0) {
       setIndex(images.length - 1);

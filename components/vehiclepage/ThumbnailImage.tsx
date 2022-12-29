@@ -5,17 +5,18 @@ import useState from "react";
 
 type ThumbnailImageProps = {
   images: {
-    alt?: string;
-    aspectRatio: number;
-    height: number;
-    url: string;
-    width: number;
-  }[];
-  className?: string;
+    alt?: string,
+    aspectRatio: number,
+    height: number,
+    url: string,
+    width: number,
+  }[],
+  index: number,
+  setIndex: React.Dispatch<React.SetStateAction<number>>,
+  className?: string,
 };
 
-const ThumbnailImage = ({ images, className = "" }: ThumbnailImageProps) => {
-  const [index, setIndex] = React.useState(0);
+const ThumbnailImage = ({ images, index, setIndex, className = "" }: ThumbnailImageProps) => {
   const thumbnailElement = images.map((img, idx) => {
     return (
       <Image
