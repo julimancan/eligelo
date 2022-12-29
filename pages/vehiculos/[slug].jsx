@@ -13,6 +13,7 @@ import { getSiteSettings } from "../../sanity/queries/siteSettings";
 import { Inter } from "@next/font/google";
 import ProductSlider from "../../components/catalogo/ProductSlider";
 import ImageSlider from "../../components/vehiclepage/ImageSlider";
+import ImageGallery from "../../components/vehiclepage/ImageGallery";
 
 const inter = Inter({ weight: "variable" });
 
@@ -65,7 +66,7 @@ const VehiclePage = ({ slug }) => {
       <section className="content-grid">
         {/* pictures slider */}
         <section className="image-gallery">
-          <ImageSlider images={vehicleInfo.images} />
+          <ImageGallery images={vehicleInfo.images}/>
         </section>
 
         <section className="title-price">

@@ -10,9 +10,10 @@ type ImageProps = {
     url: string;
     width: number;
   }[];
+  className?: string;
 };
 
-const ImageSlider = ({ images }: ImageProps) => {
+const ImageSlider = ({ images, className = "" }: ImageProps) => {
   const [index, setIndex] = useState(0);
 
   const prevStep = () => {
@@ -34,7 +35,7 @@ const ImageSlider = ({ images }: ImageProps) => {
   console.log(images[index].width);
 
   return (
-    <StyledSlider>
+    <StyledSlider className={className}>
       <Image
         src={images[index].url}
         alt={images[index]?.alt}
@@ -121,9 +122,6 @@ const StyledSlider = styled.div`
     height: 100%;
     object-fit: cover;
     object-position: center;
-  }
-  @media (min-width: 900px) {
-    display: none;
   }
 `;
 
