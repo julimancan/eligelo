@@ -22,8 +22,8 @@ const ThumbnailImage = ({ images, className = "" }: ThumbnailImageProps) => {
         key={img.url}
         src={img.url}
         alt={img.alt}
-        width={343}
-        height={208}
+        width={img.width}
+        height={img.height}
         style={{ objectFit: "cover" }}
         loading={"lazy"}
         // alt="product"
@@ -39,8 +39,8 @@ const ThumbnailImage = ({ images, className = "" }: ThumbnailImageProps) => {
         <Image
           src={images[index].url}
           alt="product"
-          width={343}
-          height={208}
+          width={images[index].width}
+          height={images[index].height}
           style={{ objectFit: "cover" }}
           loading={"lazy"}
         />
@@ -56,11 +56,17 @@ const StyledThumbnailImage = styled.section`
   display: flex;
   align-items: flex-start;
   gap: 0.6rem;
-
+  
   .image-container {
     display: flex;
+    height: 504.25px;
     justify-content: flex-start;
     align-items: flex-start;
+    width: 100%;
+    img{
+      width: 100%;
+      height: 100%;
+    }
   }
 
   .thumbnail-container {
@@ -78,11 +84,6 @@ const StyledThumbnailImage = styled.section`
     filter: grayscale(100%);
   }
 
-  /* img {
-    width: 340px;
-    height: 300px;
-    object-fit: cover;
-  } */
 `;
 
 export default ThumbnailImage;

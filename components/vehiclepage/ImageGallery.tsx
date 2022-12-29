@@ -24,7 +24,7 @@ const ImageGallery = ({ images }: ImageGalleryProps) => {
 
 const StyledImageGallery = styled.section`
   width: 100%;
-  height: 100%;
+  
   .Thumbnail-desktop {
     display: none;
   }
