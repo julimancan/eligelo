@@ -13,14 +13,10 @@ const ImageGallery = ({ images }: ImageGalleryProps) => {
   return (
     <StyledImageGallery>
       <ImageSlider
-        index={index}
-        setIndex={setIndex}
         images={images}
         className="slider-mobile"
       />
       <ThumbnailImage
-        index={index}
-        setIndex={setIndex}
         images={images}
         className="Thumbnail-desktop"
       />

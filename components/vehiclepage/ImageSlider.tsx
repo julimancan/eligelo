@@ -10,12 +10,11 @@ type ImageProps = {
     url: string,
     width: number,
   }[],
-  index: number,
-  setIndex: React.Dispatch<React.SetStateAction<number>>,
   className?: string,
 };
 
-const ImageSlider = ({ images, index, setIndex, className = "" }: ImageProps) => {
+const ImageSlider = ({ images, className = "" }: ImageProps) => {
+  const [index, setIndex] = useState(0);
   const prevStep = () => {
     if (index === 0) {
       setIndex(images.length - 1);
@@ -32,12 +31,10 @@ const ImageSlider = ({ images, index, setIndex, className = "" }: ImageProps) =>
     setIndex(index + 1);
   };
 
-  console.log(images[index].width);
-
   return (
     <StyledSlider className={className}>
       <Image
-        src={images[index].url}
+        src={images[index]?.url}
         alt={images[index]?.alt}
         className="slides"
         width={343}
