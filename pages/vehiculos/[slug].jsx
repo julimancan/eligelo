@@ -151,6 +151,12 @@ const StyledVehiclePage = styled.main`
       .btn-whatsapp {
         background-color: #25d366;
         width: 100%;
+        height: 40.13px;
+        span{
+          font-weight: 500;
+          font-size: 16px;
+          line-height: 24px;
+        }
       }
     }
 
@@ -175,21 +181,44 @@ const StyledVehiclePage = styled.main`
       grid-template-columns: repeat(12, 1fr);
       grid-template-rows: repeat(2, auto);
       .image-gallery {
+        padding: 0;
         padding-bottom: 3.5rem;
         grid-column: 1 / 8;
-        grid-row: span 2;
+        grid-row: span 4;
         height: auto;
       }
       .title-price {
-        padding-right: 15%;
+        padding: 0;
+        padding-top: 1rem;
+        padding-left: 10%;
+        padding-right: 10%;
         grid-column: 8 / 13;
+        display: flex;
+        flex-direction: column;
+        gap: 2.313rem;
+        h1,
+        h2{
+          font-size: 40px;
+          line-height: 2.7rem;
+        }
+        
       }
       .contact-section {
+        padding: 0;
+        padding-left: 10%;
         padding-right: 20%;
         background-color: var(--primary-blue);
         color: white;
         grid-column: 8 / 13;
-        grid-row: 2 / 3;
+        grid-row: 2 / 5;
+        .btn-whatsapp {
+          background-color: #25d366;
+          width: 100%;
+          height: 48.13px;
+          span{
+            font-size: 18px;
+          }
+        }
       }
       .detalles {
         padding: 5rem 15%;
