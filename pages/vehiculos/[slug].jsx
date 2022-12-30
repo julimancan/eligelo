@@ -69,7 +69,7 @@ const VehiclePage = ({ slug, price, type }) => {
   );
   const { data: similarVehicles } = useQuery(
     ["similarVehicles", price, type],
-    () => getVehiclesAroundPrice(price, type)
+    () => getVehiclesAroundPrice(price, type, vehicleInfo._id)
   );
   const sortedVehicles =
     !!similarVehicles && orderByClosestPrice(similarVehicles, price);

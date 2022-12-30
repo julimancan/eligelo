@@ -15,5 +15,5 @@ export const formatByType = (num: number, format: string): string => {
   );
 };
 
-export const orderByClosestPrice = (array: ProductInt[], price: number) =>
+export const orderByClosestPrice = (array: ProductInt[], price: number): ProductInt[] =>
   array.sort((a, b) => Math.abs(a.price - price) - Math.abs(b.price - price));

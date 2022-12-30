@@ -22,6 +22,7 @@ export const getAllVehiclePathsAndNames = async () => {
 
 const carTypeInfo = `*[_type == "car" && slug.current == $slug] {
   _type,
+  _id,
   "slug": slug.current,
   ${brandRef},
   ${modelRef},
@@ -47,6 +48,7 @@ const carTypeInfo = `*[_type == "car" && slug.current == $slug] {
 }`;
 const motoTypeInfo = `*[_type == "moto" && slug.current == $slug] {
   _type,
+  _id,
   "slug": slug.current,
   ${brandRef},
   ${modelRef},
@@ -66,6 +68,7 @@ const motoTypeInfo = `*[_type == "moto" && slug.current == $slug] {
 
 const bikeTypeInfo = `*[_type == "bici" && slug.current == $slug] {
   _type,
+  _id,
   ${brandRef},
   ${modelRef},
   "images": images[] {
@@ -93,25 +96,28 @@ export const getVehicleInfo = async (slug) => {
 };
 
 const vehiclesAroundPriceQuery = `
-  *[_type == $type && price > $minPrice && price < $maxPrice ] {
+  *[_type == $type && _id != $id && price > $minPrice && price < $maxPrice ] {
     ${brandRef},
     ${modelRef},
     year, 
     price,
     mileage,
-    slug,
     "image": images[0].image.asset->url,
+    "slug": slug.current,
+    _id
   }
 `;
 
-export const getVehiclesAroundPrice = async (price, type) => {
+export const getVehiclesAroundPrice = async (price, type, id) => {
   const average = 20000000;
   const maxPrice = price + average;
   const minPrice = price - average;
+
   const result = await sanityClient(false).fetch(vehiclesAroundPriceQuery, {
     maxPrice,
     minPrice,
     type,
+    id
   });
 
   return result;
