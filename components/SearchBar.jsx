@@ -35,7 +35,7 @@ const SearchBar = () => {
       />
       <button className="button">
         <SearchIcon className="icon" />
-        <a href={`/resultados?search=*${searchParams}*`} id="search">Buscar</a>
+        <a href={`/resultados?search=*${searchParams || ""}*`} id="search">Buscar</a>
       </button>
     </StyledSearchBar>
   );
