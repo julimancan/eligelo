@@ -7,8 +7,11 @@ import {
   getAllVehiclePathsAndNames,
   getAllVehicleSlugs,
   getVehicleInfo,
+  getVehiclesAroundPrice,
 } from "../../sanity/queries/pages/vehiculoIndividual";
 import { getSiteSettings } from "../../sanity/queries/siteSettings";
+import { orderByClosestPrice } from "../../lib/helpers";
+import ProductCard from "../../components/ProductCard";
 
 import { Inter } from "@next/font/google";
 import ProductSlider from "../../components/catalogo/ProductSlider";
@@ -19,7 +22,7 @@ const inter = Inter({ weight: "variable" });
 
 const getAllSlugPaths = async () => {
   const allSlugs = await getAllVehicleSlugs();
-  const paths = allSlugs.map(({ slug }) => ({ params: { slug}}));
+  const paths = allSlugs.map(({ slug }) => ({ params: { slug } }));
   return paths;
 };
 
@@ -41,19 +44,35 @@ export const getStaticProps = async ({ params }) => {
     getAllVehiclePathsAndNames
   );
   await queryClient.prefetchQuery(["siteSettings"], getSiteSettings);
-  await queryClient.prefetchQuery(["vehicleInfo", slug], () => getVehicleInfo(slug))
+  await queryClient.prefetchQuery(["vehicleInfo", slug], () =>
+    getVehicleInfo(slug)
+  );
+  const vehicleInfo = await getVehicleInfo(slug);
+  const { price, _type: type } = vehicleInfo;
+  await queryClient.prefetchQuery(["similarVehicles", type, price], () =>
+    getVehiclesAroundPrice(price, type)
+  );
 
   return {
     props: {
       dehydratedState: dehydrate(queryClient),
       slug,
+      price,
+      type,
     },
   };
 };
 
-const VehiclePage = ({ slug }) => {
-
-  const {data: vehicleInfo } = useQuery(["vehicleInfo", slug], () => getVehicleInfo(slug))
+const VehiclePage = ({ slug, price, type }) => {
+  const { data: vehicleInfo } = useQuery(["vehicleInfo", slug], () =>
+    getVehicleInfo(slug)
+  );
+  const { data: similarVehicles } = useQuery(
+    ["similarVehicles", price, type],
+    () => getVehiclesAroundPrice(price, type)
+  );
+  const sortedVehicles =
+    !!similarVehicles && orderByClosestPrice(similarVehicles, price);
 
   console.log({vehicleInfo});
 
@@ -88,15 +107,19 @@ const VehiclePage = ({ slug }) => {
         </section>
 
         <section className="vehiculos-similares">
+          {!!sortedVehicles ? (
           <ProductSlider
             className="vehiculos-slider"
-            products={[vehicleInfo, vehicleInfo, vehicleInfo]}
+            products={sortedVehicles}
             productName="Vehículos similares: "
           />
+          ) : (
+            <>Loading....</>
+          )}
         </section>
       </section>
     </StyledVehiclePage>
-  );
+  )
 };
 
 const StyledVehiclePage = styled.main`

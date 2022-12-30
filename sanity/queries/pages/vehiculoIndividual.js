@@ -1,25 +1,27 @@
 import { sanityClient } from "../../sanity.server";
-import { imageObject } from "../objects";
 import { brandRef, modelRef } from "./resultados";
 
 export const getAllVehicleSlugs = async () => {
-  const result = await sanityClient(false).fetch(`*[_type == "car" || _type == "moto" || _type == "bici"] {"slug": slug.current}`)
+  const result = await sanityClient(false).fetch(
+    `*[_type == "car" || _type == "moto" || _type == "bici"] {"slug": slug.current}`
+  );
 
-  return result
-}
+  return result;
+};
 
 export const getAllVehiclePathsAndNames = async () => {
-  const result = await sanityClient(false).fetch(`*[_type == "car" || _type == "moto" || _type == "bici"] {
+  const result = await sanityClient(false)
+    .fetch(`*[_type == "car" || _type == "moto" || _type == "bici"] {
     "slug": slug.current,
     ${brandRef},
     ${modelRef},
 
-  }`)
-  return result
-}
-
+  }`);
+  return result;
+};
 
 const carTypeInfo = `*[_type == "car" && slug.current == $slug] {
+  _type,
   "slug": slug.current,
   ${brandRef},
   ${modelRef},
@@ -42,8 +44,9 @@ const carTypeInfo = `*[_type == "car" && slug.current == $slug] {
   },
   traction,
   transmission
-}`
+}`;
 const motoTypeInfo = `*[_type == "moto" && slug.current == $slug] {
+  _type,
   "slug": slug.current,
   ${brandRef},
   ${modelRef},
@@ -59,9 +62,10 @@ const motoTypeInfo = `*[_type == "moto" && slug.current == $slug] {
   motor,
   fuelType,
   tags,
-}`
+}`;
 
 const bikeTypeInfo = `*[_type == "bici" && slug.current == $slug] {
+  _type,
   ${brandRef},
   ${modelRef},
   "images": images[] {
@@ -77,11 +81,38 @@ const bikeTypeInfo = `*[_type == "bici" && slug.current == $slug] {
   fuelType,
   tags,
   "slug": slug.current
-}`
-const individualVehicleInfo = `${carTypeInfo}`
+}`;
+const individualVehicleInfo = `${carTypeInfo}`;
 export const getVehicleInfo = async (slug) => {
-  const result = await sanityClient(false).fetch(individualVehicleInfo, {slug})
-  const resultMoto = await sanityClient(false).fetch(motoTypeInfo, {slug})
-  const resultBike = await sanityClient(false).fetch(bikeTypeInfo, {slug})
-  return  result[0] ? result[0] : resultMoto[0] ? resultMoto[0] : resultBike[0];
-}
+  const result = await sanityClient(false).fetch(individualVehicleInfo, {
+    slug,
+  });
+  const resultMoto = await sanityClient(false).fetch(motoTypeInfo, { slug });
+  const resultBike = await sanityClient(false).fetch(bikeTypeInfo, { slug });
+  return result[0] ? result[0] : resultMoto[0] ? resultMoto[0] : resultBike[0];
+};
+
+const vehiclesAroundPriceQuery = `
+  *[_type == $type && price > $minPrice && price < $maxPrice ] {
+    ${brandRef},
+    ${modelRef},
+    year, 
+    price,
+    mileage,
+    slug,
+    "image": images[0].image.asset->url,
+  }
+`;
+
+export const getVehiclesAroundPrice = async (price, type) => {
+  const average = 20000000;
+  const maxPrice = price + average;
+  const minPrice = price - average;
+  const result = await sanityClient(false).fetch(vehiclesAroundPriceQuery, {
+    maxPrice,
+    minPrice,
+    type,
+  });
+
+  return result;
+};
