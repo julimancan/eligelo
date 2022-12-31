@@ -81,8 +81,9 @@ const ThumbnailImage = ({ images2, className = "" }: ThumbnailImageProps) => {
       </div>
       <section className="modal-container">
         <ModalImage
+          images={images}
+          index={index}
           isOpenModal={isOpenModal}
-          setIsOpenModal={setIsOpenModal}
           openModalHandler={openModalHandler}
         />
       </section>

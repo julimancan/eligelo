@@ -10,11 +10,12 @@ type ImageProps = {
     url: string,
     width: number,
   }[],
+  initialIndex?: number
   className?: string,
 };
 
-const ImageSlider = ({ images, className = "" }: ImageProps) => {
-  const [index, setIndex] = useState(0);
+const ImageSlider = ({ images, initialIndex = 0 , className = "" }: ImageProps) => {
+  const [index, setIndex] = useState(initialIndex);
   const prevStep = () => {
     if (index === 0) {
       setIndex(images.length - 1);

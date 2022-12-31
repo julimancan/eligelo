@@ -1,25 +1,33 @@
 import styled from "@emotion/styled";
 import { Dispatch, SetStateAction } from "react";
+import ImageSlider from "./ImageSlider";
 
 type ModalProps = {
+  images: {
+    alt?: string;
+    aspectRatio: number;
+    height: number;
+    url: string;
+    width: number;
+  }[];
+  index: number;
   isOpenModal: boolean;
-  setIsOpenModal: Dispatch<SetStateAction<boolean>>;
   openModalHandler: () => void;
 };
 
-const ModalImage = ({
-  isOpenModal,
-  setIsOpenModal,
-  openModalHandler,
-}: ModalProps) => {
+const ModalImage = ({images, index, isOpenModal, openModalHandler }: ModalProps) => {
   return (
     <StyledModal>
       {isOpenModal ? (
         <div
           className="modal-backdrop"
           onClick={openModalHandler}>
-          <div className="modal-view">
-            <div className="close-btn">modal</div>
+          <div 
+            className="modal-view"
+            onClick={e => {
+                e.stopPropagation();
+            }}>
+            <ImageSlider images={images} initialIndex={index} className="modal-image-slider"/>
           </div>
         </div>
       ) : null}
@@ -40,20 +48,24 @@ export const StyledModal = styled.section`
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-  .modal-view {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    width: 200px;
-    height: 100px;
-    border-radius: 1rem;
-    background-color: white;
-    > .close-btn {
-      position: absolute;
-      top: 10px;
-      cursor: pointer;
+    .modal-view {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: fixed;
+      z-index: 1;
+      width: 50%;
+      height: 50%;
+      border-radius: 1rem;
+      background-color: white;
+      /* > .close-btn {
+        position: absolute;
+        top: 10px;
+        cursor: pointer;
+      } */
+      .modal-image-slider{
+  
+      }
     }
   }
 `;
