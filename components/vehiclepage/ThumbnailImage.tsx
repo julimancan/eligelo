@@ -1,9 +1,10 @@
 import styled from "@emotion/styled";
 import Image from "next/image";
 import { useState } from "react";
+import ModalImage from "./ModalImage";
 
 type ThumbnailImageProps = {
-  images: {
+  images2: {
     alt?: string;
     aspectRatio: number;
     height: number;
@@ -13,8 +14,16 @@ type ThumbnailImageProps = {
   className?: string;
 };
 
-const ThumbnailImage = ({ images, className = "" }: ThumbnailImageProps) => {
+const ThumbnailImage = ({ images2, className = "" }: ThumbnailImageProps) => {
+  const images = [...images2, ...images2, ...images2]
   const [index, setIndex] = useState(0);
+  const [isOpenModal, setIsOpenModal] = useState(false);
+
+  const openModalHandler = () => {
+    setIsOpenModal(!isOpenModal);
+  };
+
+
   const thumbnailElement = images
     .filter((img, idx) => {
       if (idx < 6) {
@@ -37,10 +46,11 @@ const ThumbnailImage = ({ images, className = "" }: ThumbnailImageProps) => {
               onClick={() => setIndex(idx)}
               className={idx === index ? "current" : ""}
             />
-            <p>+{images.length - 6}</p>
+            <p onClick={openModalHandler}>+{images.length - 6}</p>
           </section>
         );
       }
+
       return (
         <Image
           key={`${img.url}-${idx}`}
@@ -66,8 +76,16 @@ const ThumbnailImage = ({ images, className = "" }: ThumbnailImageProps) => {
           height={images[index].height}
           style={{ objectFit: "cover" }}
           loading={"lazy"}
+          onClick={openModalHandler}
         />
       </div>
+      <section className="modal-container">
+        <ModalImage
+          isOpenModal={isOpenModal}
+          setIsOpenModal={setIsOpenModal}
+          openModalHandler={openModalHandler}
+        />
+      </section>
     </StyledThumbnailImage>
   );
 };
@@ -122,6 +140,9 @@ const StyledThumbnailImage = styled.section`
   }
   .current {
     filter: grayscale(100%);
+  }
+  .modal-container {
+    position: relative;
   }
 `;
 
