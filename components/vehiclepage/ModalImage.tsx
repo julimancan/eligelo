@@ -54,17 +54,43 @@ export const StyledModal = styled.section`
       align-items: center;
       position: fixed;
       z-index: 1;
-      width: 50%;
-      height: 50%;
+      width: 62vw;
+      height: 82vh;
       border-radius: 1rem;
       background-color: white;
-      /* > .close-btn {
-        position: absolute;
-        top: 10px;
-        cursor: pointer;
-      } */
+
       .modal-image-slider{
-  
+        button {
+          width: 80px;
+          height: 80px;
+        }
+        .arrow {
+          &::before {
+            width: 2.2rem;
+            height: 2.2rem;
+            border-top: .4rem solid #fff;
+            border-right: .4rem solid #fff;
+            border-radius: 0 3px 0 0;
+          }
+        }
+        .prevButton {
+          left: -8.5rem;
+          .arrow {
+            left: 1.55rem;
+            &::before {
+              top: -1rem;
+            }
+          }
+        }
+        .nextButton {
+          right: -8.5rem;
+          .arrow {
+            left: -1.45rem;
+            &::before {
+              top: -1rem;
+            }
+          }
+        }
       }
     }
   }

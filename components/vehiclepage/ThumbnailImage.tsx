@@ -4,7 +4,7 @@ import { useState } from "react";
 import ModalImage from "./ModalImage";
 
 type ThumbnailImageProps = {
-  images2: {
+  images: {
     alt?: string;
     aspectRatio: number;
     height: number;
@@ -14,8 +14,7 @@ type ThumbnailImageProps = {
   className?: string;
 };
 
-const ThumbnailImage = ({ images2, className = "" }: ThumbnailImageProps) => {
-  const images = [...images2, ...images2, ...images2]
+const ThumbnailImage = ({ images, className = "" }: ThumbnailImageProps) => {
   const [index, setIndex] = useState(0);
   const [isOpenModal, setIsOpenModal] = useState(false);
 
@@ -46,7 +45,10 @@ const ThumbnailImage = ({ images2, className = "" }: ThumbnailImageProps) => {
               onClick={() => setIndex(idx)}
               className={idx === index ? "current" : ""}
             />
-            <p onClick={openModalHandler}>+{images.length - 6}</p>
+            <p onClick={()=> {
+              setIndex(idx)
+              openModalHandler()
+            }}>+{images.length - 6}</p>
           </section>
         );
       }

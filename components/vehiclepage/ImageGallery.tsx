@@ -17,7 +17,7 @@ const ImageGallery = ({ images }: ImageGalleryProps) => {
         className="slider-mobile"
       />
       <ThumbnailImage
-        images2={images}
+        images={images}
         className="Thumbnail-desktop"
       />
     </StyledImageGallery>
