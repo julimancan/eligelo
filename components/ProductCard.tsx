@@ -169,7 +169,43 @@ const StyledCard = styled.li`
   @media (min-width: 900px) {
     .information {
       padding: 1.25rem;
+      .about {
+        h2 {
+          font-size: 16px;
+          line-height: 25px;
+        }
+      }
+      .price {
+        font-size: 22px;
+        line-height: 25px;
+      }
+      .contact {
+        button {
+          font-size: 18px;
+        }
+      }
     }
+  }
+
+  &.vertical {
+    flex-direction: column;
+    min-width: 252px;
+    width: 252px;
+    height: 346px;
+
+    .image {
+      width: 100%;
+      min-height: 45%;
+      object-fit: cover;
+    }
+  }
+
+  &.vertical {
+
+    width: 328px;
+    height: 450px;
+
+
   }
 `;
 

@@ -225,6 +225,7 @@ const StyledVehiclePage = styled.main`
       }
       .vehiculos-similares {
         padding-top: 5rem;
+        padding-right: 2.5em;
         grid-column: 7 / 13;
         .vehiculos-slider {
           display: grid;
@@ -241,9 +242,12 @@ const StyledVehiclePage = styled.main`
             padding-left: 0;
             padding-right: 0;
             display: grid;
-            grid-template-columns: min-content min-content;
+            grid-template-columns: repeat(auto-fill,minmax(20rem,.5fr ));
+            place-content: center;
             li {
               margin: 0 auto;
+              width: 100%;
+
             }
           }
         }
