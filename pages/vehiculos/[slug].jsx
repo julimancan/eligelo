@@ -11,12 +11,9 @@ import {
 } from "../../sanity/queries/pages/vehiculoIndividual";
 import { getSiteSettings } from "../../sanity/queries/siteSettings";
 import { orderByClosestPrice } from "../../lib/helpers";
-import ProductCard from "../../components/ProductCard";
-
-import { Inter } from "@next/font/google";
 import ProductSlider from "../../components/catalogo/ProductSlider";
 import ImageGallery from "../../components/vehiclepage/ImageGallery";
-
+import { Inter } from "@next/font/google";
 const inter = Inter({ weight: "variable" });
 
 const getAllSlugPaths = async () => {
@@ -72,8 +69,6 @@ const VehiclePage = ({ slug, price, type }) => {
   );
   const sortedVehicles =
     !!similarVehicles && orderByClosestPrice(similarVehicles, price);
-
-  console.log({vehicleInfo});
 
   return (
     <StyledVehiclePage className={inter.className}>
