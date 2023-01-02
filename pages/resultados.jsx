@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import ProductCard from "../components/ProductCard";
 import SearchBar from "../components/SearchBar";
 import { getAnyResultsFromText } from "../sanity/queries/pages/resultados";
-import Filters from "../components/Resultados/Filters"
+import Filters from "../components/Resultados/Filters";
 import { useState } from "react";
 
 export const getServerSideProps = async ({ query }) => {
@@ -34,27 +34,41 @@ const Resultados = () => {
 
   return (
     <StyledResults>
-      <SearchBar />
+      <section className="search">
+        <SearchBar />
+      </section>
       {!searchResults.length ? (
         <h1>no se encontraron resultados</h1>
       ) : (
-        <>
-          <Filters results={results} setResults={setResults}/>
+        <section className="main-content">
+          <Filters
+            results={results}
+            setResults={setResults}
+          />
           <ul className="product-list">
             {results.map((item, index) => (
-              <ProductCard key={index} product={item} />
+              <ProductCard
+                key={index}
+                product={item}
+              />
             ))}
           </ul>
-        </>
+        </section>
       )}
     </StyledResults>
   );
 };
 
 const StyledResults = styled.main`
+  padding: 0 !important;
   padding-right: 1rem;
   position: relative;
   min-height: 45vh;
+
+  .search {
+    padding: 1rem;
+  }
+
   .product-list {
     display: grid;
     grid-template-columns: repeat(auto-fit, 252px);
@@ -64,6 +78,26 @@ const StyledResults = styled.main`
     place-content: center;
     li {
       margin: 0 auto;
+    }
+  }
+
+  @media (min-width: 900px) {
+    .search {
+      padding: 2.5rem 10% 0;
+    }
+
+    .main-content {
+      display: flex;
+      padding: 2.5rem 2.5rem 0 2.5rem;
+      gap: 4rem;
+    }
+    .product-list {
+      flex: 1;
+      grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+      row-gap: 2.5rem;
+      grid-auto-rows: min-content;
+      place-items: center start;
+      place-content: unset;
     }
   }
 `;

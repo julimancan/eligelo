@@ -2,6 +2,7 @@ import Image from "next/image";
 import Button from "./Button";
 import styled from "@emotion/styled";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 interface Brand {
   name: string;
@@ -17,7 +18,9 @@ export interface ProductInt {
   year: number;
   mileage: number;
   price: number;
-  slug: string
+  slug: string;
+  _type: "moto" | "car" | "bici" | "scooter";
+  _id: string;
 }
 
 type ProductCardProps = {
@@ -26,8 +29,8 @@ type ProductCardProps = {
 };
 
 const ProductCard = ({ product, type = "vertical" }: ProductCardProps) => {
-  console.log({product});
-  
+  // console.log({product});
+  const {pathname} = useRouter();
   return (
     <StyledCard className={type}>
       {product.image ? (
@@ -55,7 +58,7 @@ const ProductCard = ({ product, type = "vertical" }: ProductCardProps) => {
           $ {product.price.toLocaleString("es-ES")} COP
         </h3>
         <section className="contact">
-          <Link href={`vehiculos/${product.slug}`}>
+          <Link href={pathname.includes("/vehiculos") ? `${product.slug}` : `vehiculos/${product.slug}`}>
             <Button type="secondary">Más información</Button>
           </Link>
         </section>
@@ -124,7 +127,7 @@ const StyledCard = styled.li`
   &.vertical {
     flex-direction: column;
     min-width: 252px;
-    width: 252px;
+    width: 100%;
     height: 346px;
 
     .image {
