@@ -12,7 +12,6 @@ import { getSiteSettings } from "../../sanity/queries/siteSettings";
 
 import { Inter } from "@next/font/google";
 import ProductSlider from "../../components/catalogo/ProductSlider";
-import ImageSlider from "../../components/vehiclepage/ImageSlider";
 import ImageGallery from "../../components/vehiclepage/ImageGallery";
 
 const inter = Inter({ weight: "variable" });

@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import Image from "next/image";
-import React, { lazy, useState } from "react";
+import { useState } from "react";
 
 type ImageProps = {
   images: {

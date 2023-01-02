@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import React, { useState } from "react";
 import ImageSlider from "./ImageSlider";
 import ThumbnailImage from "./ThumbnailImage";
 
@@ -8,7 +7,6 @@ type ImageGalleryProps = {
 };
 
 const ImageGallery = ({ images }: ImageGalleryProps) => {
-  const [index, setIndex] = useState(0);
 
   return (
     <StyledImageGallery>

@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import { Dispatch, SetStateAction } from "react";
 import ImageSlider from "./ImageSlider";
 
 type ModalProps = {
