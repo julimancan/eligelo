@@ -53,6 +53,7 @@ interface StyledSelectProps {
 }
 const StyledSelect = styled.button<StyledSelectProps>`
   border: 1px solid #dedede;
+  z-index: 1000;
   border-radius: 8px;
   background-color: white;
   padding: 10px;

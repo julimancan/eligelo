@@ -1,11 +1,8 @@
 import styled from "@emotion/styled";
 import Button from "../Button";
 import { useState } from "react";
-import { Inter } from "@next/font/google";
 import { ProductInt } from "../ProductCard";
-import Dropdown from "./Dropdown";
-
-const inter = Inter({ weight: "variable" });
+import FiltersOptions from "./FiltersOptions";
 
 type FiltersProps = {
   setResults: (newResults: ProductInt[]) => void;
@@ -37,94 +34,65 @@ const Filters = ({ results, setResults }: FiltersProps) => {
     setShowFilterModal(true);
   };
   const vehicleTypeFilter = (value) => {
-    const newResults = results.filter(item => item.type === value)
+    const newResults = results.filter(item => item.type === value);
     console.log(value);
-    setResults(newResults)
+    setResults(newResults);
   };
 
   const vehicleType = results.map(result => result.type)[0];
 
-  const vehicleTypeInSpanish = vehicleTypeOptions.find(vehicle => vehicle.value === vehicleType)
-  
+  const vehicleTypeInSpanish = vehicleTypeOptions.find(vehicle => vehicle.value === vehicleType);
+
   return (
     <StyledFilters>
-      <Button type="secondary" classNames="filter-button" onClick={openFilters}>
+      <Button
+        type="secondary"
+        classNames="filter-button"
+        onClick={openFilters}>
         <>Filtros</>
       </Button>
 
       {showFilterModal && (
-        <section className="filter-modal">
-          <h2 className={inter.className}>Filtros</h2>
-          <div
-            className="close-filter"
-            onClick={() => setShowFilterModal(false)}
-          />
-
-          <Dropdown 
-              classNames={"vehicle-type"}
-              titleFont={inter.className}
-              title={"Tipo de Vehículo"}
-              options={vehicleTypeOptions.filter(option => option.name !== vehicleTypeInSpanish.name)}
-              onClick={vehicleTypeFilter}
-              selectedName={vehicleTypeInSpanish.name}
-              type="vehicle-type"
-          />
-        </section>
+        <FiltersOptions
+          setShowFilterModal={setShowFilterModal}
+          vehicleTypeFilter={vehicleTypeFilter}
+          vehicleTypeInSpanish={vehicleTypeInSpanish}
+          type="modal"
+        />
       )}
+      <section className="filter-desktop">
+        <FiltersOptions
+          vehicleTypeFilter={vehicleTypeFilter}
+          vehicleTypeInSpanish={vehicleTypeInSpanish}
+        />
+      </section>
     </StyledFilters>
   );
 };
 
 const StyledFilters = styled.section`
   margin: 1rem 0;
+  padding: 0 1rem;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 1fr;
+
   .filter-button {
     place-self: end;
     /* right: 0; */
   }
 
-  .filter-modal {
-    position: fixed;
-    background-color: white;
-    width: 100vw;
-    height: 100vh;
-    top: 0;
-    left: 0;
-    z-index: 1000;
-    display: grid;
-    justify-content: center;
-    padding-top: 1rem;
-    h3 {
-      font-size: 18px;
-      line-height: 24px;
-      font-weight: 700;
+  .filter-desktop {
+    display: none;
+  }
+
+  @media (min-width: 900px) {
+    padding: 0;
+    .filter-button {
+      display: none;
     }
-    .vehicle-type {
-      height: fit-content;
-      max-height: 70px;
+    .filter-desktop {
       display: grid;
-      gap: .5em;
-    }
-    .close-filter {
-      background: var(--primary-blue);
-      width: 20px;
-      height: 4px;
-      rotate: 45deg;
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      border-radius: 4px;
-      &:after {
-        content: "";
-        width: 20px;
-        height: 4px;
-        rotate: -90deg;
-        background: var(--primary-blue);
-        position: absolute;
-        border-radius: 4px;
-      }
     }
   }
 `;

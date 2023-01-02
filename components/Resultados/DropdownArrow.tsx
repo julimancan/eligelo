@@ -1,11 +1,12 @@
 import styled from "@emotion/styled";
 
 type DropdownArrowProps = {
-  isOpen: boolean
+  isOpen: boolean,
+  className?: string
 }
-const DropdownArrow = ({isOpen}: DropdownArrowProps) => {
+const DropdownArrow = ({isOpen, className}: DropdownArrowProps) => {
   return (
-    <StyledArrow isOpen={isOpen}/>
+    <StyledArrow isOpen={isOpen} className={className}/>
   );
 }
 
