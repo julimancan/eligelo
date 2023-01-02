@@ -1,3 +1,4 @@
+
 import { ProductInt } from "../components/ProductCard";
 
 export const formatByType = (num: number, format: string): string => {
