@@ -185,28 +185,28 @@ const StyledCard = styled.li`
         }
       }
     }
-  }
-
-  &.vertical {
-    flex-direction: column;
-    min-width: 252px;
-    width: 252px;
-    height: 346px;
-
-    .image {
-      width: 100%;
-      min-height: 45%;
-      object-fit: cover;
+    &.vertical {
+      flex-direction: column;
+      min-width: 252px;
+      width: 252px;
+      height: 346px;
+  
+      .image {
+        width: 100%;
+        min-height: 45%;
+        object-fit: cover;
+      }
+    }
+  
+    &.vertical {
+  
+      width: 328px;
+      height: 450px;
+  
+  
     }
   }
 
-  &.vertical {
-
-    width: 328px;
-    height: 450px;
-
-
-  }
 `;
 
 export default ProductCard;
