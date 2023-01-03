@@ -81,14 +81,14 @@ const ThumbnailImage = ({ images, className = "" }: ThumbnailImageProps) => {
           onClick={openModalHandler}
         />
       </div>
-      <section className="modal-container">
+      {/* <section className="modal-container">
         <ModalImage
           images={images}
           index={index}
           isOpenModal={isOpenModal}
           openModalHandler={openModalHandler}
         />
-      </section>
+      </section> */}
     </StyledThumbnailImage>
   );
 };
