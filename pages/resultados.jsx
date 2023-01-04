@@ -93,11 +93,14 @@ const StyledResults = styled.main`
     }
     .product-list {
       flex: 1;
-      grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(328px, 1fr));
       row-gap: 2.5rem;
       grid-auto-rows: min-content;
       place-items: center start;
       place-content: unset;
+      li{
+        width: 100%;
+      }
     }
   }
 `;

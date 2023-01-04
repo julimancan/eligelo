@@ -3,12 +3,12 @@ import Link from "next/link";
 import React from "react";
 import ProductCard from "../ProductCard";
 
-const ProductSlider = ({ products, link, productName }) => {
+const ProductSlider = ({ products, link, productName, className="" }) => {
   return (
-    <StyledProductSlider>
+    <StyledProductSlider className={className}>
       <header className="header-product">
         <h3>{productName}</h3>
-        <Link href={`${link}`}>Ver mas</Link>
+        { !!link && <Link href={`${link}`}>Ver mas</Link>}
       </header>
       <ul className="list-products">
         {products.map((product, index) => (

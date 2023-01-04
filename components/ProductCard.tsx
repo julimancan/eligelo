@@ -2,6 +2,7 @@ import Image from "next/image";
 import Button from "./Button";
 import styled from "@emotion/styled";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 interface Brand {
   name: string;
@@ -17,7 +18,9 @@ export interface ProductInt {
   year: number;
   mileage: number;
   price: number;
-  slug: string
+  slug: string;
+  _type: "moto" | "car" | "bici" | "scooter";
+  _id: string;
 }
 
 type ProductCardProps = {
@@ -26,8 +29,8 @@ type ProductCardProps = {
 };
 
 const ProductCard = ({ product, type = "vertical" }: ProductCardProps) => {
-  console.log({product});
-  
+  // console.log({product});
+  const {pathname} = useRouter();
   return (
     <StyledCard className={type}>
       {product.image ? (
@@ -51,9 +54,11 @@ const ProductCard = ({ product, type = "vertical" }: ProductCardProps) => {
             {product.mileage && <p className="mileage">{product.mileage} km</p>}
           </div>
         </section>
-        <h3 className="price">${product.price.toLocaleString()} COP</h3>
+        <h3 className="price">
+          $ {product.price.toLocaleString("es-ES")} COP
+        </h3>
         <section className="contact">
-          <Link href={`vehiculos/${product.slug}`}>
+          <Link href={pathname.includes("/vehiculos") ? `${product.slug}` : `vehiculos/${product.slug}`}>
             <Button type="secondary">Más información</Button>
           </Link>
         </section>
@@ -167,8 +172,44 @@ const StyledCard = styled.li`
   @media (min-width: 900px) {
     .information {
       padding: 1.25rem;
+      .about {
+        h2 {
+          font-size: 16px;
+          line-height: 25px;
+        }
+      }
+      .price {
+        font-size: 22px;
+        line-height: 25px;
+      }
+      .contact {
+        button {
+          font-size: 18px;
+        }
+      }
+    }
+    &.vertical {
+      flex-direction: column;
+      min-width: 252px;
+      width: 252px;
+      height: 346px;
+  
+      .image {
+        width: 100%;
+        min-height: 45%;
+        object-fit: cover;
+      }
+    }
+  
+    &.vertical {
+  
+      width: 328px;
+      height: 450px;
+  
+  
     }
   }
+
 `;
 
 export default ProductCard;
