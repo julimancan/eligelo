@@ -6,6 +6,7 @@ import SearchBar from "../components/SearchBar";
 import { getAnyResultsFromText } from "../sanity/queries/pages/resultados";
 import Filters from "../components/Resultados/Filters";
 import { useEffect, useState } from "react";
+import { getSiteSettings } from "../sanity/queries/siteSettings";
 
 export const getServerSideProps = async ({ query }) => {
   const { search } = query;
