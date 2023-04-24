@@ -21,6 +21,9 @@ export interface ProductInt {
   slug: string;
   _type: "moto" | "car" | "bici" | "scooter";
   _id: string;
+  transmission: string;
+  drivetrain: string;
+  steering: string
 }
 
 type ProductCardProps = {

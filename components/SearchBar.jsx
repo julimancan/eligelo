@@ -10,7 +10,7 @@ const roboto = Roboto({ weight: "500" });
 const SearchBar = () => {
   const router = useRouter();
   const search = router.query.search?.split("*")[1];
-  console.log({router});
+  // console.log({router});
   
 
   const [searchParams, setSearchParams] = useState(search);
