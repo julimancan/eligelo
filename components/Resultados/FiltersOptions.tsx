@@ -124,8 +124,8 @@ const FiltersOptions = ({
         />
       </section>
 
-      <hr className="divider" />
-
+      {/* <hr className="divider" /> */}
+{/* 
       <section className="options-checkbox">
         <SelectSection title="Transmisión" filterType="transmission" options={["Manual", "Automática"]} setFilterStates={setFilterStates} /> 
 
@@ -143,14 +143,14 @@ const FiltersOptions = ({
           setFilterStates={setFilterStates}
           filterType="other"
         />
-      </section>
+      </section> */}
 
-      <section className="buttons">
+      {/* <section className="buttons">
         <Button classNames="btn-add-filters">Agregar filtros</Button>
         <Button classNames="btn-remove-filters" type="secondary">
           Eliminar filtros
         </Button>
-      </section>
+      </section> */}
     </StyledFiltersOptions>
   );
 };
