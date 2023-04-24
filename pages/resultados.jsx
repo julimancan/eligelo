@@ -15,6 +15,7 @@ export const getServerSideProps = async ({ query }) => {
   await queryClient.prefetchQuery(["searchResults"], () =>
     getAnyResultsFromText(search)
   );
+  await queryClient.prefetchQuery(["siteSettings"], getSiteSettings);
 
   return {
     props: {
@@ -29,11 +30,16 @@ const Resultados = () => {
   const { data: searchResults } = useQuery(["searchResults"], () =>
     getAnyResultsFromText(search)
   );
+  const { data: siteSettings } = useQuery(["siteSettings"], getSiteSettings);
+
 
   const [results, setResults] = useState(searchResults);
 
   const [loaded, setLoaded] = useState(false);
 
+  if(!siteSettings) return;
+
+  
   useEffect(() => {
     setLoaded(true);
   },[])
