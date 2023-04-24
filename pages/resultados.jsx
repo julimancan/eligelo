@@ -5,7 +5,7 @@ import ProductCard from "../components/ProductCard";
 import SearchBar from "../components/SearchBar";
 import { getAnyResultsFromText } from "../sanity/queries/pages/resultados";
 import Filters from "../components/Resultados/Filters";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export const getServerSideProps = async ({ query }) => {
   const { search } = query;
@@ -32,6 +32,18 @@ const Resultados = () => {
 
   const [results, setResults] = useState(searchResults);
 
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    setLoaded(true);
+  },[])
+
+  // if (loading){
+  //   return <h1>Cargando...</h1>
+  // }
+
+  console.log("rendered results page");
+ 
   return (
     <StyledResults>
       <section className="search">
@@ -44,9 +56,10 @@ const Resultados = () => {
           <Filters
             results={results}
             setResults={setResults}
+            originalResults={searchResults}
           />
           <ul className="product-list">
-            {results.map((item, index) => (
+            {loaded && results.length > 0 && results.map((item, index) => (
               <ProductCard
                 key={index}
                 product={item}

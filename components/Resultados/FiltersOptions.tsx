@@ -1,12 +1,34 @@
 import { Inter } from "@next/font/google";
-import { Dispatch, SetStateAction } from "react";
+import type { Dispatch, SetStateAction } from "react";
 import Button from "../Button";
 import Dropdown from "./Dropdown";
 import Range from "./Range";
 import SelectSection from "./SelectSection";
-import Filters from "./Filters";
 import styled from "@emotion/styled";
+import type { ProductInt } from "../ProductCard";
 const inter = Inter({ weight: "variable" });
+
+export type Filters = {
+  price: {
+    min: null | number;
+    max: null | number;
+  }
+  year: {
+    min: null | number;
+    max: null | number;
+  }
+  mileage: {
+    min: null | number;
+    max: null | number;
+  };
+  otherFilters: string[];
+  transmission: {
+    manual: boolean,
+    automatic: boolean
+  };
+  drivetrain: {front: boolean, rear: boolean, all: boolean};
+  steering: {hydraulic: boolean, mechanical: boolean};
+}
 
 type FiltersOptionsProps = {
   setShowFilterModal?: Dispatch<SetStateAction<boolean>>;
@@ -16,6 +38,8 @@ type FiltersOptionsProps = {
     value: string;
   };
   type?: "modal";
+  filterStates: Filters;
+  setFilterStates: Dispatch<SetStateAction<Filters>>;
 };
 
 const vehicleTypeOptions = [
@@ -42,7 +66,10 @@ const FiltersOptions = ({
   vehicleTypeFilter,
   vehicleTypeInSpanish,
   type,
+  setFilterStates
 }: FiltersOptionsProps) => {
+
+  console.log("rendered FiltersOptions")
   return (
     <StyledFiltersOptions className={type}>
       <h2 className={`${inter.className} title`}>Filtros</h2>
@@ -59,7 +86,7 @@ const FiltersOptions = ({
         titleFont={inter.className}
         title={"Tipo de Vehículo"}
         options={vehicleTypeOptions.filter(
-          option => option.name !== vehicleTypeInSpanish.name
+          (option) => option.name !== vehicleTypeInSpanish.name
         )}
         onClick={vehicleTypeFilter}
         selectedName={vehicleTypeInSpanish.name}
@@ -69,48 +96,42 @@ const FiltersOptions = ({
       <section className="ranges">
         <Range
           title="Precio"
-          min={10000000}
-          max={20000000}
           type="money"
           step={500000}
-          config={{ defaultMin: 0, defaultMax: 20000000 }}
+          config={{ defaultMin: 20000000, defaultMax: 300000000 }}
+          filterType="price"
+          setFilterStates={setFilterStates}
         />
         <Range
           title="Año"
-          min={2017}
-          max={new Date().getFullYear()}
           config={{
-            defaultMin: 2015,
+            defaultMin: 2013,
             defaultMax: new Date().getFullYear(),
           }}
+          step={1}
+          filterType="year"
+          setFilterStates={setFilterStates}
+
         />
         <Range
           title="Kilometraje"
-          min={20000}
-          max={100000}
           type="km"
           step={1000}
-          config={{ defaultMin: 10000, defaultMax: 100000 }}
+          config={{ defaultMin: 1000, defaultMax: 200000 }}
+          filterType="mileage"
+          setFilterStates={setFilterStates}
+
         />
       </section>
 
       <hr className="divider" />
 
       <section className="options-checkbox">
-        <SelectSection
-          title="Transmisión"
-          options={["Manual", "Automática"]}
-        />
+        <SelectSection title="Transmisión" filterType="transmission" options={["Manual", "Automática"]} setFilterStates={setFilterStates} /> 
 
-        <SelectSection
-          title="Tracción"
-          options={["4x2", "4x4"]}
-        />
+        <SelectSection title="Tracción" options={["4x2", "4x4"]} filterType="drivetrain" setFilterStates={setFilterStates} />
 
-        <SelectSection
-          title="Dirección"
-          options={["hidráulica", "Manual"]}
-        />
+        <SelectSection title="Dirección" options={["Hidráulica", "Manual"]} filterType="steering"  setFilterStates={setFilterStates} />
       </section>
 
       <hr className="divider" />
@@ -119,14 +140,14 @@ const FiltersOptions = ({
         <SelectSection
           title="Otros detalles"
           options={["Aire acondicionado", "Frenos ABS"]}
+          setFilterStates={setFilterStates}
+          filterType="other"
         />
       </section>
 
       <section className="buttons">
         <Button classNames="btn-add-filters">Agregar filtros</Button>
-        <Button
-          classNames="btn-remove-filters"
-          type="secondary">
+        <Button classNames="btn-remove-filters" type="secondary">
           Eliminar filtros
         </Button>
       </section>

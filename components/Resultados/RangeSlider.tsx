@@ -1,5 +1,7 @@
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { Dispatch, type FC, SetStateAction, useEffect, useState } from "react";
 import styled from "@emotion/styled";
+import { ProductInt } from "../ProductCard";
+import type { Filters } from "./FiltersOptions";
 
 type RangeSliderProps = {
   min: number;
@@ -15,76 +17,118 @@ type RangeSliderProps = {
       max: number;
     }>
   >;
+  filterType: string;
+  setFilterStates: Dispatch<SetStateAction<Filters>>;
 };
-const RangeSlider = ({ min, max, value, step, onChange }:RangeSliderProps) => {
-    const [minValue, setMinValue] = useState(value ? value.min : min);
-    const [maxValue, setMaxValue] = useState(value ? value.max : max);
-  
-    useEffect(() => {
-      if (value) {
-        setMinValue(value.min);
-        setMaxValue(value.max);
-      }
-    }, [value]);
-  
-    const handleMinChange = (e) => {
-      e.preventDefault();
-      const newMinVal = Math.min(e.target.value, maxValue - step);
-      if (!value) setMinValue(newMinVal);
-      onChange({ min: newMinVal, max: maxValue });
-    };
-  
-    const handleMaxChange = (e) => {
-      e.preventDefault();
-      const newMaxVal = Math.max(e.target.value, minValue + step);
-      if (!value) setMaxValue(newMaxVal);
-      onChange({ min: minValue, max: newMaxVal });
-    };
-  
-    const minPos = ((minValue - min) / (max - min)) * 100;
-    const maxPos = ((maxValue - min) / (max - min)) * 100;
-  
-    return (
-      <StyledRangeSlider className="wrapper">
-        <div className="input-wrapper">
-          <input
-            className="input"
-            type="range"
-            value={minValue}
-            min={min}
-            max={max}
-            step={step}
-            onChange={handleMinChange}
-          />
-          <input
-            className="input"
-            type="range"
-            value={maxValue}
-            min={min}
-            max={max}
-            step={step}
-            onChange={handleMaxChange}
-          />
-        </div>
-  
-        <div className="control-wrapper">
-          <div className="control" style={{ left: `${minPos}%` }} />
-          <div className="rail">
-            <div
-              className="inner-rail"
-              style={{ left: `${minPos}%`, right: `${100 - maxPos}%` }}
-            />
-          </div>
-          <div className="control" style={{ left: `${maxPos}%` }} />
-        </div>
-      </StyledRangeSlider>
-    );
-  };
-  
+const RangeSlider = ({
+  min,
+  max,
+  value,
+  step,
+  onChange,
+  filterType,
+  setFilterStates
+}: RangeSliderProps) => {
+  const [minValue, setMinValue] = useState(value ? value.min : min);
+  const [maxValue, setMaxValue] = useState(value ? value.max : max);
 
-const StyledRangeSlider = styled.div`
+  useEffect(() => {
+    if (value) {
+      setMinValue(value.min);
+      setMaxValue(value.max);
+    }
+  }, [value]);
+
+  // const filterResults = (results,  minValue, maxValue) => results.filter(
+  //   (product) => product[filterType] >= minValue && product[filterType] <= maxValue
+  // )
+
+  const handleMinChange = (e) => {
+    e.preventDefault();
+    const newMinVal = Math.min(e.target.value, maxValue - step);
+    if (!value) setMinValue(newMinVal);
+    onChange({ min: newMinVal, max: maxValue });
+    // setResults(
+    //   products => 
+    //   filterResults(products, newMinVal, maxValue)
+    // );
+    setFilterStates(
+      filters => ({
+        ...filters,
+        [filterType]: {
+          ...filters[filterType],
+          min: newMinVal,
+        }
+      })
+    )
+  };
+
+  const handleMaxChange = (e) => {
+    e.preventDefault();
+    const newMaxVal = Math.max(e.target.value, minValue + step);
+    if (!value) setMaxValue(newMaxVal);
+    onChange({ min: minValue, max: newMaxVal });
+    // setResults(
+    //   products =>
+    //   filterResults(products, minValue, newMaxVal)
+    // );
+    setFilterStates(
+      filters => ({
+        ...filters,
+        [filterType]: {
+          ...filters[filterType],
+          max: newMaxVal
+        }
+      })
+    )
+  };
+
+  const minPos = ((minValue - min) / (max - min)) * 100;
+  const maxPos = ((maxValue - min) / (max - min)) * 100;
+
+  return (
+    <StyledRangeSlider className="wrapper" minPos={minPos} maxPos={maxPos}>
+      <div className="input-wrapper">
+        <input
+          className="input"
+          type="range"
+          value={minValue}
+          min={min}
+          max={max}
+          step={step}
+          onChange={handleMinChange}
+        />
+        <input
+          className="input"
+          type="range"
+          value={maxValue}
+          min={min}
+          max={max}
+          step={step}
+          onChange={handleMaxChange}
+        />
+      </div>
+
+      <div className="control-wrapper">
+        <div className="control min" />
+        <div className="rail">
+          <div className="inner-rail" />
+        </div>
+        <div className="control max" />
+      </div>
+    </StyledRangeSlider>
+  );
+};
+
+interface StyledFilterOptionsProps {
+  minPos: number;
+  maxPos: number;
+  className: string;
+}
+
+const StyledRangeSlider: FC<StyledFilterOptionsProps> = styled.div<StyledFilterOptionsProps>`
   --thumb-size: 16px;
-  width: 100%;
+  width: 284px;
   position: relative;
   display: flex;
   align-items: center;
@@ -92,7 +136,7 @@ const StyledRangeSlider = styled.div`
 
   .input-wrapper {
     width: calc(100% + var(--thumb-size));
-    margin: 0 calc(var(--thumb-size)/ -2);
+    margin: 0 calc(var(--thumb-size) / -2);
     position: absolute;
     height: var(--thumb-size);
   }
@@ -101,6 +145,16 @@ const StyledRangeSlider = styled.div`
     width: calc(100% - var(--thumb-size));
     position: absolute;
     height: var(--thumb-size);
+    .min {
+      left: ${({ minPos }) => `${minPos}%`};
+    }
+    .inner-rail {
+      left: ${({ minPos }) => `${minPos}%`};
+      right: ${({ maxPos }) => `${100 - maxPos}%`};
+    }
+    .max {
+      left: ${({ maxPos }) => `${maxPos}%`};
+    }
   }
 
   .input {
@@ -196,7 +250,7 @@ const StyledRangeSlider = styled.div`
     position: absolute;
     background: var(--blue-2);
     top: 50%;
-    margin-left: calc(var(--thumb-size)/ -2);
+    margin-left: calc(var(--thumb-size) / -2);
     transform: translate3d(0, -50%, 0);
     z-index: 2;
   }

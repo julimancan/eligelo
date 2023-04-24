@@ -2,21 +2,34 @@ import styled from "@emotion/styled";
 import RangeSlider from "./RangeSlider";
 import { formatByType } from "../../lib/helpers";
 import { useState } from "react";
+import type { Dispatch, SetStateAction } from "react";
+import type { ProductInt } from "../ProductCard";
+import type { Filters } from "./FiltersOptions";
 
 type RangeProps = {
   title: string;
-  min: number;
-  max: number;
   type?: "money" | "km";
   step?: number;
   config: {
     defaultMin: number;
     defaultMax: number;
   };
+  filterType: "price" | "year" | "mileage";
+  setFilterStates: Dispatch<SetStateAction<Filters>>;
 };
 
-const Range = ({ title, min, max, type, config, step = 1 }: RangeProps) => {
-  const [value, setValue] = useState({ min, max });
+const Range = ({
+  title,
+  type,
+  config,
+  step = 1,
+  filterType,
+  setFilterStates
+}: RangeProps) => {
+  const [value, setValue] = useState({
+    min: config.defaultMin,
+    max: config.defaultMax,
+  });
 
   return (
     <StyledRange>
@@ -28,6 +41,8 @@ const Range = ({ title, min, max, type, config, step = 1 }: RangeProps) => {
         step={step}
         value={value}
         onChange={setValue}
+        filterType={filterType}
+        setFilterStates={setFilterStates}
       />
 
       <section className="values">
@@ -54,6 +69,7 @@ const StyledRange = styled.section`
     .min,
     .max {
       flex: 1;
+      width: 15ch;
     }
     p {
       margin-bottom: 0.25rem;

@@ -1,15 +1,43 @@
 import styled from "@emotion/styled";
+import type { Filters } from "./FiltersOptions";
+import type { Dispatch, SetStateAction } from "react";
+
 
 type CheckboxProps = {
     label: string
+    setFilterStates: Dispatch<SetStateAction<Filters>>;
+    filterType: string
+
 }
 
-const Checkbox = ({label}: CheckboxProps) => {
+
+const translations = {
+  Manual: "manual",
+  Automática: "automatic",
+  Hidráulica: "hydraulic",
+}
+
+const Checkbox = ({label, setFilterStates, filterType}: CheckboxProps) => {
+
+  const addFilterToFilterStates = () => {
+    setFilterStates(prev => {
+      const filterClicked = translations[label]
+
+      console.log(prev.otherFilters.includes(filterClicked));
+      
+      if (prev.otherFilters.includes(filterClicked)) {
+        return ({...prev, otherFilters: prev.otherFilters.filter(filter => filter !== filterClicked)})
+      }
+      
+      return ({...prev, otherFilters:  [...prev.otherFilters, filterClicked]})
+      })
+  }
+  
   return (
-    <StyledCheckbox title=".squaredThree">
+    <StyledCheckbox title=".squaredThree" onClick={addFilterToFilterStates}  >
       <label className="container">
         {label}
-        <input type="checkbox" />
+        <input type="checkbox"  />
         <span className="checkmark"></span>
       </label>
     </StyledCheckbox>
