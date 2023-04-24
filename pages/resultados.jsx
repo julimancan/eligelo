@@ -37,12 +37,13 @@ const Resultados = () => {
 
   const [loaded, setLoaded] = useState(false);
 
-  if(!siteSettings) return;
-
-  
   useEffect(() => {
     setLoaded(true);
   },[])
+
+  if(!siteSettings) return;
+
+  
 
   // if (loading){
   //   return <h1>Cargando...</h1>
