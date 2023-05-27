@@ -70,22 +70,7 @@ const Filters = ({ results, setResults, originalResults }: FiltersProps) => {
   );
 
   useEffect(() => {
-    console.log({ filterStates });
-    // if (filterStates.otherFilters.length > 0) {
-    //   const newResults = originalResults.filter((item) => {
-    //     return (
-    //       filterStates.otherFilters.includes(item.transmission &&  item.drivetrain && item.steering) &&
-    //       item.price >= filterStates.price.min &&
-    //       item.price <= filterStates.price.max &&
-    //       item.year >= filterStates.year.min &&
-    //       item.year <= filterStates.year.max &&
-    //       item.mileage >= filterStates.mileage.min &&
-    //       item.mileage <= filterStates.mileage.max
-    //     );
-    //   });
-    //   return setResults(newResults)
-    // }
-    
+   
     const newResults = originalResults.filter((item) => {
       return (
         item.price >= filterStates.price.min &&
@@ -99,7 +84,6 @@ const Filters = ({ results, setResults, originalResults }: FiltersProps) => {
 
     setResults(newResults);
   }, [filterStates]);
-  console.log("rendered Filters");
   
   return (
     <StyledFilters>
